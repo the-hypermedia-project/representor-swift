@@ -56,7 +56,7 @@ class HypermediaResource {
     class Resource {
         lazy var metalinks = Dictionary<Relation, URI>()                /// Metalinks e.g. profile
         lazy var metadata = Dictionary<String, AnyObject>()             /// Arbitrary metadata
-        lazy var transitions = [Transition]()                           /// Available state transitions
+        lazy var transitions = Array<Transition>()                      /// Available state transitions
         lazy var attributes = Dictionary<String, AnyObject>()           /// Attributes – semantic desriptors of the resource
         lazy var resources = Array<Dictionary<Relation, Resource>>()    /// Embedded hypermedia resources
     }
