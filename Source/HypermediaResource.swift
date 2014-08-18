@@ -15,7 +15,7 @@ class HypermediaResource {
     
     /// URI type
     typealias URI = NSURL
-
+    
     /// State Transtion
     class Transition {
         
@@ -35,20 +35,12 @@ class HypermediaResource {
         var uri: URI                    /// URI to be excercissed during transition
         lazy var name = String()        /// Transition name
         lazy var description = String() /// Description of the transition
+        lazy var parameters = Array<InputProperty>()    /// Input properties to for URI query parameters of the transition
+        lazy var attributes = Array<InputProperty>()    /// Input attributes to build the transition message-body
 
         init (relation: Relation, uri: URI) {
             self.relation = relation
             self.uri = uri
-        }
-
-        /// Input attributes to build the transition message-body
-        func attributes() -> [InputProperty] {
-            return [InputProperty]()
-        }
-
-        /// Input attributes to for URI query parameters of the transition
-        func parameters() -> [InputProperty] {
-            return [InputProperty]()
         }
     }
 
