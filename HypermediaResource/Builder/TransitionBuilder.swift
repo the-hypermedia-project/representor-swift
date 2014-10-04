@@ -14,12 +14,22 @@ public class TransitionBuilder {
 
     // MARK: Attributes
 
+    public func addAttribute(name:String) {
+        let property = InputProperty(value:nil, defaultValue:nil)
+        attributes[name] = property
+    }
+
     public func addAttribute(name:String, value:AnyObject?, defaultValue:AnyObject?) {
         let property = InputProperty(value:value, defaultValue:defaultValue)
         attributes[name] = property
     }
 
     // MARK: Parameters
+
+    public func addParameter(name:String) {
+        let property = InputProperty(value:nil, defaultValue:nil)
+        parameters[name] = property
+    }
 
     public func addParameter(name:String, value:AnyObject?, defaultValue:AnyObject?) {
         let property = InputProperty(value:value, defaultValue:defaultValue)
@@ -28,6 +38,7 @@ public class TransitionBuilder {
 }
 
 extension Transition {
+    /// An extension to Transition to provide a builder interface for creating a Transition.
     public init(uri:String, _ block:((builder:TransitionBuilder) -> ())) {
         let builder = TransitionBuilder()
 

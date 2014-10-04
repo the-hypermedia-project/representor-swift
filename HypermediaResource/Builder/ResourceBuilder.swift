@@ -46,6 +46,7 @@ public class ResourceBuilder {
 }
 
 extension Resource {
+    /// An extension to Resource to provide a builder interface for creating a Resource.
     public init(_ block:((builder:ResourceBuilder) -> ())) {
         let builder = ResourceBuilder()
 
