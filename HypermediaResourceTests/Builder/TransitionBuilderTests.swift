@@ -16,6 +16,6 @@ class TransitionBuilderTests: XCTestCase {
 
         }
 
-        XCTAssertEqual(transition, Transition(uri:"/self/"))
+        XCTAssertEqual(transition.uri, "/self/")
     }
 }

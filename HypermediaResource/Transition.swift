@@ -9,14 +9,10 @@
 import Foundation
 
 /** Transition instances encapsulate information about interacting with links and forms. */
-public struct Transition : Equatable {
+public struct Transition {
     public let uri:String
 
     public init(uri:String) {
         self.uri = uri
     }
-}
-
-public func ==(lhs: Transition, rhs: Transition) -> Bool {
-    return lhs.uri == rhs.uri
 }

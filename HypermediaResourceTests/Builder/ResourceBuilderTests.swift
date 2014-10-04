@@ -48,7 +48,7 @@ class ResourceBuilderTests: XCTestCase {
             builder.addTransition("self", transition)
         }
 
-        XCTAssertEqual(resource.transitions, ["self": transition])
+        XCTAssertTrue(resource.transitions["self"] != nil)
     }
 
     func testAddTransitionWithURI() {
@@ -56,7 +56,7 @@ class ResourceBuilderTests: XCTestCase {
             builder.addTransition("self", uri:"/self/")
         }
 
-        XCTAssertEqual(resource.transitions, ["self": Transition(uri:"/self/")])
+        XCTAssertTrue(resource.transitions["self"] != nil)
     }
 
     func testAddTransitionWithBuilder() {
@@ -66,6 +66,6 @@ class ResourceBuilderTests: XCTestCase {
             }
         }
 
-        XCTAssertEqual(resource.transitions, ["self": Transition(uri:"/self/")])
+        XCTAssertTrue(resource.transitions["self"] != nil)
     }
 }

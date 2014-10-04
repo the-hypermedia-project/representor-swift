@@ -21,8 +21,4 @@ class TransitionTests : XCTestCase {
     func testHasURI() {
         XCTAssertEqual(transition.uri, "/self/")
     }
-
-    func testTransitionEquality() {
-        XCTAssertEqual(transition, Transition(uri:"/self/"))
-    }
 }

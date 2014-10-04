@@ -23,7 +23,7 @@ class ResourceTests: XCTestCase {
     }
 
     func testHasTransitions() {
-        XCTAssertEqual(resource.transitions, ["self": transition])
+        XCTAssertTrue(resource.transitions["self"] != nil)
     }
 
     func testHasResources() {
