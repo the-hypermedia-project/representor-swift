@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		770834691A0913860008869E /* HypermediaResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* HypermediaResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* HypermediaResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* HypermediaResource.framework */; };
-		770834761A0913860008869E /* HypermediaResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* HypermediaResourceTests.swift */; };
-		770834801A09144F0008869E /* HypermediaResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708347F1A09144F0008869E /* HypermediaResource.swift */; };
+		770834761A0913860008869E /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* ResourceTests.swift */; };
+		770834801A09144F0008869E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708347F1A09144F0008869E /* Resource.swift */; };
+		770834821A0914CB0008869E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834811A0914CB0008869E /* Transition.swift */; };
+		770834841A0914E40008869E /* TransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834831A0914E40008869E /* TransitionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +31,10 @@
 		770834681A0913860008869E /* HypermediaResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HypermediaResource.h; sourceTree = "<group>"; };
 		7708346E1A0913860008869E /* HypermediaResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HypermediaResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834741A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770834751A0913860008869E /* HypermediaResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypermediaResourceTests.swift; sourceTree = "<group>"; };
-		7708347F1A09144F0008869E /* HypermediaResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypermediaResource.swift; sourceTree = "<group>"; };
+		770834751A0913860008869E /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
+		7708347F1A09144F0008869E /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		770834811A0914CB0008869E /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		770834831A0914E40008869E /* TransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				770834681A0913860008869E /* HypermediaResource.h */,
-				7708347F1A09144F0008869E /* HypermediaResource.swift */,
+				7708347F1A09144F0008869E /* Resource.swift */,
+				770834811A0914CB0008869E /* Transition.swift */,
 				770834661A0913860008869E /* Supporting Files */,
 			);
 			path = HypermediaResource;
@@ -91,7 +96,8 @@
 		770834721A0913860008869E /* HypermediaResourceTests */ = {
 			isa = PBXGroup;
 			children = (
-				770834751A0913860008869E /* HypermediaResourceTests.swift */,
+				770834751A0913860008869E /* ResourceTests.swift */,
+				770834831A0914E40008869E /* TransitionTests.swift */,
 				770834731A0913860008869E /* Supporting Files */,
 			);
 			path = HypermediaResourceTests;
@@ -212,7 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770834801A09144F0008869E /* HypermediaResource.swift in Sources */,
+				770834821A0914CB0008869E /* Transition.swift in Sources */,
+				770834801A09144F0008869E /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770834761A0913860008869E /* HypermediaResourceTests.swift in Sources */,
+				770834841A0914E40008869E /* TransitionTests.swift in Sources */,
+				770834761A0913860008869E /* ResourceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
