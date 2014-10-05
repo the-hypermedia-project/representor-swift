@@ -9,7 +9,22 @@
 import Foundation
 
 public class TransitionBuilder {
+    var attributes = InputProperties()
+    var parameters = InputProperties()
 
+    // MARK: Attributes
+
+    public func addAttribute(name:String, value:AnyObject?, defaultValue:AnyObject?) {
+        let property = InputProperty(value:value, defaultValue:defaultValue)
+        attributes[name] = property
+    }
+
+    // MARK: Parameters
+
+    public func addParameter(name:String, value:AnyObject?, defaultValue:AnyObject?) {
+        let property = InputProperty(value:value, defaultValue:defaultValue)
+        parameters[name] = property
+    }
 }
 
 extension Transition {
@@ -19,5 +34,7 @@ extension Transition {
         block(builder: builder)
 
         self.uri = uri
+        self.attributes = builder.attributes
+        self.parameters = builder.parameters
     }
 }

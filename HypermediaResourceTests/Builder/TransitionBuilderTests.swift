@@ -18,4 +18,26 @@ class TransitionBuilderTests: XCTestCase {
 
         XCTAssertEqual(transition.uri, "/self/")
     }
+
+    // MARK: Attributes
+
+    func testAddAttribute() {
+        let transition = Transition(uri:"/self/") { builder in
+            builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
+        }
+
+        XCTAssertEqual(transition.uri, "/self/")
+        XCTAssertTrue(transition.attributes["name"] != nil)
+    }
+
+    // MARK: Parameters
+
+    func testAddParameter() {
+        let transition = Transition(uri:"/self/") { builder in
+            builder.addParameter("name", value:"Kyle Fuller", defaultValue:nil)
+        }
+
+        XCTAssertEqual(transition.uri, "/self/")
+        XCTAssertTrue(transition.parameters["name"] != nil)
+    }
 }

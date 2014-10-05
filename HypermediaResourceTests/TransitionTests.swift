@@ -10,15 +10,42 @@ import Cocoa
 import XCTest
 import HypermediaResource
 
+
+class InputPropertyTests : XCTestCase {
+    var property:InputProperty!
+
+    override func setUp() {
+        super.setUp()
+        property = InputProperty(value:"Kyle Fuller", defaultValue:nil)
+    }
+
+    func testHasValue() {
+        XCTAssertEqual(property.value as String, "Kyle Fuller")
+    }
+
+    func testHasDefaultValue() {
+        XCTAssertTrue(property.defaultValue == nil)
+    }
+}
+
+
 class TransitionTests : XCTestCase {
     var transition:Transition!
 
     override func setUp() {
         super.setUp()
-        transition = Transition(uri:"/self/")
+        transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
     }
 
     func testHasURI() {
         XCTAssertEqual(transition.uri, "/self/")
+    }
+
+    func testHasAttributes() {
+        XCTAssertEqual(transition.attributes.count, 0)
+    }
+
+    func testHasParameters() {
+        XCTAssertEqual(transition.parameters.count, 0)
     }
 }

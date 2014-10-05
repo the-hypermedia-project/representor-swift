@@ -42,7 +42,7 @@ class ResourceBuilderTests: XCTestCase {
     // MARK: Transition
 
     func testAddTransition() {
-        let transition = Transition(uri:"/self/")
+        let transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
 
         let resource = Resource { builder in
             builder.addTransition("self", transition)

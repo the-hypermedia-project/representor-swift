@@ -35,7 +35,7 @@ public class ResourceBuilder {
     }
 
     public func addTransition(name:String, uri:String) {
-        let transition = Transition(uri: uri)
+        let transition = Transition(uri: uri, attributes:[:], parameters:[:])
         transitions[name] = transition
     }
 

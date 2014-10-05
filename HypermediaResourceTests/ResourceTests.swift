@@ -17,7 +17,7 @@ class ResourceTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        transition = Transition(uri:"/self/")
+        transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
         embeddedResource = Resource(transitions:[:], resources:[:], attributes:[:])
         resource = Resource(transitions:["self": transition], resources:["embedded": embeddedResource], attributes:["name":"Kyle"])
     }
