@@ -10,6 +10,7 @@
 		770834691A0913860008869E /* HypermediaResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* HypermediaResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* HypermediaResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* HypermediaResource.framework */; };
 		770834761A0913860008869E /* HypermediaResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* HypermediaResourceTests.swift */; };
+		770834801A09144F0008869E /* HypermediaResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708347F1A09144F0008869E /* HypermediaResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		7708346E1A0913860008869E /* HypermediaResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HypermediaResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834741A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834751A0913860008869E /* HypermediaResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypermediaResourceTests.swift; sourceTree = "<group>"; };
+		7708347F1A09144F0008869E /* HypermediaResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HypermediaResource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				770834681A0913860008869E /* HypermediaResource.h */,
+				7708347F1A09144F0008869E /* HypermediaResource.swift */,
 				770834661A0913860008869E /* Supporting Files */,
 			);
 			path = HypermediaResource;
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770834801A09144F0008869E /* HypermediaResource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +319,7 @@
 		7708347A1A0913860008869E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -326,12 +331,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7708347B1A0913860008869E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -397,6 +404,7 @@
 				7708347B1A0913860008869E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7708347C1A0913860008869E /* Build configuration list for PBXNativeTarget "HypermediaResourceTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +413,7 @@
 				7708347E1A0913860008869E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
