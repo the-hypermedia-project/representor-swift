@@ -1,5 +1,5 @@
 //
-//  ResourceBuilder.swift
+//  RepresentorBuilder.swift
 //  HypermediaResource
 //
 //  Created by Kyle Fuller on 05/11/2014.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class ResourceBuilder {
+public class RepresentorBuilder {
     var transitions = Dictionary<String, Transition>()
-    var resources = Dictionary<String, Resource>()
+    var representors = Dictionary<String, Representor>()
     var attributes = Dictionary<String, AnyObject>()
     var links = Dictionary<String, String>()
     var metadata = Dictionary<String, String>()
@@ -19,15 +19,14 @@ public class ResourceBuilder {
         attributes[name] = value
     }
 
-    // MARK: Resources
+    // MARK: Representors
 
-    public func addResource(name:String, resource:Resource) {
-        resources[name] = resource
+    public func addRepresentor(name:String, representor:Representor) {
+        representors[name] = representor
     }
 
-    public func addResource(name:String, block:((builder:ResourceBuilder) -> ())) {
-        let resource = Resource(block)
-        resources[name] = resource
+    public func addRepresentor(name:String, block:((builder:RepresentorBuilder) -> ())) {
+        representors[name] = Representor(block)
     }
 
     // MARK: Transition
@@ -59,15 +58,15 @@ public class ResourceBuilder {
     }
 }
 
-extension Resource {
-    /// An extension to Resource to provide a builder interface for creating a Resource.
-    public init(_ block:((builder:ResourceBuilder) -> ())) {
-        let builder = ResourceBuilder()
+extension Representor {
+    /// An extension to Representor to provide a builder interface for creating a Representor.
+    public init(_ block:((builder:RepresentorBuilder) -> ())) {
+        let builder = RepresentorBuilder()
 
         block(builder:builder)
 
         self.transitions = builder.transitions
-        self.resources = builder.resources
+        self.representors = builder.representors
         self.attributes = builder.attributes
         self.links = builder.links
         self.metadata = builder.metadata
