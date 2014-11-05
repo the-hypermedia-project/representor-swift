@@ -1,5 +1,7 @@
 # Hypermedia Resource in Swift
 
+[![Build Status](http://img.shields.io/travis/the-hypermedia-project/hypermedia-resource-swift/master.svg?style=flat)](https://travis-ci.org/the-hypermedia-project/hypermedia-resource-swift)
+
 Swift draft of the Hypermedia Resource library.
 
 See [The Hypermedia Project](https://github.com/the-hypermedia-project/charter) for details.

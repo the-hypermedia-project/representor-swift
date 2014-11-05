@@ -1,0 +1,4 @@
+language: objective-c
+osx_image: xcode61
+install: rake bootstrap
+script: rake test
