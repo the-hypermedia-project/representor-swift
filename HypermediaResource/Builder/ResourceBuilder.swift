@@ -13,6 +13,7 @@ public class ResourceBuilder {
     var resources = Dictionary<String, Resource>()
     var attributes = Dictionary<String, AnyObject>()
     var links = Dictionary<String, String>()
+    var metadata = Dictionary<String, String>()
 
     public func addAttribute(name:String, value:AnyObject) {
         attributes[name] = value
@@ -50,6 +51,12 @@ public class ResourceBuilder {
     public func addLink(name:String, uri:String) {
         links[name] = uri
     }
+
+    // MARK: Metadata
+
+    public func addMetaData(key:String, value:String) {
+        metadata[key] = value
+    }
 }
 
 extension Resource {
@@ -63,5 +70,6 @@ extension Resource {
         self.resources = builder.resources
         self.attributes = builder.attributes
         self.links = builder.links
+        self.metadata = builder.metadata
     }
 }
