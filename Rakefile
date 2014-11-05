@@ -13,7 +13,7 @@ begin
 
   XCTasks::TestTask.new(:test) do |task|
     task.project = 'HypermediaResource.xcodeproj'
-    task.runner = :xcpretty
+    task.runner = :xcodebuild
 
     task.subtask(test: 'HypermediaResource') do |osx|
       osx.sdk = :macosx
