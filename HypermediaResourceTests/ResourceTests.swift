@@ -18,8 +18,8 @@ class ResourceTests: XCTestCase {
     override func setUp() {
         super.setUp()
         transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
-        embeddedResource = Resource(transitions:[:], resources:[:], attributes:[:])
-        resource = Resource(transitions:["self": transition], resources:["embedded": embeddedResource], attributes:["name":"Kyle"])
+        embeddedResource = Resource(transitions:[:], resources:[:], attributes:[:], links:[:])
+        resource = Resource(transitions:["self": transition], resources:["embedded": embeddedResource], attributes:["name":"Kyle"], links:["next": "/next/"])
     }
 
     func testHasTransitions() {
@@ -32,5 +32,9 @@ class ResourceTests: XCTestCase {
 
     func testHasAttributes() {
         XCTAssertEqual(resource.attributes["name"] as String, "Kyle")
+    }
+
+    func testHasLinks() {
+        XCTAssertEqual(resource.links, ["next": "/next/"])
     }
 }

@@ -14,6 +14,10 @@ See [The Hypermedia Project](https://github.com/the-hypermedia-project/charter) 
 import HypermediaResource
 
 let resource = Resource { builder in
+    builder.addLink("self", uri:"/notes/2/")
+    builder.addLink("previous", uri:"/notes/1/")
+    builder.addLink("next", uri:"/notes/3/")
+
     builder.addTransition("create", uri:"/notes/") { transitionBuilder in
         transitionBuilder.addAttribute("title")
         transitionBuilder.addAttribute("note")

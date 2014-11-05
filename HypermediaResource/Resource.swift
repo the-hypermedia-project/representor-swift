@@ -15,14 +15,16 @@ public struct Resource {
     /// The separate resources embedded in the current resource.
     public let resources:Dictionary<String, Resource>
 
-    // TODO, metaLinks, metaData
+    // TODO, metaData
+    public let links:Dictionary<String, String>
 
     /// The attributes of the resource
     public let attributes:Dictionary<String, AnyObject>
 
-    public init(transitions:Dictionary<String, Transition>, resources:Dictionary<String, Resource>, attributes:Dictionary<String, AnyObject>) {
+    public init(transitions:Dictionary<String, Transition>, resources:Dictionary<String, Resource>, attributes:Dictionary<String, AnyObject>, links:Dictionary<String, String>) {
         self.transitions = transitions
         self.resources = resources
         self.attributes = attributes
+        self.links = links
     }
 }

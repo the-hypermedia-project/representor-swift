@@ -12,6 +12,7 @@ public class ResourceBuilder {
     var transitions = Dictionary<String, Transition>()
     var resources = Dictionary<String, Resource>()
     var attributes = Dictionary<String, AnyObject>()
+    var links = Dictionary<String, String>()
 
     public func addAttribute(name:String, value:AnyObject) {
         attributes[name] = value
@@ -43,6 +44,12 @@ public class ResourceBuilder {
         let transition = Transition(uri: uri, builder)
         transitions[name] = transition
     }
+
+    // MARK: Links
+
+    public func addLink(name:String, uri:String) {
+        links[name] = uri
+    }
 }
 
 extension Resource {
@@ -55,5 +62,6 @@ extension Resource {
         self.transitions = builder.transitions
         self.resources = builder.resources
         self.attributes = builder.attributes
+        self.links = builder.links
     }
 }

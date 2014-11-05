@@ -23,7 +23,7 @@ class ResourceBuilderTests: XCTestCase {
 
     func testAddResource() {
         let resource = Resource { builder in
-            builder.addResource("parent", resource:Resource(transitions:[:], resources:[:], attributes:[:]))
+            builder.addResource("parent", resource:Resource(transitions:[:], resources:[:], attributes:[:], links:[:]))
         }
 
         XCTAssertTrue(resource.resources["parent"] != nil)
@@ -67,5 +67,15 @@ class ResourceBuilderTests: XCTestCase {
         }
 
         XCTAssertTrue(resource.transitions["self"] != nil)
+    }
+
+    // MARK: Links
+
+    func testAddLink() {
+        let resource = Resource { builder in
+            builder.addLink("next", uri:"/next/")
+        }
+
+        XCTAssertEqual(resource.links, ["next": "/next/"])
     }
 }
