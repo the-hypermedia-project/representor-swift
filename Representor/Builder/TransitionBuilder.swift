@@ -1,6 +1,6 @@
 //
 //  TransitionBuilder.swift
-//  HypermediaResource
+//  Representor
 //
 //  Created by Kyle Fuller on 05/11/2014.
 //  Copyright (c) 2014 Apiary. All rights reserved.

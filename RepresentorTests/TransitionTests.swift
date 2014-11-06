@@ -1,6 +1,6 @@
 //
 //  TransitionTests.swift
-//  HypermediaResource
+//  Representor
 //
 //  Created by Kyle Fuller on 04/11/2014.
 //  Copyright (c) 2014 Apiary. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Cocoa
 import XCTest
-import HypermediaResource
+import Representor
 
 
 class InputPropertyTests : XCTestCase {

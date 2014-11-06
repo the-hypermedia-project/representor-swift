@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "770834621A0913860008869E"
-               BuildableName = "HypermediaResource.framework"
-               BlueprintName = "HypermediaResource"
-               ReferencedContainer = "container:HypermediaResource.xcodeproj">
+               BuildableName = "Representor.framework"
+               BlueprintName = "Representor"
+               ReferencedContainer = "container:Representor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7708346D1A0913860008869E"
-               BuildableName = "HypermediaResourceTests.xctest"
-               BlueprintName = "HypermediaResourceTests"
-               ReferencedContainer = "container:HypermediaResource.xcodeproj">
+               BuildableName = "RepresentorTests.xctest"
+               BlueprintName = "RepresentorTests"
+               ReferencedContainer = "container:Representor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7708346D1A0913860008869E"
-               BuildableName = "HypermediaResourceTests.xctest"
-               BlueprintName = "HypermediaResourceTests"
-               ReferencedContainer = "container:HypermediaResource.xcodeproj">
+               BuildableName = "RepresentorTests.xctest"
+               BlueprintName = "RepresentorTests"
+               ReferencedContainer = "container:Representor.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "770834621A0913860008869E"
-            BuildableName = "HypermediaResource.framework"
-            BlueprintName = "HypermediaResource"
-            ReferencedContainer = "container:HypermediaResource.xcodeproj">
+            BuildableName = "Representor.framework"
+            BlueprintName = "Representor"
+            ReferencedContainer = "container:Representor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "770834621A0913860008869E"
-            BuildableName = "HypermediaResource.framework"
-            BlueprintName = "HypermediaResource"
-            ReferencedContainer = "container:HypermediaResource.xcodeproj">
+            BuildableName = "Representor.framework"
+            BlueprintName = "Representor"
+            ReferencedContainer = "container:Representor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "770834621A0913860008869E"
-            BuildableName = "HypermediaResource.framework"
-            BlueprintName = "HypermediaResource"
-            ReferencedContainer = "container:HypermediaResource.xcodeproj">
+            BuildableName = "Representor.framework"
+            BlueprintName = "Representor"
+            ReferencedContainer = "container:Representor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

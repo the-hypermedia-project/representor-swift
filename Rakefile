@@ -12,10 +12,10 @@ begin
   task default: :test
 
   XCTasks::TestTask.new(:test) do |task|
-    task.project = 'HypermediaResource.xcodeproj'
+    task.project = 'Representor.xcodeproj'
     task.runner = :xcpretty
 
-    task.subtask(test: 'HypermediaResource') do |osx|
+    task.subtask(test: 'Representor') do |osx|
       osx.sdk = :macosx
     end
   end

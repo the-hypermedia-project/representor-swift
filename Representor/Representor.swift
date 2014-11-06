@@ -1,6 +1,6 @@
 //
-//  HypermediaResource.swift
-//  Hypermedia Resource
+//  Representor.swift
+//  Representor
 //
 //  Created by Zdenek Nemec on 8/17/14.
 //

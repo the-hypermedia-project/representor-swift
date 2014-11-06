@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		770834691A0913860008869E /* HypermediaResource.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* HypermediaResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7708346F1A0913860008869E /* HypermediaResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* HypermediaResource.framework */; };
+		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
 		770834801A09144F0008869E /* Representor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7708347F1A09144F0008869E /* Representor.swift */; };
 		770834821A0914CB0008869E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834811A0914CB0008869E /* Transition.swift */; };
@@ -25,15 +25,15 @@
 			containerPortal = 7708345A1A0913860008869E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 770834621A0913860008869E;
-			remoteInfo = HypermediaResource;
+			remoteInfo = Representor;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		770834631A0913860008869E /* HypermediaResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HypermediaResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770834681A0913860008869E /* HypermediaResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HypermediaResource.h; sourceTree = "<group>"; };
-		7708346E1A0913860008869E /* HypermediaResourceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HypermediaResourceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
+		7708346E1A0913860008869E /* RepresentorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RepresentorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834741A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834751A0913860008869E /* RepresentorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepresentorTests.swift; sourceTree = "<group>"; };
 		7708347F1A09144F0008869E /* Representor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Representor.swift; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7708346F1A0913860008869E /* HypermediaResource.framework in Frameworks */,
+				7708346F1A0913860008869E /* Representor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,8 +67,8 @@
 		770834591A0913860008869E = {
 			isa = PBXGroup;
 			children = (
-				770834651A0913860008869E /* HypermediaResource */,
-				770834721A0913860008869E /* HypermediaResourceTests */,
+				770834651A0913860008869E /* Representor */,
+				770834721A0913860008869E /* RepresentorTests */,
 				770834641A0913860008869E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,22 +76,23 @@
 		770834641A0913860008869E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				770834631A0913860008869E /* HypermediaResource.framework */,
-				7708346E1A0913860008869E /* HypermediaResourceTests.xctest */,
+				770834631A0913860008869E /* Representor.framework */,
+				7708346E1A0913860008869E /* RepresentorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		770834651A0913860008869E /* HypermediaResource */ = {
+		770834651A0913860008869E /* Representor */ = {
 			isa = PBXGroup;
 			children = (
-				770834681A0913860008869E /* HypermediaResource.h */,
+				770834681A0913860008869E /* Representor.h */,
 				7708347F1A09144F0008869E /* Representor.swift */,
 				770834811A0914CB0008869E /* Transition.swift */,
 				77BC15371A0A69DF00DD24EF /* Builder */,
 				770834661A0913860008869E /* Supporting Files */,
 			);
-			path = HypermediaResource;
+			name = Representor;
+			path = Representor;
 			sourceTree = "<group>";
 		};
 		770834661A0913860008869E /* Supporting Files */ = {
@@ -102,7 +103,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		770834721A0913860008869E /* HypermediaResourceTests */ = {
+		770834721A0913860008869E /* RepresentorTests */ = {
 			isa = PBXGroup;
 			children = (
 				770834751A0913860008869E /* RepresentorTests.swift */,
@@ -110,7 +111,8 @@
 				77BC153A1A0A6A7B00DD24EF /* Builder */,
 				770834731A0913860008869E /* Supporting Files */,
 			);
-			path = HypermediaResourceTests;
+			name = RepresentorTests;
+			path = RepresentorTests;
 			sourceTree = "<group>";
 		};
 		770834731A0913860008869E /* Supporting Files */ = {
@@ -146,16 +148,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				770834691A0913860008869E /* HypermediaResource.h in Headers */,
+				770834691A0913860008869E /* Representor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		770834621A0913860008869E /* HypermediaResource */ = {
+		770834621A0913860008869E /* Representor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 770834791A0913860008869E /* Build configuration list for PBXNativeTarget "HypermediaResource" */;
+			buildConfigurationList = 770834791A0913860008869E /* Build configuration list for PBXNativeTarget "Representor" */;
 			buildPhases = (
 				7708345E1A0913860008869E /* Sources */,
 				7708345F1A0913860008869E /* Frameworks */,
@@ -166,14 +168,14 @@
 			);
 			dependencies = (
 			);
-			name = HypermediaResource;
-			productName = HypermediaResource;
-			productReference = 770834631A0913860008869E /* HypermediaResource.framework */;
+			name = Representor;
+			productName = Representor;
+			productReference = 770834631A0913860008869E /* Representor.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7708346D1A0913860008869E /* HypermediaResourceTests */ = {
+		7708346D1A0913860008869E /* RepresentorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7708347C1A0913860008869E /* Build configuration list for PBXNativeTarget "HypermediaResourceTests" */;
+			buildConfigurationList = 7708347C1A0913860008869E /* Build configuration list for PBXNativeTarget "RepresentorTests" */;
 			buildPhases = (
 				7708346A1A0913860008869E /* Sources */,
 				7708346B1A0913860008869E /* Frameworks */,
@@ -184,9 +186,9 @@
 			dependencies = (
 				770834711A0913860008869E /* PBXTargetDependency */,
 			);
-			name = HypermediaResourceTests;
-			productName = HypermediaResourceTests;
-			productReference = 7708346E1A0913860008869E /* HypermediaResourceTests.xctest */;
+			name = RepresentorTests;
+			productName = RepresentorTests;
+			productReference = 7708346E1A0913860008869E /* RepresentorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +208,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7708345D1A0913860008869E /* Build configuration list for PBXProject "HypermediaResource" */;
+			buildConfigurationList = 7708345D1A0913860008869E /* Build configuration list for PBXProject "Representor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,8 +220,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				770834621A0913860008869E /* HypermediaResource */,
-				7708346D1A0913860008869E /* HypermediaResourceTests */,
+				770834621A0913860008869E /* Representor */,
+				7708346D1A0913860008869E /* RepresentorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,7 +271,7 @@
 /* Begin PBXTargetDependency section */
 		770834711A0913860008869E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 770834621A0913860008869E /* HypermediaResource */;
+			target = 770834621A0913860008869E /* Representor */;
 			targetProxy = 770834701A0913860008869E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -366,10 +368,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = HypermediaResource/Info.plist;
+				INFOPLIST_FILE = Representor/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -385,10 +387,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = HypermediaResource/Info.plist;
+				INFOPLIST_FILE = Representor/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -405,9 +407,9 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HypermediaResourceTests/Info.plist;
+				INFOPLIST_FILE = RepresentorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RepresentorTests;
 			};
 			name = Debug;
 		};
@@ -419,16 +421,16 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = HypermediaResourceTests/Info.plist;
+				INFOPLIST_FILE = RepresentorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RepresentorTests;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7708345D1A0913860008869E /* Build configuration list for PBXProject "HypermediaResource" */ = {
+		7708345D1A0913860008869E /* Build configuration list for PBXProject "Representor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				770834771A0913860008869E /* Debug */,
@@ -437,7 +439,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		770834791A0913860008869E /* Build configuration list for PBXNativeTarget "HypermediaResource" */ = {
+		770834791A0913860008869E /* Build configuration list for PBXNativeTarget "Representor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7708347A1A0913860008869E /* Debug */,
@@ -446,7 +448,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7708347C1A0913860008869E /* Build configuration list for PBXNativeTarget "HypermediaResourceTests" */ = {
+		7708347C1A0913860008869E /* Build configuration list for PBXNativeTarget "RepresentorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7708347D1A0913860008869E /* Debug */,
