@@ -1,6 +1,6 @@
 # Representor in Swift
 
-[![Build Status](http://img.shields.io/travis/the-hypermedia-project/hypermedia-resource-swift/master.svg?style=flat)](https://travis-ci.org/the-hypermedia-project/hypermedia-resource-swift)
+[![Build Status](http://img.shields.io/travis/the-hypermedia-project/representor-swift/master.svg?style=flat)](https://travis-ci.org/the-hypermedia-project/representor-swift)
 
 Swift draft of the Representor library.
 
@@ -46,3 +46,4 @@ if let uri = representor.links["previous"] {
 ## License
 
 Representor is released under the MIT license. See [LICENSE](LICENSE).
+
