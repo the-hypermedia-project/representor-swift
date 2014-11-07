@@ -50,18 +50,25 @@ class HALAdapterTests: XCTestCase {
     }
 
     func testConversionToHAL() {
-        let transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
-        let embeddedRepresentor = Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
+        let embeddedRepresentor = Representor(transitions:[:], representors:[:], attributes:["name": "Embedded"], links:[:], metadata:[:])
         let representor = Representor(transitions:[:], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:[:])
 
         let representation = representor.asHAL()
 
-        XCTAssertEqual(representation.keys.array, ["_links", "_embedded", "name"])
+        let fixture = [
+            "_links": [
+                "next": [ "href": "/next/" ],
+            ],
+            "_embedded": [
+                "embedded": [
+                    [
+                        "name": "Embedded",
+                    ]
+                ]
+            ],
+            "name": "Kyle",
+        ]
 
-        XCTAssertEqual(representation["name"] as String, "Kyle")
-        XCTAssertEqual(representation["_links"] as Dictionary<String, Dictionary<String, String>>, ["next": ["href":"/next/"]])
-
-        let embedded = representation["_embedded"]! as Dictionary<String, AnyObject>
-        XCTAssertEqual(embedded.keys.array, ["embedded"])
+        XCTAssertEqual(representation as NSObject, fixture as NSObject)
     }
 }
