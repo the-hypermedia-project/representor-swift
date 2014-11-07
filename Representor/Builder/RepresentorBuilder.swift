@@ -10,7 +10,7 @@ import Foundation
 
 public class RepresentorBuilder {
     var transitions = Dictionary<String, Transition>()
-    var representors = Dictionary<String, Representor>()
+    var representors = Dictionary<String, [Representor]>()
     var attributes = Dictionary<String, AnyObject>()
     var links = Dictionary<String, String>()
     var metadata = Dictionary<String, String>()
@@ -22,11 +22,16 @@ public class RepresentorBuilder {
     // MARK: Representors
 
     public func addRepresentor(name:String, representor:Representor) {
-        representors[name] = representor
+        if var representorSet = representors[name] {
+            representorSet.append(representor)
+            representors[name] = representorSet
+        } else{
+            representors[name] = [representor]
+        }
     }
 
     public func addRepresentor(name:String, block:((builder:RepresentorBuilder) -> ())) {
-        representors[name] = Representor(block)
+        addRepresentor(name, representor:Representor(block))
     }
 
     // MARK: Transition

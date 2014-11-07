@@ -39,6 +39,21 @@ class RepresentorBuilderTests: XCTestCase {
         XCTAssertTrue(representor.representors["parent"] != nil)
     }
 
+    func testAddingMultipleRepresentorsWithBuilder() {
+        let representor = Representor { builder in
+            builder.addRepresentor("parent") { builder in
+
+            }
+
+            builder.addRepresentor("parent") { builder in
+
+            }
+        }
+
+        let parentRepresentors = representor.representors["parent"]!
+        XCTAssertEqual(parentRepresentors.count, 2)
+    }
+
     // MARK: Transition
 
     func testAddTransition() {

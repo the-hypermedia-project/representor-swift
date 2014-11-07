@@ -19,7 +19,7 @@ class RepresentorTests: XCTestCase {
         super.setUp()
         transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
         embeddedRepresentor = Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
-        representor = Representor(transitions:["self": transition], representors:["embedded": embeddedRepresentor], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"])
+        representor = Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"])
     }
 
     func testHasTransitions() {
