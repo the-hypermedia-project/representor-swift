@@ -8,19 +8,19 @@
 
 import Foundation
 
-public struct InputProperty {
-    public let defaultValue:AnyObject?
-    public let value:AnyObject?
+public struct InputProperty<T : AnyObject> {
+    public let defaultValue:T?
+    public let value:T?
 
     // TODO: Define validators
 
-    public init(value:AnyObject?, defaultValue:AnyObject?) {
+    public init(value:T?, defaultValue:T?) {
         self.value = value
         self.defaultValue = defaultValue
     }
 }
 
-public typealias InputProperties = Dictionary<String, InputProperty>
+public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
 public struct Transition {

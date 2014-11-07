@@ -15,24 +15,24 @@ public class TransitionBuilder {
     // MARK: Attributes
 
     public func addAttribute(name:String) {
-        let property = InputProperty(value:nil, defaultValue:nil)
+        let property = InputProperty<AnyObject>(value:nil, defaultValue:nil)
         attributes[name] = property
     }
 
-    public func addAttribute(name:String, value:AnyObject?, defaultValue:AnyObject?) {
-        let property = InputProperty(value:value, defaultValue:defaultValue)
+    public func addAttribute<T : AnyObject>(name:String, value:T?, defaultValue:T?) {
+        let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue)
         attributes[name] = property
     }
 
     // MARK: Parameters
 
     public func addParameter(name:String) {
-        let property = InputProperty(value:nil, defaultValue:nil)
+        let property = InputProperty<AnyObject>(value:nil, defaultValue:nil)
         parameters[name] = property
     }
 
-    public func addParameter(name:String, value:AnyObject?, defaultValue:AnyObject?) {
-        let property = InputProperty(value:value, defaultValue:defaultValue)
+    public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?) {
+        let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue)
         parameters[name] = property
     }
 }

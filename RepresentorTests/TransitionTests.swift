@@ -12,11 +12,11 @@ import Representor
 
 
 class InputPropertyTests : XCTestCase {
-    var property:InputProperty!
+    var property:InputProperty<AnyObject>!
 
     override func setUp() {
         super.setUp()
-        property = InputProperty(value:"Kyle Fuller", defaultValue:nil)
+        property = InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil)
     }
 
     func testHasValue() {
