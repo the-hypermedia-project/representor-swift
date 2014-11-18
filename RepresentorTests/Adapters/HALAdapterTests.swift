@@ -11,42 +11,15 @@ import XCTest
 import Representor
 
 class HALAdapterTests: XCTestCase {
+    func fixture() -> Dictionary<String, AnyObject> {
+        return JSONFixture("poll.hal", self)
+    }
+
     func testConversionFromHAL() {
-        let representation:Dictionary<String, AnyObject> = [
-            "_links": [
-                "self": [ "href": "/orders" ]
-            ],
-            "_embedded": [
-                "order": [
-                    [
-                        "_links": [
-                            "next": [ "href": "next/" ],
-                        ],
-                    ],
-                    [
-                        "_links": [
-                            "next": [ "href": "next/" ],
-                        ],
-                    ],
-                ],
-                "single": [
-                    "_links": [
-                        "next": [ "href": "next/" ],
-                    ],
-                ]
-            ],
-            "name": "Kyle",
-        ]
+        let representor = Representor(hal: fixture())
+        let representorFixture = PollFixture(self)
 
-        let representor = Representor(hal: representation)
-
-        XCTAssertEqual(representor.links, ["self": "/orders"])
-        XCTAssertEqual(representor.attributes as Dictionary<String, String>, ["name": "Kyle"])
-
-        XCTAssertEqual(representor.representors.count, 2)
-        let orderRepresentor = representor.representors["order"]!
-        XCTAssertEqual(orderRepresentor.count, 2)
-        XCTAssertEqual(orderRepresentor[0].links, ["next": "next/"])
+        XCTAssertEqual(representor, representorFixture)
     }
 
     func testConversionToHAL() {

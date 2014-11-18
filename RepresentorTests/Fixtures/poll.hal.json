@@ -1,0 +1,44 @@
+{
+    "_links": {
+        "self": {
+            "href": "/polls/1/"
+        }
+    },
+    "_embedded": {
+        "next": [
+            {
+                 "_links": {
+                     "self": {
+                         "href": "/polls/2/"
+                     },
+                     "next": {
+                         "href": "/polls/3/"
+                     },
+                     "previous": {
+                         "href": "/polls/1/"
+                     }
+                 }
+            }
+        ]
+    },
+    "published_at": "2014-11-11T08:40:51.620Z",
+    "question": "Favourite programming language?",
+    "choices": [
+        {
+            "answer": "Swift",
+            "votes": 2048
+        },
+        {
+            "answer": "Python",
+            "votes": 1024
+        },
+        {
+            "answer": "Objective-C",
+            "votes": 512
+        },
+        {
+            "answer": "Ruby",
+            "votes": 256
+        }
+    ]
+}
