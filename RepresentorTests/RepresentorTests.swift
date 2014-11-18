@@ -41,4 +41,9 @@ class RepresentorTests: XCTestCase {
     func testHasMetaData() {
         XCTAssertEqual(representor.metadata, ["key": "value"])
     }
+
+    func testEquality() {
+        XCTAssertEqual(representor, Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"]))
+        XCTAssertNotEqual(representor, Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
+    }
 }

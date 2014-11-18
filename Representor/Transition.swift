@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct InputProperty<T : AnyObject> {
+public struct InputProperty<T : AnyObject> : Equatable {
     public let defaultValue:T?
     public let value:T?
 
@@ -20,10 +20,17 @@ public struct InputProperty<T : AnyObject> {
     }
 }
 
+public func ==<T : AnyObject>(lhs:InputProperty<T>, rhs:InputProperty<T>) -> Bool {
+    return (
+        lhs.defaultValue as? NSObject == rhs.defaultValue as? NSObject &&
+        lhs.value as? NSObject == rhs.value as? NSObject
+    )
+}
+
 public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
-public struct Transition {
+public struct Transition : Equatable {
     public let uri:String
 
     public let attributes:InputProperties
@@ -34,4 +41,12 @@ public struct Transition {
         self.attributes = attributes
         self.parameters = parameters
     }
+}
+
+public func ==(lhs:Transition, rhs:Transition) -> Bool {
+    return (
+        lhs.uri == rhs.uri &&
+        lhs.attributes == rhs.attributes &&
+        lhs.parameters == rhs.parameters
+    )
 }

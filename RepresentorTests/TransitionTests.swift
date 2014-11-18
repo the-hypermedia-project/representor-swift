@@ -26,6 +26,11 @@ class InputPropertyTests : XCTestCase {
     func testHasDefaultValue() {
         XCTAssertTrue(property.defaultValue == nil)
     }
+
+    func testEquality() {
+        XCTAssertEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil))
+        XCTAssertNotEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:"Name"))
+    }
 }
 
 
@@ -47,5 +52,10 @@ class TransitionTests : XCTestCase {
 
     func testHasParameters() {
         XCTAssertEqual(transition.parameters.count, 0)
+    }
+
+    func testEquality() {
+        XCTAssertEqual(transition, Transition(uri:"/self/", attributes:[:], parameters:[:]))
+        XCTAssertNotEqual(transition, Transition(uri:"/next/", attributes:[:], parameters:[:]))
     }
 }
