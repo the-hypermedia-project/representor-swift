@@ -11,20 +11,15 @@ import XCTest
 import Representor
 
 class SirenAdapterTests: XCTestCase {
+    func fixture() -> Dictionary<String, AnyObject> {
+        return JSONFixture("poll.siren", self)
+    }
+
     func testConversionFromSiren() {
-        let representation:Dictionary<String, AnyObject> = [
-            "links": [
-                [ "rel": [ "next" ], "href": "/next/" ]
-            ],
-            "properties": [
-                "name": "Kyle"
-            ]
-        ]
+        let representor = Representor(siren:fixture())
+        let representorFixture = PollFixture(self)
 
-        let representor = Representor(siren:representation)
-
-        XCTAssertEqual(representor.links, ["next": "/next/"])
-        XCTAssertEqual(representor.attributes as NSObject, [ "name": "Kyle" ] as NSObject)
+        XCTAssertEqual(representor, representorFixture)
     }
 
     func testConversionToSiren() {

@@ -13,7 +13,6 @@ import Foundation
 extension Representor {
     public init(siren:Dictionary<String, AnyObject>) {
         self.transitions = [:]
-        self.representors = [:]
         self.metadata = [:]
 
         if let sirenLinks = siren["links"] as? [Dictionary<String, AnyObject>] {
@@ -32,6 +31,29 @@ extension Representor {
             self.links = links
         } else {
             self.links = [:]
+        }
+
+        if let entities = siren["entities"] as? [Dictionary<String, AnyObject>] {
+            var representors = Dictionary<String, [Representor]>()
+
+            for entity in entities {
+                let representor = Representor(siren: entity)
+
+                if let relations = entity["rel"] as? [String] {
+                    for relation in relations {
+                        if var reps = representors[relation] {
+                            reps.append(representor)
+                            representors[relation] = reps
+                        } else {
+                            representors[relation] = [representor]
+                        }
+                    }
+                }
+            }
+
+            self.representors = representors
+        } else {
+            self.representors = [:]
         }
 
         if let properties = siren["properties"] as? Dictionary<String, AnyObject> {
