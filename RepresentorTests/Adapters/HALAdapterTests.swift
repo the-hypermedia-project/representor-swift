@@ -23,25 +23,9 @@ class HALAdapterTests: XCTestCase {
     }
 
     func testConversionToHAL() {
-        let embeddedRepresentor = Representor(transitions:[:], representors:[:], attributes:["name": "Embedded"], links:[:], metadata:[:])
-        let representor = Representor(transitions:[:], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:[:])
-
+        let representor = PollFixture(self)
         let representation = representor.asHAL()
 
-        let fixture = [
-            "_links": [
-                "next": [ "href": "/next/" ],
-            ],
-            "_embedded": [
-                "embedded": [
-                    [
-                        "name": "Embedded",
-                    ]
-                ]
-            ],
-            "name": "Kyle",
-        ]
-
-        XCTAssertEqual(representation as NSObject, fixture as NSObject)
+        XCTAssertEqual(representation as NSObject, fixture() as NSObject)
     }
 }
