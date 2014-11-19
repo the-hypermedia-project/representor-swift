@@ -43,6 +43,30 @@ if let uri = representor.links["previous"] {
 }
 ```
 
+### Adapters
+
+The representor includes adapters to convert between other hypermedia types.
+
+#### HAL
+
+```swift
+let representor = Representor(hal:representation)
+```
+
+```swift
+let representation = representor.asHAL()
+```
+
+#### Siren
+
+```swift
+let representor = Representor(siren:representation)
+```
+
+```swift
+let representation = representor.asSiren()
+```
+
 ## License
 
 Representor is released under the MIT license. See [LICENSE](LICENSE).
