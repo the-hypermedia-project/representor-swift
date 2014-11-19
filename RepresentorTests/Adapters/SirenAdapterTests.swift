@@ -23,19 +23,9 @@ class SirenAdapterTests: XCTestCase {
     }
 
     func testConversionToSiren() {
-        let representor = Representor(transitions:[:], representors:[:], attributes:["name": "Kyle"], links:["next": "/next/"], metadata:[:])
-
+        let representor = PollFixture(self)
         let representation = representor.asSiren()
 
-        let fixture = [
-            "links": [
-                [ "rel": [ "next" ], "href": "/next/" ]
-            ],
-            "properties": [
-                "name": "Kyle"
-            ]
-        ]
-
-        XCTAssertEqual(representation as NSObject, fixture as NSObject)
+        XCTAssertEqual(representation as NSObject, fixture() as NSObject)
     }
 }

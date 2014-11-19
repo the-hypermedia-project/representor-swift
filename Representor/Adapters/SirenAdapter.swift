@@ -76,7 +76,23 @@ extension Representor {
             representation["links"] = links
         }
 
-        representation["properties"] = attributes
+        if representors.count > 0 {
+            var entities = [Dictionary<String, AnyObject>]()
+
+            for (relation, representorSet) in representors {
+                for representor in representorSet {
+                    var representation = representor.asSiren()
+                    representation["rel"] = [relation]
+                    entities.append(representation)
+                }
+            }
+
+            representation["entities"] = entities
+        }
+
+        if attributes.count > 0 {
+            representation["properties"] = attributes
+        }
 
         return representation
     }

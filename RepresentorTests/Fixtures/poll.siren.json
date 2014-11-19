@@ -9,9 +9,9 @@
         {
             "rel": [ "next" ],
             "links": [
-                { "rel": [ "self" ], "href": "/polls/2/" },
+                { "rel": [ "previous" ], "href": "/polls/1/" },
                 { "rel": [ "next" ], "href": "/polls/3/" },
-                { "rel": [ "previous" ], "href": "/polls/1/" }
+                { "rel": [ "self" ], "href": "/polls/2/" }
             ]
         }
     ],
