@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Apiary. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Representor.
 FOUNDATION_EXPORT double RepresentorVersionNumber;
