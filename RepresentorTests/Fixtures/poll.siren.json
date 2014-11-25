@@ -1,6 +1,9 @@
 {
     "links": [
         {
+            "rel": [ "next" ],
+            "href": "/polls/2/"
+        }, {
             "rel": [ "self" ],
             "href": "/polls/1/"
         }

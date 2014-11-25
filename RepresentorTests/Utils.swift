@@ -26,6 +26,7 @@ func PollFixtureAttributes(forObject:AnyObject) -> Dictionary<String, AnyObject>
 func PollFixture(forObject:AnyObject) -> Representor {
     return Representor { builder in
         builder.addLink("self", uri:"/polls/1/")
+        builder.addLink("next", uri:"/polls/2/")
 
         builder.addAttribute("question", value:"Favourite programming language?")
         builder.addAttribute("published_at", value:"2014-11-11T08:40:51.620Z")
