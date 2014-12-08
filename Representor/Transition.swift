@@ -9,44 +9,44 @@
 import Foundation
 
 public struct InputProperty<T : AnyObject> : Equatable {
-    public let defaultValue:T?
-    public let value:T?
+  public let defaultValue:T?
+  public let value:T?
 
-    // TODO: Define validators
+  // TODO: Define validators
 
-    public init(value:T?, defaultValue:T?) {
-        self.value = value
-        self.defaultValue = defaultValue
-    }
+  public init(value:T?, defaultValue:T?) {
+    self.value = value
+    self.defaultValue = defaultValue
+  }
 }
 
 public func ==<T : AnyObject>(lhs:InputProperty<T>, rhs:InputProperty<T>) -> Bool {
-    return (
-        lhs.defaultValue as? NSObject == rhs.defaultValue as? NSObject &&
-        lhs.value as? NSObject == rhs.value as? NSObject
-    )
+  return (
+    lhs.defaultValue as? NSObject == rhs.defaultValue as? NSObject &&
+    lhs.value as? NSObject == rhs.value as? NSObject
+  )
 }
 
 public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
 public struct Transition : Equatable {
-    public let uri:String
+  public let uri:String
 
-    public let attributes:InputProperties
-    public let parameters:InputProperties
+  public let attributes:InputProperties
+  public let parameters:InputProperties
 
-    public init(uri:String, attributes:InputProperties, parameters:InputProperties) {
-        self.uri = uri
-        self.attributes = attributes
-        self.parameters = parameters
-    }
+  public init(uri:String, attributes:InputProperties, parameters:InputProperties) {
+    self.uri = uri
+    self.attributes = attributes
+    self.parameters = parameters
+  }
 }
 
 public func ==(lhs:Transition, rhs:Transition) -> Bool {
-    return (
-        lhs.uri == rhs.uri &&
-        lhs.attributes == rhs.attributes &&
-        lhs.parameters == rhs.parameters
-    )
+  return (
+    lhs.uri == rhs.uri &&
+    lhs.attributes == rhs.attributes &&
+    lhs.parameters == rhs.parameters
+  )
 }

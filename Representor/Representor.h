@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double RepresentorVersionNumber;
 FOUNDATION_EXPORT const unsigned char RepresentorVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <Representor/PublicHeader.h>
-
-

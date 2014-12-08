@@ -85,7 +85,9 @@
 				770834721A0913860008869E /* RepresentorTests */,
 				770834641A0913860008869E /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		770834641A0913860008869E /* Products */ = {
 			isa = PBXGroup;

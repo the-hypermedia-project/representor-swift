@@ -11,96 +11,96 @@ import XCTest
 import Representor
 
 class RepresentorBuilderTests: XCTestCase {
-    func testAddAttribute() {
-        let representor = Representor { builder in
-            builder.addAttribute("name", value:"Kyle")
-        }
-
-        XCTAssertEqual(representor.attributes["name"] as String, "Kyle")
+  func testAddAttribute() {
+    let representor = Representor { builder in
+      builder.addAttribute("name", value:"Kyle")
     }
 
-    // MARK: Representors
+    XCTAssertEqual(representor.attributes["name"] as String, "Kyle")
+  }
 
-    func testAddRepresentor() {
-        let representor = Representor { builder in
-            builder.addRepresentor("parent", representor:Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
-        }
+  // MARK: Representors
 
-        XCTAssertTrue(representor.representors["parent"] != nil)
+  func testAddRepresentor() {
+    let representor = Representor { builder in
+      builder.addRepresentor("parent", representor:Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
     }
 
-    func testAddRepresentorWithBuilder() {
-        let representor = Representor { builder in
-            builder.addRepresentor("parent") { builder in
+    XCTAssertTrue(representor.representors["parent"] != nil)
+  }
 
-            }
-        }
+  func testAddRepresentorWithBuilder() {
+    let representor = Representor { builder in
+      builder.addRepresentor("parent") { builder in
 
-        XCTAssertTrue(representor.representors["parent"] != nil)
+      }
     }
 
-    func testAddingMultipleRepresentorsWithBuilder() {
-        let representor = Representor { builder in
-            builder.addRepresentor("parent") { builder in
+    XCTAssertTrue(representor.representors["parent"] != nil)
+  }
 
-            }
+  func testAddingMultipleRepresentorsWithBuilder() {
+    let representor = Representor { builder in
+      builder.addRepresentor("parent") { builder in
 
-            builder.addRepresentor("parent") { builder in
+      }
 
-            }
-        }
+      builder.addRepresentor("parent") { builder in
 
-        let parentRepresentors = representor.representors["parent"]!
-        XCTAssertEqual(parentRepresentors.count, 2)
+      }
     }
 
-    // MARK: Transition
+    let parentRepresentors = representor.representors["parent"]!
+    XCTAssertEqual(parentRepresentors.count, 2)
+  }
 
-    func testAddTransition() {
-        let transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
+  // MARK: Transition
 
-        let representor = Representor { builder in
-            builder.addTransition("self", transition)
-        }
+  func testAddTransition() {
+    let transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
 
-        XCTAssertTrue(representor.transitions["self"] != nil)
+    let representor = Representor { builder in
+      builder.addTransition("self", transition)
     }
 
-    func testAddTransitionWithURI() {
-        let representor = Representor { builder in
-            builder.addTransition("self", uri:"/self/")
-        }
+    XCTAssertTrue(representor.transitions["self"] != nil)
+  }
 
-        XCTAssertTrue(representor.transitions["self"] != nil)
+  func testAddTransitionWithURI() {
+    let representor = Representor { builder in
+      builder.addTransition("self", uri:"/self/")
     }
 
-    func testAddTransitionWithBuilder() {
-        let representor = Representor { builder in
-            builder.addTransition("self", uri:"/self/") { builder in
+    XCTAssertTrue(representor.transitions["self"] != nil)
+  }
 
-            }
-        }
+  func testAddTransitionWithBuilder() {
+    let representor = Representor { builder in
+      builder.addTransition("self", uri:"/self/") { builder in
 
-        XCTAssertTrue(representor.transitions["self"] != nil)
+      }
     }
 
-    // MARK: Links
+    XCTAssertTrue(representor.transitions["self"] != nil)
+  }
 
-    func testAddLink() {
-        let representor = Representor { builder in
-            builder.addLink("next", uri:"/next/")
-        }
+  // MARK: Links
 
-        XCTAssertEqual(representor.links, ["next": "/next/"])
+  func testAddLink() {
+    let representor = Representor { builder in
+      builder.addLink("next", uri:"/next/")
     }
 
-    // MARK: Metadata
+    XCTAssertEqual(representor.links, ["next": "/next/"])
+  }
 
-    func testAddMetaData() {
-        let representor = Representor { builder in
-            builder.addMetaData("key", value:"value")
-        }
+  // MARK: Metadata
 
-        XCTAssertEqual(representor.metadata, ["key": "value"])
+  func testAddMetaData() {
+    let representor = Representor { builder in
+      builder.addMetaData("key", value:"value")
     }
+
+    XCTAssertEqual(representor.metadata, ["key": "value"])
+  }
 }

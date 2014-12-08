@@ -9,71 +9,71 @@
 import Foundation
 
 public class RepresentorBuilder {
-    var transitions = Dictionary<String, Transition>()
-    var representors = Dictionary<String, [Representor]>()
-    var attributes = Dictionary<String, AnyObject>()
-    var links = Dictionary<String, String>()
-    var metadata = Dictionary<String, String>()
+  var transitions = Dictionary<String, Transition>()
+  var representors = Dictionary<String, [Representor]>()
+  var attributes = Dictionary<String, AnyObject>()
+  var links = Dictionary<String, String>()
+  var metadata = Dictionary<String, String>()
 
-    public func addAttribute(name:String, value:AnyObject) {
-        attributes[name] = value
+  public func addAttribute(name:String, value:AnyObject) {
+    attributes[name] = value
+  }
+
+  // MARK: Representors
+
+  public func addRepresentor(name:String, representor:Representor) {
+    if var representorSet = representors[name] {
+      representorSet.append(representor)
+      representors[name] = representorSet
+    } else{
+      representors[name] = [representor]
     }
+  }
 
-    // MARK: Representors
+  public func addRepresentor(name:String, block:((builder:RepresentorBuilder) -> ())) {
+    addRepresentor(name, representor:Representor(block))
+  }
 
-    public func addRepresentor(name:String, representor:Representor) {
-        if var representorSet = representors[name] {
-            representorSet.append(representor)
-            representors[name] = representorSet
-        } else{
-            representors[name] = [representor]
-        }
-    }
+  // MARK: Transition
 
-    public func addRepresentor(name:String, block:((builder:RepresentorBuilder) -> ())) {
-        addRepresentor(name, representor:Representor(block))
-    }
+  public func addTransition(name:String, _ transition:Transition) {
+    transitions[name] = transition
+  }
 
-    // MARK: Transition
+  public func addTransition(name:String, uri:String) {
+    let transition = Transition(uri: uri, attributes:[:], parameters:[:])
+    transitions[name] = transition
+  }
 
-    public func addTransition(name:String, _ transition:Transition) {
-        transitions[name] = transition
-    }
+  public func addTransition(name:String, uri:String, builder:((TransitionBuilder) -> ())) {
+    let transition = Transition(uri: uri, builder)
+    transitions[name] = transition
+  }
 
-    public func addTransition(name:String, uri:String) {
-        let transition = Transition(uri: uri, attributes:[:], parameters:[:])
-        transitions[name] = transition
-    }
+  // MARK: Links
 
-    public func addTransition(name:String, uri:String, builder:((TransitionBuilder) -> ())) {
-        let transition = Transition(uri: uri, builder)
-        transitions[name] = transition
-    }
+  public func addLink(name:String, uri:String) {
+    links[name] = uri
+  }
 
-    // MARK: Links
+  // MARK: Metadata
 
-    public func addLink(name:String, uri:String) {
-        links[name] = uri
-    }
-
-    // MARK: Metadata
-
-    public func addMetaData(key:String, value:String) {
-        metadata[key] = value
-    }
+  public func addMetaData(key:String, value:String) {
+    metadata[key] = value
+  }
 }
 
 extension Representor {
-    /// An extension to Representor to provide a builder interface for creating a Representor.
-    public init(_ block:((builder:RepresentorBuilder) -> ())) {
-        let builder = RepresentorBuilder()
+  /// An extension to Representor to provide a builder interface for creating a Representor.
+  public init(_ block:((builder:RepresentorBuilder) -> ())) {
+    let builder = RepresentorBuilder()
 
-        block(builder:builder)
+    block(builder:builder)
 
-        self.transitions = builder.transitions
-        self.representors = builder.representors
-        self.attributes = builder.attributes
-        self.links = builder.links
-        self.metadata = builder.metadata
-    }
+    self.transitions = builder.transitions
+    self.representors = builder.representors
+    self.attributes = builder.attributes
+    self.links = builder.links
+    self.metadata = builder.metadata
+  }
 }

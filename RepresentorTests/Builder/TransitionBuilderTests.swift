@@ -11,51 +11,51 @@ import XCTest
 import Representor
 
 class TransitionBuilderTests: XCTestCase {
-    func testTransitionBuildler() {
-        let transition = Transition(uri:"/self/") { builder in
+  func testTransitionBuildler() {
+    let transition = Transition(uri:"/self/") { builder in
 
-        }
-
-        XCTAssertEqual(transition.uri, "/self/")
     }
 
-    // MARK: Attributes
+    XCTAssertEqual(transition.uri, "/self/")
+  }
 
-    func testAddAttribute() {
-        let transition = Transition(uri:"/self/") { builder in
-            builder.addAttribute("name")
-        }
+  // MARK: Attributes
 
-        XCTAssertEqual(transition.uri, "/self/")
-        XCTAssertTrue(transition.attributes["name"] != nil)
+  func testAddAttribute() {
+    let transition = Transition(uri:"/self/") { builder in
+      builder.addAttribute("name")
     }
 
-    func testAddAttributeWithValue() {
-        let transition = Transition(uri:"/self/") { builder in
-            builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
-        }
+    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertTrue(transition.attributes["name"] != nil)
+  }
 
-        XCTAssertEqual(transition.uri, "/self/")
-        XCTAssertTrue(transition.attributes["name"] != nil)
+  func testAddAttributeWithValue() {
+    let transition = Transition(uri:"/self/") { builder in
+      builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
     }
 
-    // MARK: Parameters
+    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertTrue(transition.attributes["name"] != nil)
+  }
 
-    func testAddParameter() {
-        let transition = Transition(uri:"/self/") { builder in
-            builder.addParameter("name")
-        }
+  // MARK: Parameters
 
-        XCTAssertEqual(transition.uri, "/self/")
-        XCTAssertTrue(transition.parameters["name"] != nil)
+  func testAddParameter() {
+    let transition = Transition(uri:"/self/") { builder in
+      builder.addParameter("name")
     }
 
-    func testAddParameterWithValue() {
-        let transition = Transition(uri:"/self/") { builder in
-            builder.addParameter("name", value:"Kyle Fuller", defaultValue:nil)
-        }
+    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertTrue(transition.parameters["name"] != nil)
+  }
 
-        XCTAssertEqual(transition.uri, "/self/")
-        XCTAssertTrue(transition.parameters["name"] != nil)
+  func testAddParameterWithValue() {
+    let transition = Transition(uri:"/self/") { builder in
+      builder.addParameter("name", value:"Kyle Fuller", defaultValue:nil)
     }
+
+    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertTrue(transition.parameters["name"] != nil)
+  }
 }

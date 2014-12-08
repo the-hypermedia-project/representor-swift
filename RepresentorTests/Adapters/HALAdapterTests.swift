@@ -11,21 +11,21 @@ import XCTest
 import Representor
 
 class HALAdapterTests: XCTestCase {
-    func fixture() -> Dictionary<String, AnyObject> {
-        return JSONFixture("poll.hal", self)
-    }
+  func fixture() -> Dictionary<String, AnyObject> {
+    return JSONFixture("poll.hal", self)
+  }
 
-    func testConversionFromHAL() {
-        let representor = Representor(hal: fixture())
-        let representorFixture = PollFixture(self)
+  func testConversionFromHAL() {
+    let representor = Representor(hal: fixture())
+    let representorFixture = PollFixture(self)
 
-        XCTAssertEqual(representor, representorFixture)
-    }
+    XCTAssertEqual(representor, representorFixture)
+  }
 
-    func testConversionToHAL() {
-        let representor = PollFixture(self)
-        let representation = representor.asHAL()
+  func testConversionToHAL() {
+    let representor = PollFixture(self)
+    let representation = representor.asHAL()
 
-        XCTAssertEqual(representation as NSObject, fixture() as NSObject)
-    }
+    XCTAssertEqual(representation as NSObject, fixture() as NSObject)
+  }
 }

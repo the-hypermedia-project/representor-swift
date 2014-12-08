@@ -12,50 +12,50 @@ import Representor
 
 
 class InputPropertyTests : XCTestCase {
-    var property:InputProperty<AnyObject>!
+  var property:InputProperty<AnyObject>!
 
-    override func setUp() {
-        super.setUp()
-        property = InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil)
-    }
+  override func setUp() {
+    super.setUp()
+    property = InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil)
+  }
 
-    func testHasValue() {
-        XCTAssertEqual(property.value as String, "Kyle Fuller")
-    }
+  func testHasValue() {
+    XCTAssertEqual(property.value as String, "Kyle Fuller")
+  }
 
-    func testHasDefaultValue() {
-        XCTAssertTrue(property.defaultValue == nil)
-    }
+  func testHasDefaultValue() {
+    XCTAssertTrue(property.defaultValue == nil)
+  }
 
-    func testEquality() {
-        XCTAssertEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil))
-        XCTAssertNotEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:"Name"))
-    }
+  func testEquality() {
+    XCTAssertEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil))
+    XCTAssertNotEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:"Name"))
+  }
 }
 
 
 class TransitionTests : XCTestCase {
-    var transition:Transition!
+  var transition:Transition!
 
-    override func setUp() {
-        super.setUp()
-        transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
-    }
+  override func setUp() {
+    super.setUp()
+    transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
+  }
 
-    func testHasURI() {
-        XCTAssertEqual(transition.uri, "/self/")
-    }
+  func testHasURI() {
+    XCTAssertEqual(transition.uri, "/self/")
+  }
 
-    func testHasAttributes() {
-        XCTAssertEqual(transition.attributes.count, 0)
-    }
+  func testHasAttributes() {
+    XCTAssertEqual(transition.attributes.count, 0)
+  }
 
-    func testHasParameters() {
-        XCTAssertEqual(transition.parameters.count, 0)
-    }
+  func testHasParameters() {
+    XCTAssertEqual(transition.parameters.count, 0)
+  }
 
-    func testEquality() {
-        XCTAssertEqual(transition, Transition(uri:"/self/", attributes:[:], parameters:[:]))
-        XCTAssertNotEqual(transition, Transition(uri:"/next/", attributes:[:], parameters:[:]))
-    }
+  func testEquality() {
+    XCTAssertEqual(transition, Transition(uri:"/self/", attributes:[:], parameters:[:]))
+    XCTAssertNotEqual(transition, Transition(uri:"/next/", attributes:[:], parameters:[:]))
+  }
 }
