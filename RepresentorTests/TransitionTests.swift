@@ -58,4 +58,10 @@ class TransitionTests : XCTestCase {
     XCTAssertEqual(transition, Transition(uri:"/self/", attributes:[:], parameters:[:]))
     XCTAssertNotEqual(transition, Transition(uri:"/next/", attributes:[:], parameters:[:]))
   }
+
+  func testHashValue() {
+    let transition1 = Transition(uri:"/self/", attributes:[:], parameters:[:])
+    let transition2 = Transition(uri:"/self/", attributes:[:], parameters:[:])
+    XCTAssertEqual(transition1.hashValue, transition2.hashValue)
+  }
 }
