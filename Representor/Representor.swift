@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Representor : Equatable {
+public struct Representor : Equatable, Hashable {
   /// The transitions available for the representor
   public let transitions:Dictionary<String, Transition>
 
@@ -28,6 +28,10 @@ public struct Representor : Equatable {
     self.attributes = attributes
     self.links = links
     self.metadata = metadata
+  }
+
+  public var hashValue:Int {
+    return transitions.count + representors.count + links.count + metadata.count + attributes.count
   }
 }
 

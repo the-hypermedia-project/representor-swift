@@ -46,4 +46,10 @@ class RepresentorTests: XCTestCase {
     XCTAssertEqual(representor, Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"]))
     XCTAssertNotEqual(representor, Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
   }
+
+  func testHashValue() {
+    let representor1 = Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
+    let representor2 = Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
+    XCTAssertEqual(representor1.hashValue, representor2.hashValue)
+  }
 }
