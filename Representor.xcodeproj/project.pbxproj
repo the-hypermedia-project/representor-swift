@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2774DFE01A474122008F41CE /* NSHTTPURLResponseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */; };
+		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseAdapter.swift; path = Adapters/NSHTTPURLResponseAdapter.swift; sourceTree = "<group>"; };
+		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 		77D643381A0E6D89004D4BA0 /* Adpaters */ = {
 			isa = PBXGroup;
 			children = (
+				2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */,
 				77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */,
 				77B507D11A0EB17D00E794BF /* SirenAdapter.swift */,
 			);
@@ -171,6 +176,7 @@
 		77D6433B1A0E6DC5004D4BA0 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */,
 				77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */,
 				77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */,
 			);
@@ -298,6 +304,7 @@
 				77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
+				2774DFE01A474122008F41CE /* NSHTTPURLResponseAdapter.swift in Sources */,
 				77B507D21A0EB17D00E794BF /* SirenAdapter.swift in Sources */,
 				77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
@@ -309,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77BC153E1A0A6E2E00DD24EF /* TransitionBuilderTests.swift in Sources */,
+				2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */,
 				77B507D01A0EB16100E794BF /* SirenAdapterTests.swift in Sources */,
 				77D6433A1A0E6DC1004D4BA0 /* HALAdapterTests.swift in Sources */,
 				77F5923A1A1B6F930070F839 /* Utils.swift in Sources */,

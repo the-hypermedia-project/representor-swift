@@ -9,10 +9,15 @@
 import Foundation
 import Representor
 
-func JSONFixture(named:String, forObject:AnyObject) -> Dictionary<String, AnyObject> {
+func fixture(named:String, forObject:AnyObject) -> NSData {
   let bundle = NSBundle(forClass:object_getClass(forObject))
   let path = bundle.URLForResource(named, withExtension: "json")!
   let data = NSData(contentsOfURL: path)!
+  return data
+}
+
+func JSONFixture(named:String, forObject:AnyObject) -> Dictionary<String, AnyObject> {
+  let data = fixture(named, forObject)
   var error:NSError?
   let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
   assert(error == nil)
