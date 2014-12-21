@@ -9,6 +9,7 @@
 import Cocoa
 import XCTest
 import Representor
+import URITemplate
 
 
 class InputPropertyTests : XCTestCase {
@@ -43,7 +44,7 @@ class TransitionTests : XCTestCase {
   }
 
   func testHasURI() {
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
   }
 
   func testHasAttributes() {

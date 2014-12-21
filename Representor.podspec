@@ -13,6 +13,7 @@ Pod::Spec.new do |spec|
 
   spec.subspec 'Core' do |core_spec|
     core_spec.source_files = 'Representor/*.{swift,h}'
+    core_spec.dependency 'URITemplate', '>= 1.0.1', '< 2.0.0'
   end
 
   spec.subspec 'Builder' do |builder_spec|

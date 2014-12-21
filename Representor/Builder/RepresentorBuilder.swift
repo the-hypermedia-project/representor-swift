@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import URITemplate
 
 /// A class used to build a representor using a builder pattern
 public class RepresentorBuilder {
   var transitions = Dictionary<String, Transition>()
   var representors = Dictionary<String, [Representor]>()
   var attributes = Dictionary<String, AnyObject>()
-  var links = Dictionary<String, String>()
+  var links = Dictionary<String, URITemplate>()
   var metadata = Dictionary<String, String>()
 
   /// Adds an attribute
@@ -61,7 +62,7 @@ public class RepresentorBuilder {
   ///
   /// :param: name The name (or relation) for the transition
   /// :param: uri The URI of the transition
-  public func addTransition(name:String, uri:String) {
+  public func addTransition(name:String, uri:URITemplate) {
     let transition = Transition(uri: uri, attributes:[:], parameters:[:])
     transitions[name] = transition
   }
@@ -71,7 +72,7 @@ public class RepresentorBuilder {
   /// :param: name The name (or relation) for the transition
   /// :param: uri The URI of the transition
   /// :param: builder The builder used to create the transition
-  public func addTransition(name:String, uri:String, builder:((TransitionBuilder) -> ())) {
+  public func addTransition(name:String, uri:URITemplate, builder:((TransitionBuilder) -> ())) {
     let transition = Transition(uri: uri, builder)
     transitions[name] = transition
   }
@@ -82,7 +83,7 @@ public class RepresentorBuilder {
   ///
   /// :param: name The name (or relation) for the link
   /// :param: uri The URI of the link
-  public func addLink(name:String, uri:String) {
+  public func addLink(name:String, uri:URITemplate) {
     links[name] = uri
   }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import URITemplate
 
 /// A class used to build a transition using a builder pattern
 public class TransitionBuilder {
@@ -56,7 +57,7 @@ public class TransitionBuilder {
 
 extension Transition {
   /// An extension to Transition to provide a builder interface for creating a Transition.
-  public init(uri:String, _ block:((builder:TransitionBuilder) -> ())) {
+  public init(uri:URITemplate, _ block:((builder:TransitionBuilder) -> ())) {
     let builder = TransitionBuilder()
 
     block(builder: builder)

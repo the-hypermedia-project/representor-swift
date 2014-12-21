@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import URITemplate
 
 /// An extension to the Representor to add Siren support
 /// It only supports siren links and properties
@@ -16,13 +17,13 @@ extension Representor {
     self.metadata = [:]
 
     if let sirenLinks = siren["links"] as? [Dictionary<String, AnyObject>] {
-      var links = Dictionary<String, String>()
+      var links = Dictionary<String, URITemplate>()
 
       for link in sirenLinks {
         if let href = link["href"] as? String {
           if let relations = link["rel"] as? [String] {
             for relation in relations {
-              links[relation] = href
+              links[relation] = URITemplate(template:href)
             }
           }
         }
@@ -70,7 +71,7 @@ extension Representor {
       var links = [Dictionary<String, AnyObject>]()
 
       for (name, uri) in self.links {
-        links.append(["rel": [name], "href": uri])
+        links.append(["rel": [name], "href": uri.template])
       }
 
       representation["links"] = links
