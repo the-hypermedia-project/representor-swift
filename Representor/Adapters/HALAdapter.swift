@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import URITemplate
 
-func parseHALLinks(halLinks:Dictionary<String, Dictionary<String, AnyObject>>) -> Dictionary<String, String> {
-  var links = Dictionary<String, String>()
+func parseHALLinks(halLinks:Dictionary<String, Dictionary<String, AnyObject>>) -> Dictionary<String, URITemplate> {
+  var links = Dictionary<String, URITemplate>()
 
   for (link, options) in halLinks {
     if let href = options["href"] as? String {
-      links[link] = href
+      links[link] = URITemplate(template:href)
     }
   }
 
@@ -46,7 +47,7 @@ extension Representor {
   public init(hal:Dictionary<String, AnyObject>) {
     var hal = hal
 
-    var links = Dictionary<String, String>()
+    var links = Dictionary<String, URITemplate>()
     if let halLinks = hal.removeValueForKey("_links") as? Dictionary<String, Dictionary<String, AnyObject>> {
       links = parseHALLinks(halLinks)
     }
@@ -67,10 +68,17 @@ extension Representor {
     var representation = attributes
 
     if links.count > 0 {
-      var links = Dictionary<String, Dictionary<String, String>>()
+      var links = Dictionary<String, Dictionary<String, AnyObject>>()
 
       for (relation, uri) in self.links {
-        links[relation] = ["href": uri]
+        if uri.variables.count > 0 {
+          links[relation] = [
+            "href": uri.template,
+            "templated": true,
+          ]
+        } else {
+          links[relation] = ["href": uri.template]
+        }
       }
 
       representation["_links"] = links

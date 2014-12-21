@@ -9,14 +9,15 @@
 import Cocoa
 import XCTest
 import Representor
+import URITemplate
 
 class TransitionBuilderTests: XCTestCase {
   func testTransitionBuildler() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = Transition(uri: "/self/") { builder in
 
     }
 
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
   }
 
   // MARK: Attributes
@@ -26,7 +27,7 @@ class TransitionBuilderTests: XCTestCase {
       builder.addAttribute("name")
     }
 
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
     XCTAssertTrue(transition.attributes["name"] != nil)
   }
 
@@ -35,7 +36,7 @@ class TransitionBuilderTests: XCTestCase {
       builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
     }
 
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
     XCTAssertTrue(transition.attributes["name"] != nil)
   }
 
@@ -46,7 +47,7 @@ class TransitionBuilderTests: XCTestCase {
       builder.addParameter("name")
     }
 
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
     XCTAssertTrue(transition.parameters["name"] != nil)
   }
 
@@ -55,7 +56,7 @@ class TransitionBuilderTests: XCTestCase {
       builder.addParameter("name", value:"Kyle Fuller", defaultValue:nil)
     }
 
-    XCTAssertEqual(transition.uri, "/self/")
+    XCTAssertEqual(transition.uri, URITemplate(template: "/self/"))
     XCTAssertTrue(transition.parameters["name"] != nil)
   }
 }

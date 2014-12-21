@@ -27,6 +27,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2761ABB51A4337DD00093A2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 77356D801A253325002822CF;
+			remoteInfo = URITemplate;
+		};
+		2761ABB71A4337DD00093A2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 77356D8B1A253325002822CF;
+			remoteInfo = URITemplateTests;
+		};
+		2761ABB91A4337E400093A2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 77356D7F1A253325002822CF;
+			remoteInfo = URITemplate;
+		};
 		770834701A0913860008869E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7708345A1A0913860008869E /* Project object */;
@@ -37,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = URITemplate.xcodeproj; path = URITemplate.swift/URITemplate.xcodeproj; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -78,9 +100,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2761ABB11A4337DD00093A2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2761ABB61A4337DD00093A2F /* URITemplate.framework */,
+				2761ABB81A4337DD00093A2F /* URITemplateTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		770834591A0913860008869E = {
 			isa = PBXGroup;
 			children = (
+				2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */,
 				770834651A0913860008869E /* Representor */,
 				770834721A0913860008869E /* RepresentorTests */,
 				770834641A0913860008869E /* Products */,
@@ -212,6 +244,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2761ABBA1A4337E400093A2F /* PBXTargetDependency */,
 			);
 			name = Representor;
 			productName = Representor;
@@ -263,6 +296,12 @@
 			mainGroup = 770834591A0913860008869E;
 			productRefGroup = 770834641A0913860008869E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2761ABB11A4337DD00093A2F /* Products */;
+					ProjectRef = 2761ABB01A4337DD00093A2F /* URITemplate.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				770834621A0913860008869E /* Representor */,
@@ -270,6 +309,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2761ABB61A4337DD00093A2F /* URITemplate.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = URITemplate.framework;
+			remoteRef = 2761ABB51A4337DD00093A2F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2761ABB81A4337DD00093A2F /* URITemplateTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = URITemplateTests.xctest;
+			remoteRef = 2761ABB71A4337DD00093A2F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		770834611A0913860008869E /* Resources */ = {
@@ -321,6 +377,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2761ABBA1A4337E400093A2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = URITemplate;
+			targetProxy = 2761ABB91A4337E400093A2F /* PBXContainerItemProxy */;
+		};
 		770834711A0913860008869E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 770834621A0913860008869E /* Representor */;

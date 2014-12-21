@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import URITemplate
 
 public struct InputProperty<T : AnyObject> : Equatable {
   public let defaultValue:T?
@@ -31,12 +32,12 @@ public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
 public struct Transition : Equatable, Hashable {
-  public let uri:String
+  public let uri:URITemplate
 
   public let attributes:InputProperties
   public let parameters:InputProperties
 
-  public init(uri:String, attributes:InputProperties, parameters:InputProperties) {
+  public init(uri:URITemplate, attributes:InputProperties, parameters:InputProperties) {
     self.uri = uri
     self.attributes = attributes
     self.parameters = parameters
