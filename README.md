@@ -2,9 +2,7 @@
 
 [![Build Status](http://img.shields.io/travis/the-hypermedia-project/representor-swift/master.svg?style=flat)](https://travis-ci.org/the-hypermedia-project/representor-swift)
 
-Swift draft of the Representor library.
-
-See [The Hypermedia Project](https://github.com/the-hypermedia-project/charter) for details.
+Swift library for building and consuming Hypermedia messages. See [The Hypermedia Project Charter](https://github.com/the-hypermedia-project/charter) for details.
 
 ## Usage
 
