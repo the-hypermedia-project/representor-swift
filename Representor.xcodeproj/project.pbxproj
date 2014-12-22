@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2774DFE01A474122008F41CE /* NSHTTPURLResponseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
+		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
+		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
+		2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -41,6 +44,9 @@
 /* Begin PBXFileReference section */
 		2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseAdapter.swift; path = Adapters/NSHTTPURLResponseAdapter.swift; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
+		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
+		279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
+		279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -82,11 +88,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		279294951A488A24009C52E1 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */,
+				279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */,
+				279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
 		770834591A0913860008869E = {
 			isa = PBXGroup;
 			children = (
 				770834651A0913860008869E /* Representor */,
 				770834721A0913860008869E /* RepresentorTests */,
+				279294951A488A24009C52E1 /* Configurations */,
 				770834641A0913860008869E /* Products */,
 			);
 			indentWidth = 2;
@@ -282,6 +299,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */,
+				2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */,
+				279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +440,7 @@
 		};
 		7708347A1A0913860008869E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -439,6 +460,7 @@
 		};
 		7708347B1A0913860008869E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -457,12 +479,9 @@
 		};
 		7708347D1A0913860008869E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -475,12 +494,9 @@
 		};
 		7708347E1A0913860008869E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = RepresentorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = RepresentorTests;
