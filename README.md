@@ -47,7 +47,22 @@ if let uri = representor.links["previous"] {
 
 The representor includes adapters to convert between other hypermedia types.
 
+#### NSHTTPURLResponse
+
+You can initialise a representor using an `NSHTTPURLResponse` and the body (`NSData`). It will use the content-type from the response and deserialise the body payload into a format. For unsupported/unknown types, nil will returned.
+
+```swift
+let representor = Representor(response: response, body: body)
+```
+
+##### Supported Media Types
+
+- [HAL](http://stateless.co/hal_specification.html) JSON (application/hal+json)
+- [Siren](https://github.com/kevinswiber/siren) JSON (application/vnd.siren+json)
+
 #### HAL
+
+You can explicitly convert to and from a [HAL](http://stateless.co/hal_specification.html) representation using the following.
 
 ```swift
 let representor = Representor(hal:representation)
@@ -58,6 +73,8 @@ let representation = representor.asHAL()
 ```
 
 #### Siren
+
+Conversion to and from a [Siren](https://github.com/kevinswiber/siren) representation can also be done using the following.
 
 ```swift
 let representor = Representor(siren:representation)
