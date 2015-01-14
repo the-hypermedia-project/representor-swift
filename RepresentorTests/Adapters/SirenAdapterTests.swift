@@ -28,4 +28,30 @@ class SirenAdapterTests: XCTestCase {
 
     XCTAssertEqual(representation as NSObject, fixture() as NSObject)
   }
+
+  func testConversionFromSirenWithAction() {
+    let representation = ["actions":
+      [
+        [
+          "name": "register",
+          "href": "/register/",
+          "fields": [
+            [ "name": "username" ],
+            [ "name": "first_name", "value": "John" ],
+            [ "name": "last_name", "value": "Doe" ],
+          ]
+        ],
+      ]
+    ]
+
+    let representor = Representor(siren:representation)
+
+    let transition = Transition(uri: "/register/") { builder in
+      builder.addAttribute("username")
+      builder.addAttribute("first_name", value: "John", defaultValue: nil)
+      builder.addAttribute("last_name", value: "Doe", defaultValue: nil)
+    }
+
+    XCTAssertEqual(representor.transitions["register"]!, transition)
+  }
 }

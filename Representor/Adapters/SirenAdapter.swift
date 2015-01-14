@@ -8,11 +8,34 @@
 
 import Foundation
 
+private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String, transition:Transition)? {
+  if let name = action["name"] as? String {
+    if let href = action["href"] as? String {
+      let transition = Transition(uri: href) { builder in
+        if let fields = action["fields"] as? [[String:AnyObject]] {
+          for field in fields {
+            if let name = field["name"] as? String {
+              if let value = field["value"] as? String {
+                builder.addAttribute(name, value: value as NSObject, defaultValue: nil)
+              } else {
+                builder.addAttribute(name)
+              }
+            }
+          }
+        }
+      }
+
+      return (name, transition)
+    }
+  }
+
+  return nil
+}
+
 /// An extension to the Representor to add Siren support
 /// It only supports siren links and properties
 extension Representor {
   public init(siren:Dictionary<String, AnyObject>) {
-    self.transitions = [:]
     self.metadata = [:]
 
     if let sirenLinks = siren["links"] as? [Dictionary<String, AnyObject>] {
@@ -54,6 +77,20 @@ extension Representor {
       self.representors = representors
     } else {
       self.representors = [:]
+    }
+
+    if let actions = siren["actions"] as? [[String:AnyObject]] {
+      var transitions = [String:Transition]()
+
+      for action in actions {
+        if let (name, transition) = sirenActionToTransition(action) {
+          transitions[name] = transition
+        }
+      }
+
+      self.transitions = transitions
+    } else {
+      self.transitions = [:]
     }
 
     if let properties = siren["properties"] as? Dictionary<String, AnyObject> {
