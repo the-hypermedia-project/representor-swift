@@ -8,44 +8,49 @@
 
 import Foundation
 
-enum SerializationFormat {
-  case JSONHAL
-  case JSONSiren
+func jsonDeserializer(closure:([String:AnyObject] -> Representor?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor?) {
+  return { (response, body) in
+    let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(0), error: nil)
 
-  static func fromContentType(contentType:String) -> SerializationFormat? {
-    if contentType == "application/hal+json" {
-      return JSONHAL
-    } else if contentType == "application/vnd.siren+json" {
-      return JSONSiren
+    if let object = object as? [String:AnyObject] {
+      return closure(object)
     }
 
     return nil
   }
 }
 
-func json(data:NSData) -> [String:AnyObject]? {
-  let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)
-  return object as? [String:AnyObject]
-}
-
-/// An extension to the Representor to add NSHTTPURLResponse conversion
+/// An extension to the Representor to add NSHTTPURLResponse deserialization
 extension Representor {
-  public init?(response:NSHTTPURLResponse, body:NSData) {
-    let contentType = response.MIMEType
-    if let contentType = contentType {
-      if let format = SerializationFormat.fromContentType(contentType) {
-        switch format {
-        case .JSONHAL:
-          if let json = json(body) {
-            self.init(hal:json)
-            return
-          }
-        case .JSONSiren:
-          if let json = json(body) {
-            self.init(siren:json)
-            return
-          }
-        }
+  public typealias HTTPDeserializer = (response:NSHTTPURLResponse, body:NSData) -> (Representor?)
+
+  /// A dictionary storing the registered HTTP deserializer's and their corresponding content type.
+  public static var HTTPDeserializers:[String:HTTPDeserializer] = [
+      "application/hal+json": jsonDeserializer { payload in
+        return Representor(hal: payload)
+      },
+
+      "application/vnd.siren+json": jsonDeserializer { payload in
+        return Representor(siren: payload)
+      },
+    ]
+
+  /// An array of the supported content types in order of preference
+  public static var preferredContentTypes:[String] = [
+    "application/vnd.siren+json",
+    "application/hal+json",
+  ]
+
+  /** Deserialize an NSHTTPURLResponse and body into a Representor.
+  Uses the deserializers defined in HTTPDeserializers.
+  :param: response The response to deserialize
+  :param: body The HTTP Body
+  :return: representor
+  */
+  public static func deserialize(response:NSHTTPURLResponse, body:NSData) -> Representor? {
+    if let contentType = response.MIMEType {
+      if let deserializer = Representor.HTTPDeserializers[contentType] {
+        return deserializer(response: response, body: body)
       }
     }
 

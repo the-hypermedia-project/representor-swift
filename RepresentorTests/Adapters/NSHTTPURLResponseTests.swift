@@ -31,28 +31,49 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
     return createResponse("application/vnd.siren+json", fixtureNamed: "poll.siren")
   }
 
-  func testInitializationWithUnknownType() {
-    let (response, data) = createResponse("application/json", data:NSData())
-    let representor = Representor(response: response, body: data)
+  func testPreferredContentTypes() {
+    let contentTypes = Representor.preferredContentTypes
+
+    XCTAssertEqual(contentTypes, ["application/vnd.siren+json", "application/hal+json"])
+  }
+
+  func testDeserializationWithUnknownType() {
+    let (response, data) = createResponse("application/unknown", data:NSData())
+    let representor = Representor.deserialize(response, body: data)
 
     XCTAssertTrue(representor == nil)
   }
 
-  func testInitializationWithHALJSON() {
+  func testDeserializationWithHALJSON() {
     let (response, body) = JSONHALFixture()
-    let representor = Representor(response: response, body: body)
+    let representor = Representor.deserialize(response, body: body)
 
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor!, representorFixture)
   }
 
-  func testInitializationWithSirenJSON() {
+  func testDeserializationWithSirenJSON() {
     let (response, body) = JSONSirenFixture()
-    let representor = Representor(response: response, body: body)
+    let representor = Representor.deserialize(response, body: body)
 
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor!, representorFixture)
+  }
+
+  func testCustomDeserializer() {
+    let representor = Representor { builder in
+      builder.addAttribute("custom", value: true)
+    }
+
+    Representor.HTTPDeserializers["application/custom"] = { (response:NSHTTPURLResponse, data:NSData) in
+      return representor
+    }
+
+    let (response, body) = createResponse("application/custom", fixtureNamed: "poll.siren")
+    let deserializedRepresentor = Representor.deserialize(response, body: body)
+
+    XCTAssertEqual(deserializedRepresentor!, representor)
   }
 }
