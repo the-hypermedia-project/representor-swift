@@ -47,10 +47,19 @@ The representor includes adapters to convert between other hypermedia types.
 
 #### NSHTTPURLResponse
 
-You can initialise a representor using an `NSHTTPURLResponse` and the body (`NSData`). It will use the content-type from the response and deserialise the body payload into a format. For unsupported/unknown types, nil will returned.
+You can initialise a representor using a `NSHTTPURLResponse` and the body (`NSData`). It will use the content-type from the response and deserialise the body payload into a format. For unsupported/unknown types, nil will returned.
 
 ```swift
-let representor = Representor(response: response, body: body)
+let representor = Representor.deserialize(response, body: body)
+```
+
+You can register your own, or overide an existing HTTP deserializer for a
+specific content type.
+
+```swift
+Representor.HTTPDeserializers["application/json"] = { response, body in
+  return Representor(...)
+}
 ```
 
 ##### Supported Media Types
