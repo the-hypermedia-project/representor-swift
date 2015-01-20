@@ -12,10 +12,12 @@ import Representor
 
 class NSHTTPURLResponseAdapterTests: XCTestCase {
 
-  func createResponse(contentType:String, data:NSData) -> (NSHTTPURLResponse, NSData) {
+  func createResponse(contentType:String, data:NSData, headers:[String:String] = [:]) -> (NSHTTPURLResponse, NSData) {
     let url = NSURL(string: "http://test.com/")!
-    let headers = ["Content-Type": contentType]
-    let response = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: "1.1", headerFields: headers)!
+    var responseHeaders = headers
+    responseHeaders["Content-Type"] = contentType
+
+    let response = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: "1.1", headerFields: responseHeaders)!
     return (response, data)
   }
 
@@ -34,7 +36,7 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
   func testPreferredContentTypes() {
     let contentTypes = Representor.preferredContentTypes
 
-    XCTAssertEqual(contentTypes, ["application/vnd.siren+json", "application/hal+json"])
+    XCTAssertEqual(contentTypes, ["application/vnd.siren+json", "application/hal+json", "application/json"])
   }
 
   func testDeserializationWithUnknownType() {
@@ -60,6 +62,29 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor!, representorFixture)
+  }
+
+  func testDeserializationWithJSONDictionary() {
+    let data = "{\"key\": \"value\"}".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    let headers = ["Link": "<?page=3>; rel=\"next\", <?page=1>; rel=\"prev\""]
+    let (response, body) = createResponse("application/json", data: data, headers: headers)
+    let representor = Representor.deserialize(response, body: body)
+
+    let links = [
+      "next": "http://test.com/?page=3",
+      "prev": "http://test.com/?page=1"
+    ]
+    let fixtureRepresentor = Representor(transitions: [:], representors: [:], attributes: ["key":"value"], links: links, metadata: [:])
+    XCTAssertEqual(representor!, fixtureRepresentor)
+  }
+
+  func testDeserializationWithJSONArray() {
+    let data = "[{\"key\": \"value\"}]".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    let (response, body) = createResponse("application/json", data: data)
+    let representor = Representor.deserialize(response, body: body)
+
+    let fixtureRepresentor = Representor(transitions: [:], representors: [:], attributes: ["items":[["key":"value"]]], links: [:], metadata: [:])
+    XCTAssertEqual(representor!, fixtureRepresentor)
   }
 
   func testCustomDeserializer() {

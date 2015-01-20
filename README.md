@@ -66,6 +66,7 @@ Representor.HTTPDeserializers["application/json"] = { response, body in
 
 - [HAL](http://stateless.co/hal_specification.html) JSON (application/hal+json)
 - [Siren](https://github.com/kevinswiber/siren) JSON (application/vnd.siren+json)
+- [JSON](http://www.json.org) + [Link Headers](http://tools.ietf.org/html/rfc5988) (application/json)
 
 #### HAL
 
