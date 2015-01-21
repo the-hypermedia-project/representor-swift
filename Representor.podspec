@@ -24,6 +24,7 @@ Pod::Spec.new do |spec|
     adapter_spec.subspec 'Response' do |response_spec|
       response_spec.dependency 'Representor/Adapter/HAL'
       response_spec.dependency 'Representor/Adapter/Siren'
+      response_spec.dependency 'WebLinking'
       response_spec.source_files = 'Representor/Adapters/NSHTTPURLResponseAdapter.swift'
     end
 

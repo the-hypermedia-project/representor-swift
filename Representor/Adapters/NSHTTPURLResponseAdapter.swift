@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import WebLinking
 
 func jsonDeserializer(closure:([String:AnyObject] -> Representor?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor?) {
   return { (response, body) in
@@ -18,6 +19,25 @@ func jsonDeserializer(closure:([String:AnyObject] -> Representor?)) -> ((respons
 
     return nil
   }
+}
+
+func jsonRequestDeserializer(response:NSHTTPURLResponse, body:NSData) -> Representor? {
+  let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(0), error: nil)
+
+  var links = [String:String]()
+  for link in response.links {
+    if let relation = link.relationType {
+      links[relation] = link.uri
+    }
+  }
+
+  if let attributes = object as? [String:AnyObject] {
+    return Representor(transitions: [:], representors: [:], attributes: attributes, links: links, metadata: [:])
+  } else if let items = object as? [AnyObject] {
+    return Representor(transitions: [:], representors: [:], attributes: ["items": items], links: links, metadata: [:])
+  }
+
+  return nil
 }
 
 /// An extension to the Representor to add NSHTTPURLResponse deserialization
@@ -33,12 +53,15 @@ extension Representor {
       "application/vnd.siren+json": jsonDeserializer { payload in
         return Representor(siren: payload)
       },
+
+      "application/json": jsonRequestDeserializer,
     ]
 
   /// An array of the supported content types in order of preference
   public static var preferredContentTypes:[String] = [
     "application/vnd.siren+json",
     "application/hal+json",
+    "application/json",
   ]
 
   /** Deserialize an NSHTTPURLResponse and body into a Representor.

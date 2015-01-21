@@ -1,0 +1,3 @@
+[submodule "Dependencies/WebLinking.swift"]
+	path = Dependencies/WebLinking.swift
+	url = https://github.com/kylef/WebLinking.swift
