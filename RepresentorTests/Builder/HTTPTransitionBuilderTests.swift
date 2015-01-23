@@ -1,5 +1,5 @@
 //
-//  TransitionBuilderTests.swift
+//  HTTPTransitionBuilderTests.swift
 //  Representor
 //
 //  Created by Kyle Fuller on 05/11/2014.
@@ -10,9 +10,9 @@ import Foundation
 import XCTest
 import Representor
 
-class TransitionBuilderTests: XCTestCase {
+class HTTPTransitionBuilderTests: XCTestCase {
   func testTransitionBuildler() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = HTTPTransition(uri:"/self/") { builder in
 
     }
 
@@ -22,7 +22,7 @@ class TransitionBuilderTests: XCTestCase {
   // MARK: Attributes
 
   func testAddAttribute() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = HTTPTransition(uri:"/self/") { builder in
       builder.addAttribute("name")
     }
 
@@ -31,7 +31,7 @@ class TransitionBuilderTests: XCTestCase {
   }
 
   func testAddAttributeWithValue() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = HTTPTransition(uri:"/self/") { builder in
       builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
     }
 
@@ -42,7 +42,7 @@ class TransitionBuilderTests: XCTestCase {
   // MARK: Parameters
 
   func testAddParameter() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = HTTPTransition(uri:"/self/") { builder in
       builder.addParameter("name")
     }
 
@@ -51,7 +51,7 @@ class TransitionBuilderTests: XCTestCase {
   }
 
   func testAddParameterWithValue() {
-    let transition = Transition(uri:"/self/") { builder in
+    let transition = HTTPTransition(uri:"/self/") { builder in
       builder.addParameter("name", value:"Kyle Fuller", defaultValue:nil)
     }
 

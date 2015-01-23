@@ -16,7 +16,7 @@ class HALAdapterTests: XCTestCase {
   }
 
   func testConversionFromHAL() {
-    let representor = Representor(hal: fixture())
+    let representor = Representor<HTTPTransition>(hal: fixture())
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor, representorFixture)

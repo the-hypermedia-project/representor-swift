@@ -8,7 +8,7 @@
 
 import Foundation
 
-func jsonDeserializer(closure:([String:AnyObject] -> Representor?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor?) {
+func jsonDeserializer(closure:([String:AnyObject] -> Representor<HTTPTransition>?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>?) {
   return { (response, body) in
     let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(0), error: nil)
 
@@ -20,20 +20,19 @@ func jsonDeserializer(closure:([String:AnyObject] -> Representor?)) -> ((respons
   }
 }
 
-/// An extension to the Representor to add NSHTTPURLResponse deserialization
-extension Representor {
-  public typealias HTTPDeserializer = (response:NSHTTPURLResponse, body:NSData) -> (Representor?)
+public struct HTTPDeserialization {
+  public typealias Deserializer = (response:NSHTTPURLResponse, body:NSData) -> (Representor<HTTPTransition>?)
 
   /// A dictionary storing the registered HTTP deserializer's and their corresponding content type.
-  public static var HTTPDeserializers:[String:HTTPDeserializer] = [
-      "application/hal+json": jsonDeserializer { payload in
-        return Representor(hal: payload)
-      },
+  public static var deserializers:[String:Deserializer] = [
+    "application/hal+json": jsonDeserializer { payload in
+      return Representor(hal: payload)
+    },
 
-      "application/vnd.siren+json": jsonDeserializer { payload in
-        return Representor(siren: payload)
-      },
-    ]
+    "application/vnd.siren+json": jsonDeserializer { payload in
+      return Representor(siren: payload)
+    },
+  ]
 
   /// An array of the supported content types in order of preference
   public static var preferredContentTypes:[String] = [
@@ -47,9 +46,9 @@ extension Representor {
   :param: body The HTTP Body
   :return: representor
   */
-  public static func deserialize(response:NSHTTPURLResponse, body:NSData) -> Representor? {
+  public static func deserialize(response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>? {
     if let contentType = response.MIMEType {
-      if let deserializer = Representor.HTTPDeserializers[contentType] {
+      if let deserializer = HTTPDeserialization.deserializers[contentType] {
         return deserializer(response: response, body: body)
       }
     }

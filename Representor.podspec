@@ -12,12 +12,7 @@ Pod::Spec.new do |spec|
   spec.osx.deployment_target = '10.9'
 
   spec.subspec 'Core' do |core_spec|
-    core_spec.source_files = 'Representor/*.{swift,h}'
-  end
-
-  spec.subspec 'Builder' do |builder_spec|
-    builder_spec.dependency 'Representor/Core'
-    builder_spec.source_files = 'Representor/Builder/*.swift'
+    core_spec.source_files = 'Representor/*.{swift,h}', 'Representor/Builder/*.swift'
   end
 
   spec.subspec 'Adapter' do |adapter_spec|

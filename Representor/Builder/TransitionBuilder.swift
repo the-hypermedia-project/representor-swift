@@ -8,8 +8,11 @@
 
 import Foundation
 
+public protocol TransitionBuilder {
+}
+
 /// A class used to build a transition using a builder pattern
-public class TransitionBuilder {
+public class HTTPTransitionBuilder : TransitionBuilder {
   var attributes = InputProperties()
   var parameters = InputProperties()
 
@@ -51,18 +54,5 @@ public class TransitionBuilder {
   public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?) {
     let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue)
     parameters[name] = property
-  }
-}
-
-extension Transition {
-  /// An extension to Transition to provide a builder interface for creating a Transition.
-  public init(uri:String, _ block:((builder:TransitionBuilder) -> ())) {
-    let builder = TransitionBuilder()
-
-    block(builder: builder)
-
-    self.uri = uri
-    self.attributes = builder.attributes
-    self.parameters = builder.parameters
   }
 }
