@@ -1,9 +1,9 @@
 //
-//  NSHTTPURLResponseAdapter.swift
+//  HTTPDeserialization.swift
 //  Representor
 //
-//  Created by Kyle Fuller on 21/12/2014.
-//  Copyright (c) 2014 Apiary. All rights reserved.
+//  Created by Kyle Fuller on 23/01/2015.
+//  Copyright (c) 2015 Apiary. All rights reserved.
 //
 
 import Foundation

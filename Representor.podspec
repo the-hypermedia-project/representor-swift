@@ -15,13 +15,13 @@ Pod::Spec.new do |spec|
     core_spec.source_files = 'Representor/*.{swift,h}', 'Representor/Builder/*.swift'
   end
 
-  spec.subspec 'Adapter' do |adapter_spec|
-    adapter_spec.subspec 'Response' do |response_spec|
-      response_spec.dependency 'Representor/Adapter/HAL'
-      response_spec.dependency 'Representor/Adapter/Siren'
-      response_spec.source_files = 'Representor/Adapters/NSHTTPURLResponseAdapter.swift'
-    end
+  spec.subspec 'HTTP' do |http_spec|
+    http_spec.dependency 'Representor/Adapter/HAL'
+    http_spec.dependency 'Representor/Adapter/Siren'
+    http_spec.source_files = 'Representor/HTTP/*.swift'
+  end
 
+  spec.subspec 'Adapter' do |adapter_spec|
     adapter_spec.subspec 'HAL' do |hal_spec|
       hal_spec.dependency 'Representor/Core'
       hal_spec.source_files = 'Representor/Adapters/HALAdapter.swift'

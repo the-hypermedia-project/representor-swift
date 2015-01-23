@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2774DFE01A474122008F41CE /* NSHTTPURLResponseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
 		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
 		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
 		2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */; };
+		27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A6D1A7271B10084CB47 /* HTTPTransition.swift */; };
+		27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */; };
+		27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A721A7272870084CB47 /* HTTPDeserialization.swift */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -42,11 +44,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseAdapter.swift; path = Adapters/NSHTTPURLResponseAdapter.swift; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
 		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
 		279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
+		27931A6D1A7271B10084CB47 /* HTTPTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransition.swift; path = HTTP/HTTPTransition.swift; sourceTree = "<group>"; };
+		27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilder.swift; path = HTTP/HTTPTransitionBuilder.swift; sourceTree = "<group>"; };
+		27931A721A7272870084CB47 /* HTTPDeserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPDeserialization.swift; path = HTTP/HTTPDeserialization.swift; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -98,6 +102,16 @@
 			path = Configurations;
 			sourceTree = "<group>";
 		};
+		27931A6F1A7271B60084CB47 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				27931A6D1A7271B10084CB47 /* HTTPTransition.swift */,
+				27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */,
+				27931A721A7272870084CB47 /* HTTPDeserialization.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
 		770834591A0913860008869E = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +139,7 @@
 				770834681A0913860008869E /* Representor.h */,
 				7708347F1A09144F0008869E /* Representor.swift */,
 				770834811A0914CB0008869E /* Transition.swift */,
+				27931A6F1A7271B60084CB47 /* HTTP */,
 				77BC15371A0A69DF00DD24EF /* Builder */,
 				77D643381A0E6D89004D4BA0 /* Adpaters */,
 				770834661A0913860008869E /* Supporting Files */,
@@ -183,7 +198,6 @@
 		77D643381A0E6D89004D4BA0 /* Adpaters */ = {
 			isa = PBXGroup;
 			children = (
-				2774DFDF1A474122008F41CE /* NSHTTPURLResponseAdapter.swift */,
 				77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */,
 				77B507D11A0EB17D00E794BF /* SirenAdapter.swift */,
 			);
@@ -322,9 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */,
+				27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
+				27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */,
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
-				2774DFE01A474122008F41CE /* NSHTTPURLResponseAdapter.swift in Sources */,
+				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
 				77B507D21A0EB17D00E794BF /* SirenAdapter.swift in Sources */,
 				77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
