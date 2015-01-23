@@ -19,6 +19,24 @@ class HTTPTransitionBuilderTests: XCTestCase {
     XCTAssertEqual(transition.uri, "/self/")
   }
 
+  // MARK: Properties
+
+  func testTransitionBuildlerMethod() {
+    let transition = HTTPTransition(uri:"/self/") { builder in
+      builder.method = "PATCH"
+    }
+
+    XCTAssertEqual(transition.method, "PATCH")
+  }
+
+  func testTransitionBuildlerContentType() {
+    let transition = HTTPTransition(uri:"/self/") { builder in
+      builder.contentType = "application/json"
+    }
+
+    XCTAssertEqual(transition.contentType!, "application/json")
+  }
+
   // MARK: Attributes
 
   func testAddAttribute() {

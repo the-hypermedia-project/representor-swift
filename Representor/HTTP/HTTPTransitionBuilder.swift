@@ -13,6 +13,15 @@ public class HTTPTransitionBuilder : TransitionBuilder {
   var attributes = InputProperties()
   var parameters = InputProperties()
 
+  /// The suggested contentType that should be used to make the request
+  public var method = "POST"
+  /// The suggested contentType that should be used to make the request
+  public var contentType:String?
+
+  init() {
+    
+  }
+
   // MARK: Attributes
 
   /// Adds an attribute without a value or default value

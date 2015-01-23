@@ -54,6 +54,14 @@ class HTTPTransitionTests : XCTestCase {
     XCTAssertEqual(transition.parameters.count, 0)
   }
 
+  func testHasMethod() {
+    XCTAssertEqual(transition.method, "POST")
+  }
+
+  func testHasContentType() {
+    XCTAssertNil(transition.contentType)
+  }
+
   func testEquality() {
     XCTAssertEqual(transition, HTTPTransition(uri:"/self/", attributes:[:], parameters:[:]))
     XCTAssertNotEqual(transition, HTTPTransition(uri:"/next/", attributes:[:], parameters:[:]))
