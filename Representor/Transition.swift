@@ -31,7 +31,7 @@ public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
 public protocol TransitionType : Equatable, Hashable {
-  typealias Builder = TransitionBuilder
+  typealias Builder = TransitionBuilderType
 
   init(uri:String, attributes:InputProperties, parameters:InputProperties)
   init(uri:String, _ block:((builder:Builder) -> ()))

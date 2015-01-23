@@ -9,5 +9,5 @@
 import Foundation
 
 /// A base protocol used for building transition using a builder pattern
-public protocol TransitionBuilder {
+public protocol TransitionBuilderType {
 }

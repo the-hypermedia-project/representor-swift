@@ -9,7 +9,7 @@
 import Foundation
 
 /// An implementation of TransitionBuilder used by the HTTPTransition
-public class HTTPTransitionBuilder : TransitionBuilder {
+public class HTTPTransitionBuilder : TransitionBuilderType {
   var attributes = InputProperties()
   var parameters = InputProperties()
 
