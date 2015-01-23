@@ -30,7 +30,7 @@ public func ==<T : AnyObject>(lhs:InputProperty<T>, rhs:InputProperty<T>) -> Boo
 public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 
 /** Transition instances encapsulate information about interacting with links and forms. */
-public protocol Transition : Equatable, Hashable {
+public protocol TransitionType : Equatable, Hashable {
   typealias Builder = TransitionBuilder
 
   init(uri:String, attributes:InputProperties, parameters:InputProperties)

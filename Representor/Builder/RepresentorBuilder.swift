@@ -9,9 +9,9 @@
 import Foundation
 
 /// A class used to build a representor using a builder pattern
-public class RepresentorBuilder<TransitionType : Transition> {
-  var transitions = Dictionary<String, TransitionType>()
-  var representors = Dictionary<String, [Representor<TransitionType>]>()
+public class RepresentorBuilder<Transition : TransitionType> {
+  var transitions = Dictionary<String, Transition>()
+  var representors = Dictionary<String, [Representor<Transition>]>()
   var attributes = Dictionary<String, AnyObject>()
   var links = Dictionary<String, String>()
   var metadata = Dictionary<String, String>()
@@ -30,7 +30,7 @@ public class RepresentorBuilder<TransitionType : Transition> {
   ///
   /// :param: name The name of the representor
   /// :param: representor The representor
-  public func addRepresentor(name:String, representor:Representor<TransitionType>) {
+  public func addRepresentor(name:String, representor:Representor<Transition>) {
     if var representorSet = representors[name] {
       representorSet.append(representor)
       representors[name] = representorSet
@@ -43,8 +43,8 @@ public class RepresentorBuilder<TransitionType : Transition> {
   ///
   /// :param: name The name of the representor
   /// :param: builder A builder to build the representor
-  public func addRepresentor(name:String, block:((builder:RepresentorBuilder<TransitionType>) -> ())) {
-    addRepresentor(name, representor:Representor<TransitionType>(block))
+  public func addRepresentor(name:String, block:((builder:RepresentorBuilder<Transition>) -> ())) {
+    addRepresentor(name, representor:Representor<Transition>(block))
   }
 
   // MARK: Transition
@@ -53,7 +53,7 @@ public class RepresentorBuilder<TransitionType : Transition> {
   ///
   /// :param: name The name (or relation) for the transition
   /// :param: transition The transition
-  public func addTransition(name:String, _ transition:TransitionType) {
+  public func addTransition(name:String, _ transition:Transition) {
     transitions[name] = transition
   }
 
@@ -62,7 +62,7 @@ public class RepresentorBuilder<TransitionType : Transition> {
   /// :param: name The name (or relation) for the transition
   /// :param: uri The URI of the transition
   public func addTransition(name:String, uri:String) {
-    let transition = TransitionType(uri: uri, attributes:[:], parameters:[:])
+    let transition = Transition(uri: uri, attributes:[:], parameters:[:])
     transitions[name] = transition
   }
 
@@ -71,8 +71,8 @@ public class RepresentorBuilder<TransitionType : Transition> {
   /// :param: name The name (or relation) for the transition
   /// :param: uri The URI of the transition
   /// :param: builder The builder used to create the transition
-  public func addTransition(name:String, uri:String, builder:((TransitionType.Builder) -> ())) {
-    let transition = TransitionType(uri: uri, builder)
+  public func addTransition(name:String, uri:String, builder:((Transition.Builder) -> ())) {
+    let transition = Transition(uri: uri, builder)
     transitions[name] = transition
   }
 

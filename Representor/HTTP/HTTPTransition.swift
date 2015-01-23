@@ -9,7 +9,7 @@
 import Foundation
 
 /** An implementation of the Transition protocol for HTTP. */
-public struct HTTPTransition : Transition {
+public struct HTTPTransition : TransitionType {
     public typealias Builder = HTTPTransitionBuilder
 
     public let uri:String
