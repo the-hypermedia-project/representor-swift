@@ -30,7 +30,7 @@ public struct HTTPDeserialization {
     },
 
     "application/vnd.siren+json": jsonDeserializer { payload in
-      return Representor(siren: payload)
+      return deserializeSiren(payload)
     },
   ]
 
