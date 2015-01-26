@@ -28,7 +28,7 @@ func PollFixtureAttributes(forObject:AnyObject) -> Dictionary<String, AnyObject>
   return JSONFixture("poll.attributes", forObject)
 }
 
-func PollFixture(forObject:AnyObject) -> Representor {
+func PollFixture(forObject:AnyObject) -> Representor<HTTPTransition> {
   return Representor { builder in
     builder.addLink("self", uri:"/polls/1/")
     builder.addLink("next", uri:"/polls/2/")

@@ -16,7 +16,7 @@ class SirenAdapterTests: XCTestCase {
   }
 
   func testConversionFromSiren() {
-    let representor = Representor(siren:fixture())
+    let representor = Representor<HTTPTransition>(siren:fixture())
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor, representorFixture)

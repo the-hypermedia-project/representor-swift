@@ -21,10 +21,10 @@ func parseHALLinks(halLinks:Dictionary<String, Dictionary<String, AnyObject>>) -
 }
 
 
-func parseEmbeddedHALs(embeddedHALs:Dictionary<String, AnyObject>) -> Dictionary<String, [Representor]> {
-  var representors = Dictionary<String, [Representor]>()
+func parseEmbeddedHALs<Transition : TransitionType>(embeddedHALs:Dictionary<String, AnyObject>) -> Dictionary<String, [Representor<Transition>]> {
+  var representors = Dictionary<String, [Representor<Transition>]>()
 
-  func parseEmbedded(embedded:Dictionary<String, AnyObject>) -> Representor {
+  func parseEmbedded(embedded:Dictionary<String, AnyObject>) -> Representor<Transition> {
     return Representor(hal:embedded)
   }
 

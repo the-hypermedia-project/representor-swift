@@ -11,7 +11,7 @@ Swift library for building and consuming Hypermedia messages. See [The Hypermedi
 ```swift
 import Representor
 
-let representor = Representor { builder in
+let representor = Representor<HTTPTransition> { builder in
     builder.addLink("self", uri:"/notes/2/")
     builder.addLink("previous", uri:"/notes/1/")
     builder.addLink("next", uri:"/notes/3/")
@@ -50,14 +50,14 @@ The representor includes adapters to convert between other hypermedia types.
 You can initialise a representor using a `NSHTTPURLResponse` and the body (`NSData`). It will use the content-type from the response and deserialise the body payload into a format. For unsupported/unknown types, nil will returned.
 
 ```swift
-let representor = Representor.deserialize(response, body: body)
+let representor = HTTPDeserialization.deserialize(response, body: body)
 ```
 
 You can register your own, or overide an existing HTTP deserializer for a
 specific content type.
 
 ```swift
-Representor.HTTPDeserializers["application/json"] = { response, body in
+HTTPDeserialization.deserializers["application/json"] = { response, body in
   return Representor(...)
 }
 ```
@@ -72,7 +72,7 @@ Representor.HTTPDeserializers["application/json"] = { response, body in
 You can explicitly convert to and from a [HAL](http://stateless.co/hal_specification.html) representation using the following.
 
 ```swift
-let representor = Representor(hal:representation)
+let representor = Representor<HTTPTransition>(hal:representation)
 ```
 
 ```swift
@@ -84,7 +84,7 @@ let representation = representor.asHAL()
 Conversion to and from a [Siren](https://github.com/kevinswiber/siren) representation can also be done using the following.
 
 ```swift
-let representor = Representor(siren:representation)
+let representor = Representor<HTTPTransition>(siren:representation)
 ```
 
 ```swift

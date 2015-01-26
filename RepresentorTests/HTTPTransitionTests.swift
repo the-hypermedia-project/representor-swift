@@ -1,5 +1,5 @@
 //
-//  TransitionTests.swift
+//  HTTPTransitionTests.swift
 //  Representor
 //
 //  Created by Kyle Fuller on 04/11/2014.
@@ -34,12 +34,12 @@ class InputPropertyTests : XCTestCase {
 }
 
 
-class TransitionTests : XCTestCase {
-  var transition:Transition!
+class HTTPTransitionTests : XCTestCase {
+  var transition:HTTPTransition!
 
   override func setUp() {
     super.setUp()
-    transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
+    transition = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
   }
 
   func testHasURI() {
@@ -54,14 +54,22 @@ class TransitionTests : XCTestCase {
     XCTAssertEqual(transition.parameters.count, 0)
   }
 
+  func testHasMethod() {
+    XCTAssertEqual(transition.method, "POST")
+  }
+
+  func testHasContentType() {
+    XCTAssertEqual(transition.suggestedContentTypes, [])
+  }
+
   func testEquality() {
-    XCTAssertEqual(transition, Transition(uri:"/self/", attributes:[:], parameters:[:]))
-    XCTAssertNotEqual(transition, Transition(uri:"/next/", attributes:[:], parameters:[:]))
+    XCTAssertEqual(transition, HTTPTransition(uri:"/self/", attributes:[:], parameters:[:]))
+    XCTAssertNotEqual(transition, HTTPTransition(uri:"/next/", attributes:[:], parameters:[:]))
   }
 
   func testHashValue() {
-    let transition1 = Transition(uri:"/self/", attributes:[:], parameters:[:])
-    let transition2 = Transition(uri:"/self/", attributes:[:], parameters:[:])
+    let transition1 = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
+    let transition2 = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
     XCTAssertEqual(transition1.hashValue, transition2.hashValue)
   }
 }

@@ -12,7 +12,7 @@ import Representor
 
 class RepresentorBuilderTests: XCTestCase {
   func testAddAttribute() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addAttribute("name", value:"Kyle")
     }
 
@@ -22,7 +22,7 @@ class RepresentorBuilderTests: XCTestCase {
   // MARK: Representors
 
   func testAddRepresentor() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addRepresentor("parent", representor:Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
     }
 
@@ -30,7 +30,7 @@ class RepresentorBuilderTests: XCTestCase {
   }
 
   func testAddRepresentorWithBuilder() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addRepresentor("parent") { builder in
 
       }
@@ -40,7 +40,7 @@ class RepresentorBuilderTests: XCTestCase {
   }
 
   func testAddingMultipleRepresentorsWithBuilder() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addRepresentor("parent") { builder in
 
       }
@@ -57,9 +57,9 @@ class RepresentorBuilderTests: XCTestCase {
   // MARK: Transition
 
   func testAddTransition() {
-    let transition = Transition(uri:"/self/", attributes:[:], parameters:[:])
+    let transition = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
 
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addTransition("self", transition)
     }
 
@@ -67,7 +67,7 @@ class RepresentorBuilderTests: XCTestCase {
   }
 
   func testAddTransitionWithURI() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addTransition("self", uri:"/self/")
     }
 
@@ -75,7 +75,7 @@ class RepresentorBuilderTests: XCTestCase {
   }
 
   func testAddTransitionWithBuilder() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addTransition("self", uri:"/self/") { builder in
 
       }
@@ -87,7 +87,7 @@ class RepresentorBuilderTests: XCTestCase {
   // MARK: Links
 
   func testAddLink() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addLink("next", uri:"/next/")
     }
 
@@ -97,7 +97,7 @@ class RepresentorBuilderTests: XCTestCase {
   // MARK: Metadata
 
   func testAddMetaData() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addMetaData("key", value:"value")
     }
 

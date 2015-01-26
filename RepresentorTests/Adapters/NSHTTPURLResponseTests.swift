@@ -32,21 +32,21 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
   }
 
   func testPreferredContentTypes() {
-    let contentTypes = Representor.preferredContentTypes
+    let contentTypes = HTTPDeserialization.preferredContentTypes
 
     XCTAssertEqual(contentTypes, ["application/vnd.siren+json", "application/hal+json"])
   }
 
   func testDeserializationWithUnknownType() {
     let (response, data) = createResponse("application/unknown", data:NSData())
-    let representor = Representor.deserialize(response, body: data)
+    let representor = HTTPDeserialization.deserialize(response, body: data)
 
     XCTAssertTrue(representor == nil)
   }
 
   func testDeserializationWithHALJSON() {
     let (response, body) = JSONHALFixture()
-    let representor = Representor.deserialize(response, body: body)
+    let representor = HTTPDeserialization.deserialize(response, body: body)
 
     let representorFixture = PollFixture(self)
 
@@ -55,7 +55,7 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
 
   func testDeserializationWithSirenJSON() {
     let (response, body) = JSONSirenFixture()
-    let representor = Representor.deserialize(response, body: body)
+    let representor = HTTPDeserialization.deserialize(response, body: body)
 
     let representorFixture = PollFixture(self)
 
@@ -63,16 +63,16 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
   }
 
   func testCustomDeserializer() {
-    let representor = Representor { builder in
+    let representor = Representor<HTTPTransition> { builder in
       builder.addAttribute("custom", value: true)
     }
 
-    Representor.HTTPDeserializers["application/custom"] = { (response:NSHTTPURLResponse, data:NSData) in
+    HTTPDeserialization.deserializers["application/custom"] = { (response:NSHTTPURLResponse, data:NSData) in
       return representor
     }
 
     let (response, body) = createResponse("application/custom", fixtureNamed: "poll.siren")
-    let deserializedRepresentor = Representor.deserialize(response, body: body)
+    let deserializedRepresentor = HTTPDeserialization.deserialize(response, body: body)
 
     XCTAssertEqual(deserializedRepresentor!, representor)
   }
