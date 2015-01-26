@@ -31,10 +31,10 @@ class HTTPTransitionBuilderTests: XCTestCase {
 
   func testTransitionBuildlerContentType() {
     let transition = HTTPTransition(uri:"/self/") { builder in
-      builder.contentType = "application/json"
+      builder.suggestedContentTypes = ["application/json"]
     }
 
-    XCTAssertEqual(transition.contentType!, "application/json")
+    XCTAssertEqual(transition.suggestedContentTypes, ["application/json"])
   }
 
   // MARK: Attributes

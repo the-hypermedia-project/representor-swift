@@ -59,7 +59,7 @@ class HTTPTransitionTests : XCTestCase {
   }
 
   func testHasContentType() {
-    XCTAssertNil(transition.contentType)
+    XCTAssertEqual(transition.suggestedContentTypes, [])
   }
 
   func testEquality() {

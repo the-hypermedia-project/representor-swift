@@ -17,7 +17,7 @@ public struct HTTPTransition : TransitionType {
     /// The HTTP Method that should be used to make the request
     public let method:String = "POST"
     /// The suggested contentType that should be used to make the request
-    public let contentType:String?
+    public let suggestedContentTypes:[String]
 
     public let attributes:InputProperties
     public let parameters:InputProperties
@@ -26,6 +26,7 @@ public struct HTTPTransition : TransitionType {
         self.uri = uri
         self.attributes = attributes
         self.parameters = parameters
+        self.suggestedContentTypes = [String]()
     }
 
     public init(uri:String, _ block:((builder:Builder) -> ())) {
@@ -37,7 +38,7 @@ public struct HTTPTransition : TransitionType {
         self.attributes = builder.attributes
         self.parameters = builder.parameters
         self.method = builder.method
-        self.contentType = builder.contentType
+        self.suggestedContentTypes = builder.suggestedContentTypes
     }
 
     public var hashValue:Int {
@@ -51,6 +52,6 @@ public func ==(lhs:HTTPTransition, rhs:HTTPTransition) -> Bool {
         lhs.attributes == rhs.attributes &&
         lhs.parameters == rhs.parameters &&
         lhs.method == rhs.method &&
-        lhs.contentType == rhs.contentType
+        lhs.suggestedContentTypes == rhs.suggestedContentTypes
     )
 }

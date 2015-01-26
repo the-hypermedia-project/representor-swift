@@ -16,7 +16,7 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
   /// The suggested contentType that should be used to make the request
   public var method = "POST"
   /// The suggested contentType that should be used to make the request
-  public var contentType:String?
+  public var suggestedContentTypes = [String]()
 
   init() {
     

@@ -9,6 +9,8 @@
 import Foundation
 
 public struct Representor<Transition : TransitionType> : Equatable, Hashable {
+  typealias Builder = RepresentorBuilder<Transition>
+
   /// The transitions available for the representor
   public let transitions:Dictionary<String, Transition>
 
@@ -35,13 +37,13 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   }
 
   /// An extension to Representor to provide a builder interface for creating a Representor.
-  public init(_ block:((builder:RepresentorBuilder<Transition>) -> ())) {
+  public init(_ block:((builder:Builder) -> ())) {
     // This should belong in an extension, but due to a bug in the symbol
     // mangler in the Swift compiler it results in the symbol being incorrectly
     // mangled when being used from an extension.
     //
     // Swift ¯\_(ツ)_/¯
-    let builder = RepresentorBuilder<Transition>()
+    let builder = Builder()
 
     block(builder:builder)
 
