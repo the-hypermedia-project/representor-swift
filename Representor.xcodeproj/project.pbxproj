@@ -14,6 +14,7 @@
 		27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A6D1A7271B10084CB47 /* HTTPTransition.swift */; };
 		27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */; };
 		27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A721A7272870084CB47 /* HTTPDeserialization.swift */; };
+		27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -21,7 +22,6 @@
 		770834821A0914CB0008869E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834811A0914CB0008869E /* Transition.swift */; };
 		770834841A0914E40008869E /* HTTPTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834831A0914E40008869E /* HTTPTransitionTests.swift */; };
 		77B507D01A0EB16100E794BF /* SirenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */; };
-		77B507D21A0EB17D00E794BF /* SirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B507D11A0EB17D00E794BF /* SirenAdapter.swift */; };
 		77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC15351A0A69DC00DD24EF /* RepresentorBuilder.swift */; };
 		77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */; };
 		77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */; };
@@ -51,6 +51,7 @@
 		27931A6D1A7271B10084CB47 /* HTTPTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransition.swift; path = HTTP/HTTPTransition.swift; sourceTree = "<group>"; };
 		27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilder.swift; path = HTTP/HTTPTransitionBuilder.swift; sourceTree = "<group>"; };
 		27931A721A7272870084CB47 /* HTTPDeserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPDeserialization.swift; path = HTTP/HTTPDeserialization.swift; sourceTree = "<group>"; };
+		27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSirenAdapter.swift; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		770834811A0914CB0008869E /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		770834831A0914E40008869E /* HTTPTransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransitionTests.swift; sourceTree = "<group>"; };
 		77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenAdapterTests.swift; path = Adapters/SirenAdapterTests.swift; sourceTree = "<group>"; };
-		77B507D11A0EB17D00E794BF /* SirenAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenAdapter.swift; path = Adapters/SirenAdapter.swift; sourceTree = "<group>"; };
 		77BC15351A0A69DC00DD24EF /* RepresentorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepresentorBuilder.swift; path = Builder/RepresentorBuilder.swift; sourceTree = "<group>"; };
 		77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepresentorBuilderTests.swift; path = Builder/RepresentorBuilderTests.swift; sourceTree = "<group>"; };
 		77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionBuilder.swift; path = Builder/TransitionBuilder.swift; sourceTree = "<group>"; };
@@ -105,11 +105,21 @@
 		27931A6F1A7271B60084CB47 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				27931A741A727A280084CB47 /* Adapters */,
 				27931A6D1A7271B10084CB47 /* HTTPTransition.swift */,
 				27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */,
 				27931A721A7272870084CB47 /* HTTPDeserialization.swift */,
 			);
 			name = HTTP;
+			sourceTree = "<group>";
+		};
+		27931A741A727A280084CB47 /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */,
+			);
+			name = Adapters;
+			path = HTTP/Adapters;
 			sourceTree = "<group>";
 		};
 		770834591A0913860008869E = {
@@ -199,7 +209,6 @@
 			isa = PBXGroup;
 			children = (
 				77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */,
-				77B507D11A0EB17D00E794BF /* SirenAdapter.swift */,
 			);
 			name = Adpaters;
 			sourceTree = "<group>";
@@ -337,11 +346,11 @@
 			files = (
 				77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */,
 				27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */,
+				27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
 				27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */,
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
 				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
-				77B507D21A0EB17D00E794BF /* SirenAdapter.swift in Sources */,
 				77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
