@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */; };
+		276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */; };
+		276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */; };
+		276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */; };
+		276A2C081A7BA500004BCC6F /* blueprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 276A2C071A7BA500004BCC6F /* blueprint.json */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
 		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
 		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
@@ -44,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blueprint.swift; sourceTree = "<group>"; };
+		276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransition.swift; sourceTree = "<group>"; };
+		276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTests.swift; sourceTree = "<group>"; };
+		276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransitionTests.swift; sourceTree = "<group>"; };
+		276A2C071A7BA500004BCC6F /* blueprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blueprint.json; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
 		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
@@ -92,6 +102,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		276A2BFD1A7BA4B9004BCC6F /* API Blueprint */ = {
+			isa = PBXGroup;
+			children = (
+				276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */,
+				276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */,
+			);
+			name = "API Blueprint";
+			path = HTTP/APIBlueprint;
+			sourceTree = "<group>";
+		};
+		276A2C021A7BA4EE004BCC6F /* API Blueprint */ = {
+			isa = PBXGroup;
+			children = (
+				276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */,
+				276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */,
+			);
+			name = "API Blueprint";
+			path = APIBlueprint;
+			sourceTree = "<group>";
+		};
 		279294951A488A24009C52E1 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				27931A741A727A280084CB47 /* Adapters */,
+				276A2BFD1A7BA4B9004BCC6F /* API Blueprint */,
 				27931A6D1A7271B10084CB47 /* HTTPTransition.swift */,
 				27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */,
 				27931A721A7272870084CB47 /* HTTPDeserialization.swift */,
@@ -174,6 +205,7 @@
 				770834831A0914E40008869E /* HTTPTransitionTests.swift */,
 				77BC153A1A0A6A7B00DD24EF /* Builder */,
 				77D6433B1A0E6DC5004D4BA0 /* Adapters */,
+				276A2C021A7BA4EE004BCC6F /* API Blueprint */,
 				770834731A0913860008869E /* Supporting Files */,
 			);
 			path = RepresentorTests;
@@ -226,6 +258,7 @@
 		77F592321A1B6E1B0070F839 /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				276A2C071A7BA500004BCC6F /* blueprint.json */,
 				77F592341A1B6E1B0070F839 /* poll.hal.json */,
 				77F592351A1B6E1B0070F839 /* poll.siren.json */,
 			);
@@ -334,6 +367,7 @@
 			files = (
 				77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */,
 				77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */,
+				276A2C081A7BA500004BCC6F /* blueprint.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,8 +383,10 @@
 				27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
 				27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */,
+				276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */,
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
 				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
+				276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */,
 				77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
@@ -366,8 +402,10 @@
 				77D6433A1A0E6DC1004D4BA0 /* HALAdapterTests.swift in Sources */,
 				77F5923A1A1B6F930070F839 /* Utils.swift in Sources */,
 				770834841A0914E40008869E /* HTTPTransitionTests.swift in Sources */,
+				276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */,
 				770834761A0913860008869E /* RepresentorTests.swift in Sources */,
 				77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */,
+				276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
