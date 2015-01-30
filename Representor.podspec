@@ -16,9 +16,17 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'HTTP' do |http_spec|
-    http_spec.dependency 'Representor/Core'
-    http_spec.dependency 'Representor/Adapter/HAL'
-    http_spec.source_files = 'Representor/HTTP/*.swift', 'Representor/HTTP/Adapters/*.swift'
+    http_spec.subspec 'Core' do |core_spec|
+      core_spec.dependency 'Representor/Core'
+      core_spec.dependency 'Representor/Adapter/HAL'
+      core_spec.source_files = 'Representor/HTTP/*.swift', 'Representor/HTTP/Adapters/*.swift'
+    end
+
+    http_spec.subspec 'APIBlueprint' do |blueprint_spec|
+      blueprint_spec.dependency 'Representor/Core'
+      blueprint_spec.dependency 'Representor/HTTP/Core'
+      blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
+    end
   end
 
   spec.subspec 'Adapter' do |adapter_spec|

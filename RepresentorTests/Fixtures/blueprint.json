@@ -1,0 +1,165 @@
+{
+  "_version": "2.1",
+  "metadata": [
+    {
+      "name": "FORMAT",
+      "value": "1A"
+    }
+  ],
+  "name": "Requests API",
+  "description": "Following the [Responses](5.%20Responses.md) example, this API will show you how to define multiple requests and what data these requests can bear. Let's demonstrate multiple requests on a trivial example of content negotiation.\n\n## API Blueprint\n\n+ [Previous: Responses](5.%20Responses.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/6.%20Requests.md)\n\n+ [Next: Parameters](7.%20Parameters.md)\n\n",
+  "resourceGroups": [
+    {
+      "name": "Messages",
+      "description": "Group of all messages-related resources.\n\n",
+      "resources": [
+        {
+          "name": "My Message",
+          "description": "",
+          "uriTemplate": "/message",
+          "model": {},
+          "parameters": [],
+          "actions": [
+            {
+              "name": "Retrieve a Message",
+              "description": "In API Blueprint requests can hold exactly the same kind of information and can be described by exactly the same structure as responses, only with different signature – using the `Request` keyword. The string that follows after the `Request` keyword is a request identifier. Again, using an explanatory and simple naming is the best way to go. \n\n",
+              "method": "GET",
+              "parameters": [
+                {
+                  "name": "id",
+                  "description": "An unique identifier of the message.",
+                  "type": "number",
+                  "required": true,
+                  "default": "",
+                  "example": "1",
+                  "values": []
+                }
+              ],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "Plain Text Message",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Accept",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "",
+                      "schema": ""
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "text/plain"
+                        },
+                        {
+                          "name": "X-My-Message-Header",
+                          "value": "42"
+                        }
+                      ],
+                      "body": "Hello World!\n",
+                      "schema": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "JSON Message",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Accept",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "",
+                      "schema": ""
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "name": "X-My-Message-Header",
+                          "value": "42"
+                        }
+                      ],
+                      "body": "{ \"message\": \"Hello World!\" }      \n",
+                      "schema": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Update a Message",
+              "description": "",
+              "method": "PUT",
+              "parameters": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "Update Plain Text Message",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "body": "All your base are belong to us.\n",
+                      "schema": ""
+                    },
+                    {
+                      "name": "Update JSON Message",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{ \"message\": \"All your base are belong to us.\" }\n",
+                      "schema": ""
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "204",
+                      "description": "",
+                      "headers": [],
+                      "body": "",
+                      "schema": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
