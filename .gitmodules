@@ -1,0 +1,6 @@
+[submodule "Dependencies/Alamofire"]
+	path = Dependencies/Alamofire
+	url = https://github.com/kylef/Alamofire
+[submodule "Dependencies/URITemplate"]
+	path = Dependencies/URITemplate
+	url = https://github.com/kylef/URITemplate.swift
