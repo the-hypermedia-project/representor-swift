@@ -17,8 +17,8 @@ class RepresentorTests: XCTestCase {
 
   override func setUp() {
     super.setUp()
-    transition = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
-    embeddedRepresentor = Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
+    transition = HTTPTransition(uri:"/self/")
+    embeddedRepresentor = Representor()
     representor = Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"])
   }
 
@@ -44,12 +44,12 @@ class RepresentorTests: XCTestCase {
 
   func testEquality() {
     XCTAssertEqual(representor, Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"]))
-    XCTAssertNotEqual(representor, Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
+    XCTAssertNotEqual(representor, Representor())
   }
 
   func testHashValue() {
-    let representor1 = Representor<HTTPTransition>(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
-    let representor2 = Representor<HTTPTransition>(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:])
+    let representor1 = Representor<HTTPTransition>()
+    let representor2 = Representor<HTTPTransition>()
     XCTAssertEqual(representor1.hashValue, representor2.hashValue)
   }
 }

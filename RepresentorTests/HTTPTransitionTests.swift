@@ -39,7 +39,7 @@ class HTTPTransitionTests : XCTestCase {
 
   override func setUp() {
     super.setUp()
-    transition = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
+    transition = HTTPTransition(uri:"/self/")
   }
 
   func testHasURI() {
@@ -63,13 +63,13 @@ class HTTPTransitionTests : XCTestCase {
   }
 
   func testEquality() {
-    XCTAssertEqual(transition, HTTPTransition(uri:"/self/", attributes:[:], parameters:[:]))
-    XCTAssertNotEqual(transition, HTTPTransition(uri:"/next/", attributes:[:], parameters:[:]))
+    XCTAssertEqual(transition, HTTPTransition(uri:"/self/"))
+    XCTAssertNotEqual(transition, HTTPTransition(uri:"/next/"))
   }
 
   func testHashValue() {
-    let transition1 = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
-    let transition2 = HTTPTransition(uri:"/self/", attributes:[:], parameters:[:])
+    let transition1 = HTTPTransition(uri:"/self/")
+    let transition2 = HTTPTransition(uri:"/self/")
     XCTAssertEqual(transition1.hashValue, transition2.hashValue)
   }
 }

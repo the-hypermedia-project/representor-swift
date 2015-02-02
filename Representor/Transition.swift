@@ -33,7 +33,7 @@ public typealias InputProperties = Dictionary<String, InputProperty<AnyObject>>
 public protocol TransitionType : Equatable, Hashable {
   typealias Builder = TransitionBuilderType
 
-  init(uri:String, attributes:InputProperties, parameters:InputProperties)
+  init(uri:String, attributes:InputProperties?, parameters:InputProperties?)
   init(uri:String, _ block:((builder:Builder) -> ()))
 
   var uri:String { get }
