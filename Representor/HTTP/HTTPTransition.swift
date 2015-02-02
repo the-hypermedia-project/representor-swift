@@ -22,10 +22,10 @@ public struct HTTPTransition : TransitionType {
     public let attributes:InputProperties
     public let parameters:InputProperties
 
-    public init(uri:String, attributes:InputProperties, parameters:InputProperties) {
+    public init(uri:String, attributes:InputProperties? = nil, parameters:InputProperties? = nil) {
         self.uri = uri
-        self.attributes = attributes
-        self.parameters = parameters
+        self.attributes = attributes ?? [:]
+        self.parameters = parameters ?? [:]
         self.suggestedContentTypes = [String]()
     }
 

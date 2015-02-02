@@ -24,12 +24,12 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   /// The attributes of the representor
   public let attributes:Dictionary<String, AnyObject>
 
-  public init(transitions:Dictionary<String, Transition>, representors:Dictionary<String, [Representor]>, attributes:Dictionary<String, AnyObject>, links:Dictionary<String, String>, metadata:Dictionary<String, String>) {
-    self.transitions = transitions
-    self.representors = representors
-    self.attributes = attributes
-    self.links = links
-    self.metadata = metadata
+  public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, links:[String:String]? = nil, metadata:[String:String]? = nil) {
+    self.transitions = transitions ?? [:]
+    self.representors = representors ?? [:]
+    self.attributes = attributes ?? [:]
+    self.links = links ?? [:]
+    self.metadata = metadata ?? [:]
   }
 
   public var hashValue:Int {
