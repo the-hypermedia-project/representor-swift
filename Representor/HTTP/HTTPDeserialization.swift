@@ -26,7 +26,7 @@ public struct HTTPDeserialization {
   /// A dictionary storing the registered HTTP deserializer's and their corresponding content type.
   public static var deserializers:[String:Deserializer] = [
     "application/hal+json": jsonDeserializer { payload in
-      return Representor(hal: payload)
+      return deserializeHAL(payload)
     },
 
     "application/vnd.siren+json": jsonDeserializer { payload in

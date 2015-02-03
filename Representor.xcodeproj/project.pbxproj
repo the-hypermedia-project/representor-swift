@@ -16,6 +16,7 @@
 		276A2C2B1A7BC239004BCC6F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C2A1A7BC239004BCC6F /* HTTPRequest.swift */; };
 		276A2C2D1A7BC991004BCC6F /* HTTPRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C2C1A7BC991004BCC6F /* HTTPRequestTests.swift */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
+		277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */; };
 		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
 		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
 		2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */; };
@@ -35,7 +36,6 @@
 		77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */; };
 		77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */; };
 		77BC153E1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC153D1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift */; };
-		77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */; };
 		77D6433A1A0E6DC1004D4BA0 /* HALAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */; };
 		77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */ = {isa = PBXBuildFile; fileRef = 77F592341A1B6E1B0070F839 /* poll.hal.json */; };
 		77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */ = {isa = PBXBuildFile; fileRef = 77F592351A1B6E1B0070F839 /* poll.siren.json */; };
@@ -105,6 +105,7 @@
 		276A2C2A1A7BC239004BCC6F /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPRequest.swift; path = HTTP/HTTPRequest.swift; sourceTree = "<group>"; };
 		276A2C2C1A7BC991004BCC6F /* HTTPRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestTests.swift; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
+		277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHALAdapter.swift; sourceTree = "<group>"; };
 		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
 		279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepresentorBuilderTests.swift; path = Builder/RepresentorBuilderTests.swift; sourceTree = "<group>"; };
 		77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionBuilder.swift; path = Builder/TransitionBuilder.swift; sourceTree = "<group>"; };
 		77BC153D1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilderTests.swift; path = Builder/HTTPTransitionBuilderTests.swift; sourceTree = "<group>"; };
-		77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HALAdapter.swift; path = Adapters/HALAdapter.swift; sourceTree = "<group>"; };
 		77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HALAdapterTests.swift; path = Adapters/HALAdapterTests.swift; sourceTree = "<group>"; };
 		77F592341A1B6E1B0070F839 /* poll.hal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.hal.json; sourceTree = "<group>"; };
 		77F592351A1B6E1B0070F839 /* poll.siren.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.siren.json; sourceTree = "<group>"; };
@@ -228,6 +228,7 @@
 		27931A741A727A280084CB47 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */,
 				27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */,
 			);
 			name = Adapters;
@@ -323,7 +324,6 @@
 		77D643381A0E6D89004D4BA0 /* Adpaters */ = {
 			isa = PBXGroup;
 			children = (
-				77D643361A0E6D7D004D4BA0 /* HALAdapter.swift */,
 			);
 			name = Adpaters;
 			sourceTree = "<group>";
@@ -513,8 +513,8 @@
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
 				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
 				276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */,
+				277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */,
 				276A2C2B1A7BC239004BCC6F /* HTTPRequest.swift in Sources */,
-				77D643371A0E6D7D004D4BA0 /* HALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
