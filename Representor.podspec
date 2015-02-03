@@ -19,13 +19,18 @@ Pod::Spec.new do |spec|
     http_spec.subspec 'Core' do |core_spec|
       core_spec.dependency 'Representor/Core'
       core_spec.dependency 'Representor/Adapter/HAL'
-      core_spec.source_files = 'Representor/HTTP/*.swift', 'Representor/HTTP/Adapters/*.swift'
+      core_spec.source_files = 'Representor/HTTP/HTTP{Transition*,Deserialization}.swift', 'Representor/HTTP/Adapters/*.swift'
     end
 
     http_spec.subspec 'APIBlueprint' do |blueprint_spec|
       blueprint_spec.dependency 'Representor/Core'
       blueprint_spec.dependency 'Representor/HTTP/Core'
       blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
+    end
+
+    http_spec.subspec 'Alamofire' do |alamofire_spec|
+      alamofire_spec.dependency 'Alamofire'
+      alamofire_spec.source_files = 'Representor/HTTP/HTTPRequest.swift'
     end
   end
 
