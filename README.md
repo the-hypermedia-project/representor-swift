@@ -4,6 +4,20 @@
 
 Swift library for building and consuming Hypermedia messages. See [The Hypermedia Project Charter](https://github.com/the-hypermedia-project/charter) for details.
 
+## Installation
+
+Installation with CocoaPods is recommended using CocoaPods 0.36.
+
+```ruby
+pod 'Representor'
+```
+
+### Sub-projects
+
+Alternatively, you can clone Representor via git or as a submodule and
+include Representor.xcodeproj inside your project and add
+Representor.framework as a target dependency.
+
 ## Usage
 
 ### Using the builder pattern to build a representor
@@ -72,11 +86,11 @@ HTTPDeserialization.deserializers["application/json"] = { response, body in
 You can explicitly convert to and from a [HAL](http://stateless.co/hal_specification.html) representation using the following.
 
 ```swift
-let representor = Representor<HTTPTransition>(hal:representation)
+let representor = deserializeHAL(representation)
 ```
 
 ```swift
-let representation = representor.asHAL()
+let representation = serializeHAL(representor)
 ```
 
 #### Siren
@@ -84,11 +98,11 @@ let representation = representor.asHAL()
 Conversion to and from a [Siren](https://github.com/kevinswiber/siren) representation can also be done using the following.
 
 ```swift
-let representor = Representor<HTTPTransition>(siren:representation)
+let representor = deserializeSiren(representation)
 ```
 
 ```swift
-let representation = representor.asSiren()
+let representation = serializeSiren(representor)
 ```
 
 ## License

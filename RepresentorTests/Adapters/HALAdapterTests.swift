@@ -16,7 +16,7 @@ class HALAdapterTests: XCTestCase {
   }
 
   func testConversionFromHAL() {
-    let representor = Representor<HTTPTransition>(hal: fixture())
+    let representor = deserializeHAL(fixture()) as Representor<HTTPTransition>
     let representorFixture = PollFixture(self)
 
     XCTAssertEqual(representor, representorFixture)
@@ -24,7 +24,7 @@ class HALAdapterTests: XCTestCase {
 
   func testConversionToHAL() {
     let representor = PollFixture(self)
-    let representation = representor.asHAL()
+    let representation = serializeHAL(representor)
 
     XCTAssertEqual(representation as NSObject, fixture() as NSObject)
   }

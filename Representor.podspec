@@ -16,28 +16,40 @@ Pod::Spec.new do |spec|
   end
 
   spec.subspec 'HTTP' do |http_spec|
-    http_spec.subspec 'Core' do |core_spec|
-      core_spec.dependency 'Representor/Core'
-      core_spec.dependency 'Representor/Adapter/HAL'
-      core_spec.source_files = 'Representor/HTTP/HTTP{Transition*,Deserialization}.swift', 'Representor/HTTP/Adapters/*.swift'
+    http_spec.subspec 'Transition' do |transition_spec|
+      transition_spec.dependency 'Representor/Core'
+      transition_spec.source_files = 'Representor/HTTP/HTTPTransition{,Builder}.swift'
     end
 
-    http_spec.subspec 'APIBlueprint' do |blueprint_spec|
-      blueprint_spec.dependency 'Representor/Core'
-      blueprint_spec.dependency 'Representor/HTTP/Core'
-      blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
+    http_spec.subspec 'Deserialization' do |deserialization_spec|
+      deserialization_spec.dependency 'Representor/HTTP/Transition'
+      deserialization_spec.dependency 'Representor/HTTP/Adapters/HAL'
+      deserialization_spec.dependency 'Representor/HTTP/Adapters/Siren'
+      deserialization_spec.source_files = 'Representor/HTTP/HTTPDeserialization.swift'
+    end
+
+    http_spec.subspec 'Adapters' do |adapter_spec|
+      adapter_spec.subspec 'HAL' do |hal_spec|
+        hal_spec.dependency 'Representor/HTTP/Transition'
+        hal_spec.source_files = 'Representor/HTTP/Adapters/HTTPHALAdapter.swift'
+      end
+
+      adapter_spec.subspec 'Siren' do |siren_spec|
+        siren_spec.dependency 'Representor/HTTP/Transition'
+        siren_spec.source_files = 'Representor/HTTP/Adapters/HTTPSirenAdapter.swift'
+      end
+
+      adapter_spec.subspec 'APIBlueprint' do |blueprint_spec|
+        blueprint_spec.dependency 'Representor/HTTP/Transition'
+        blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
+      end
     end
 
     http_spec.subspec 'Alamofire' do |alamofire_spec|
       alamofire_spec.dependency 'Alamofire'
+      alamofire_spec.dependency 'URITemplate'
+      alamofire_spec.dependency 'Representor/HTTP/Transition'
       alamofire_spec.source_files = 'Representor/HTTP/HTTPRequest.swift'
-    end
-  end
-
-  spec.subspec 'Adapter' do |adapter_spec|
-    adapter_spec.subspec 'HAL' do |hal_spec|
-      hal_spec.dependency 'Representor/Core'
-      hal_spec.source_files = 'Representor/Adapters/HALAdapter.swift'
     end
   end
 end
