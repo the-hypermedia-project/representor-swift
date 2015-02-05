@@ -36,6 +36,22 @@ extension Alamofire.Manager {
   }
 }
 
+extension Alamofire.Request {
+  func responseRepresentor(closure:((request:NSURLRequest, response:NSURLResponse?, representor:Representor<HTTPTransition>?, error:NSError?) -> Void)) -> Self {
+    return response { (request, response, data, error) -> Void in
+      var representor:Representor<HTTPTransition>?
+
+      if let response = response {
+        if let data = data as? NSData {
+          representor = HTTPDeserialization.deserialize(response, body:data)
+        }
+      }
+
+      closure(request: request, response: response, representor: representor, error: error)
+    }
+  }
+}
+
 public func request(baseURL: NSURL?, transition: HTTPTransition, parameters: [String : AnyObject]? = nil, attributes: [String : AnyObject]? = nil, encoding:ParameterEncoding? = nil) -> Request {
   return Manager.sharedInstance.request(baseURL, transition: transition, parameters: parameters, attributes: attributes, encoding: encoding)
 }

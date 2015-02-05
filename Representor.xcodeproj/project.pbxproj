@@ -265,7 +265,6 @@
 				770834811A0914CB0008869E /* Transition.swift */,
 				27931A6F1A7271B60084CB47 /* HTTP */,
 				77BC15371A0A69DF00DD24EF /* Builder */,
-				77D643381A0E6D89004D4BA0 /* Adpaters */,
 				770834661A0913860008869E /* Supporting Files */,
 			);
 			path = Representor;
@@ -319,13 +318,6 @@
 				77BC153D1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift */,
 			);
 			name = Builder;
-			sourceTree = "<group>";
-		};
-		77D643381A0E6D89004D4BA0 /* Adpaters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Adpaters;
 			sourceTree = "<group>";
 		};
 		77D6433B1A0E6DC5004D4BA0 /* Adapters */ = {
