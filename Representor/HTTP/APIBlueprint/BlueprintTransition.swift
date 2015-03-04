@@ -17,9 +17,23 @@ extension Array {
 
 extension Resource {
   func transition(actionName:String) -> HTTPTransition? {
-    let action = actions.filter{ action in action.name == actionName }.first
+    func filterAction(action:Action) -> Bool {
+      if let relationName = action.relation {
+        if relationName == actionName {
+          return true
+        }
+      }
+
+      if action.name == actionName {
+        return true
+      }
+
+      return false
+    }
+
+    let action = actions.filter(filterAction).first
     if let action = action {
-      return HTTPTransition(uri: uriTemplate) { builder in
+      return HTTPTransition(uri: action.uriTemplate ?? uriTemplate) { builder in
         builder.method = action.method
 
         let addParameter = { (parameter:Parameter) -> Void in
