@@ -147,11 +147,19 @@ public struct Action {
   /// Array of URI parameters
   public let parameters:[Parameter]
 
-  public init(name:String, description:String?, method:String, parameters:[Parameter]) {
+  /// URI Template for the action, if it differs from the resource's URI
+  public let uriTemplate:String?
+
+  /// Link relation identifier of the action
+  public let relation:String?
+
+  public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil) {
     self.name = name
     self.description = description
     self.method = method
     self.parameters = parameters
+    self.uriTemplate = uriTemplate
+    self.relation = relation
   }
 }
 
@@ -193,10 +201,13 @@ func parseActions(source:[[String:AnyObject]]?) -> [Action] {
       let description = item["description"] as? String
       let method = item["method"] as? String
       let parameters = parseParameter(item["parameters"] as? [[String:AnyObject]])
+      let attributes = item["attributes"] as? [String:String]
+      let uriTemplate = attributes?["uriTemplate"]
+      let relation = attributes?["relation"]
 
       if let name = name {
         if let method = method {
-          return Action(name: name, description: description, method: method, parameters: parameters)
+          return Action(name: name, description: description, method: method, parameters: parameters, uriTemplate:uriTemplate, relation:relation)
         }
       }
 

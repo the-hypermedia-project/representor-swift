@@ -65,7 +65,7 @@ class ActionTests : XCTestCase {
   var action:Action!
 
   override func setUp() {
-    action = Action(name: "Name", description: "Description", method: "GET", parameters: [])
+    action = Action(name: "Name", description: "Description", method: "GET", parameters: [], uriTemplate: "/users/{username}")
   }
 
   func testName() {
@@ -82,6 +82,14 @@ class ActionTests : XCTestCase {
 
   func testParameters() {
     XCTAssertEqual(action.parameters.count, 0)
+  }
+
+  func testRelation() {
+    XCTAssertNil(action.relation)
+  }
+
+  func testURITemplate() {
+    XCTAssertEqual(action.uriTemplate!, "/users/{username}")
   }
 }
 
