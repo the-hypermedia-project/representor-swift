@@ -153,15 +153,67 @@ public struct Action {
   /// Link relation identifier of the action
   public let relation:String?
 
-  public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil) {
+  /// HTTP transaction examples for the relevant HTTP request method
+  public let examples:[TransactionExample]
+
+  public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil, examples:[TransactionExample]? = nil) {
     self.name = name
     self.description = description
     self.method = method
     self.parameters = parameters
     self.uriTemplate = uriTemplate
     self.relation = relation
+    self.examples = examples ?? []
   }
 }
+
+/// An HTTP transaction example with expected HTTP message request and response payload
+public struct TransactionExample {
+  /// Name of the Transaction Example
+  public let name:String
+
+  /// Description of the Transaction Example (.raw or .html)
+  public let description:String?
+
+  /// Example transaction request payloads
+  public let requests:[Payload]
+
+  /// Example transaction response payloads
+  public let responses:[Payload]
+
+  public init(name:String, description:String? = nil, requests:[Payload]? = nil, responses:[Payload]? = nil) {
+    self.name = name
+    self.description = description
+    self.requests = requests ?? []
+    self.responses = responses ?? []
+  }
+}
+
+
+/// An API Blueprint payload.
+public struct Payload {
+  public typealias Header = (name:String, value:String)
+
+  /// Name of the payload
+  public let name:String
+
+  /// Description of the Payload (.raw or .html)
+  public let description:String?
+
+  /// HTTP headers that are expected to be transferred with HTTP message represented by this payload
+  public let headers:[Header]
+
+  /// An entity body to be transferred with HTTP message represented by this payload
+  public let body:NSData?
+
+  public init(name:String, description:String? = nil, headers:[Header]? = nil, body:NSData? = nil) {
+    self.name = name
+    self.description = description
+    self.headers = headers ?? []
+    self.body = body
+  }
+}
+
 
 // MARK: AST Parsing
 
@@ -204,10 +256,66 @@ func parseActions(source:[[String:AnyObject]]?) -> [Action] {
       let attributes = item["attributes"] as? [String:String]
       let uriTemplate = attributes?["uriTemplate"]
       let relation = attributes?["relation"]
+      let examples = parseExamples(item["examples"] as? [[String:AnyObject]])
 
       if let name = name {
         if let method = method {
-          return Action(name: name, description: description, method: method, parameters: parameters, uriTemplate:uriTemplate, relation:relation)
+          return Action(name: name, description: description, method: method, parameters: parameters, uriTemplate:uriTemplate, relation:relation, examples:examples)
+        }
+      }
+
+      return nil
+    }
+  }
+
+  return []
+}
+
+func parseExamples(source:[[String:AnyObject]]?) -> [TransactionExample] {
+  if let source = source {
+    return compactMap(source) { item in
+      let name = item["name"] as? String
+      let description = item["description"] as? String
+      let requests = parsePayloads(item["requests"] as? [[String:AnyObject]])
+      let responses = parsePayloads(item["responses"] as? [[String:AnyObject]])
+
+      if let name = name {
+        return TransactionExample(name: name, description: description, requests: requests, responses: responses)
+      }
+
+      return nil
+    }
+  }
+
+  return []
+}
+
+func parsePayloads(source:[[String:AnyObject]]?) -> [Payload] {
+  if let source = source {
+    return compactMap(source) { item in
+      let name = item["name"] as? String
+      let description = item["description"] as? String
+      let headers = parseHeaders(item["headers"] as? [[String:String]])
+      let bodyString = item["body"] as? String
+      let body = bodyString?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+
+      if let name = name {
+        return Payload(name: name, description: description, headers: headers, body: body)
+      }
+
+      return nil
+    }
+  }
+
+  return []
+}
+
+func parseHeaders(source:[[String:String]]?) -> [Payload.Header] {
+  if let source = source {
+    return compactMap(source) { item in
+      if let name = item["name"] {
+        if let value = item["value"] {
+          return (name, value)
         }
       }
 

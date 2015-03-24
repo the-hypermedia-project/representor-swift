@@ -94,6 +94,40 @@ class ActionTests : XCTestCase {
 }
 
 
+class TransactionExampleTests : XCTestCase {
+  var example:TransactionExample!
+
+  override func setUp() {
+    example = TransactionExample(name: "Name", description: "Description")
+  }
+
+  func testName() {
+    XCTAssertEqual(example.name, "Name")
+  }
+
+  func testDescription() {
+    XCTAssertEqual(example.description!, "Description")
+  }
+}
+
+
+class PayloadTests : XCTestCase {
+  var payload:Payload!
+
+  override func setUp() {
+    payload = Payload(name: "Name", description: "Description")
+  }
+
+  func testName() {
+    XCTAssertEqual(payload.name, "Name")
+  }
+
+  func testDescription() {
+    XCTAssertEqual(payload.description!, "Description")
+  }
+}
+
+
 class ParameterTests : XCTestCase {
   var parameter:Parameter!
 
@@ -164,6 +198,38 @@ class BlueprintTests : XCTestCase {
     XCTAssertEqual(retrieveAction.name, "Retrieve a Message")
     XCTAssertEqual(retrieveAction.description!, "In API Blueprint requests can hold exactly the same kind of information and can be described by exactly the same structure as responses, only with different signature – using the `Request` keyword. The string that follows after the `Request` keyword is a request identifier. Again, using an explanatory and simple naming is the best way to go. \n\n")
     XCTAssertEqual(retrieveAction.method, "GET")
+
+    XCTAssertEqual(retrieveAction.examples.count, 2)
+
+    let example1 = retrieveAction.examples[0]
+    XCTAssertEqual(example1.name, "")
+    XCTAssertEqual(example1.description!, "")
+    XCTAssertEqual(example1.requests.count, 1)
+    XCTAssertEqual(example1.responses.count, 1)
+
+    let requestPayload = example1.requests[0]
+    XCTAssertEqual(requestPayload.name, "Plain Text Message")
+    XCTAssertEqual(requestPayload.description!, "")
+    XCTAssertEqual(requestPayload.headers.count, 1)
+    XCTAssertEqual(requestPayload.headers[0].name, "Accept")
+    XCTAssertEqual(requestPayload.headers[0].value, "text/plain")
+
+    let responsePayload = example1.responses[0]
+    XCTAssertEqual(responsePayload.name, "200")
+    XCTAssertEqual(responsePayload.description!, "")
+    XCTAssertEqual(responsePayload.headers.count, 2)
+    XCTAssertEqual(responsePayload.headers[0].name, "Content-Type")
+    XCTAssertEqual(responsePayload.headers[0].value, "text/plain")
+    XCTAssertEqual(responsePayload.headers[1].name, "X-My-Message-Header")
+    XCTAssertEqual(responsePayload.headers[1].value, "42")
+    let body = "Hello World!\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+    XCTAssertEqual(responsePayload.body!, body)
+
+    let example2 = retrieveAction.examples[1]
+    XCTAssertEqual(example2.name, "")
+    XCTAssertEqual(example2.description!, "")
+    XCTAssertEqual(example2.requests.count, 1)
+    XCTAssertEqual(example2.responses.count, 1)
 
     let parameter = retrieveAction.parameters[0]
     XCTAssertEqual(parameter.name, "id")
