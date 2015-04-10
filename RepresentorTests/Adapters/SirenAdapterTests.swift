@@ -36,7 +36,7 @@ class SirenAdapterTests: XCTestCase {
     builder.addAttribute("last_name", value: "Doe", defaultValue: nil)
   }
 
-  func fixture() -> Dictionary<String, AnyObject> {
+  func fixture() -> [String:AnyObject] {
     return JSONFixture("poll.siren", self)
   }
 

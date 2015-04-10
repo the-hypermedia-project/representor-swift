@@ -71,13 +71,13 @@ private func transitionToSirenAction(relation:String, transition:HTTPTransition)
 }
 
 /// A function to deserialize a Siren structure into a HTTP Transition.
-public func deserializeSiren(siren:Dictionary<String, AnyObject>) -> Representor<HTTPTransition> {
-  var links = Dictionary<String, String>()
-  var representors = Dictionary<String, [Representor<HTTPTransition>]>()
+public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransition> {
+  var links = [String:String]()
+  var representors = [String:[Representor<HTTPTransition>]]()
   var transitions = [String:HTTPTransition]()
-  var attributes = Dictionary<String, AnyObject>()
+  var attributes = [String:AnyObject]()
 
-  if let sirenLinks = siren["links"] as? [Dictionary<String, AnyObject>] {
+  if let sirenLinks = siren["links"] as? [[String:AnyObject]] {
     for link in sirenLinks {
       if let href = link["href"] as? String {
         if let relations = link["rel"] as? [String] {
@@ -89,7 +89,7 @@ public func deserializeSiren(siren:Dictionary<String, AnyObject>) -> Representor
     }
   }
 
-  if let entities = siren["entities"] as? [Dictionary<String, AnyObject>] {
+  if let entities = siren["entities"] as? [[String:AnyObject]] {
     for entity in entities {
       let representor = deserializeSiren(entity)
 
@@ -114,7 +114,7 @@ public func deserializeSiren(siren:Dictionary<String, AnyObject>) -> Representor
     }
   }
 
-  if let properties = siren["properties"] as? Dictionary<String, AnyObject> {
+  if let properties = siren["properties"] as? [String:AnyObject] {
     attributes = properties
   }
 
@@ -122,11 +122,11 @@ public func deserializeSiren(siren:Dictionary<String, AnyObject>) -> Representor
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
-public func serializeSiren(representor:Representor<HTTPTransition>) -> Dictionary<String, AnyObject> {
-  var representation = Dictionary<String, AnyObject>()
+public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
+  var representation = [String:AnyObject]()
 
   if representor.links.count > 0 {
-    var links = [Dictionary<String, AnyObject>]()
+    var links = [[String:AnyObject]]()
 
     for (name, uri) in representor.links {
       links.append(["rel": [name], "href": uri])
@@ -136,7 +136,7 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> Dictionar
   }
 
   if representor.representors.count > 0 {
-    var entities = [Dictionary<String, AnyObject>]()
+    var entities = [[String:AnyObject]]()
 
     for (relation, representorSet) in representor.representors {
       for representor in representorSet {

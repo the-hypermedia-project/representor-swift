@@ -16,15 +16,15 @@ func fixture(named:String, forObject:AnyObject) -> NSData {
   return data
 }
 
-func JSONFixture(named:String, forObject:AnyObject) -> Dictionary<String, AnyObject> {
+func JSONFixture(named:String, forObject:AnyObject) -> [String:AnyObject] {
   let data = fixture(named, forObject)
   var error:NSError?
   let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
   assert(error == nil)
-  return object as Dictionary<String, AnyObject>
+  return object as [String:AnyObject]
 }
 
-func PollFixtureAttributes(forObject:AnyObject) -> Dictionary<String, AnyObject> {
+func PollFixtureAttributes(forObject:AnyObject) -> [String:AnyObject] {
   return JSONFixture("poll.attributes", forObject)
 }
 

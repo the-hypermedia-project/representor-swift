@@ -11,7 +11,7 @@ import XCTest
 import Representor
 
 class HALAdapterTests: XCTestCase {
-  func fixture() -> Dictionary<String, AnyObject> {
+  func fixture() -> [String:AnyObject] {
     return JSONFixture("poll.hal", self)
   }
 

@@ -348,7 +348,7 @@ func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
   return []
 }
 
-private func parseBlueprintResourceGroups(blueprint:Dictionary<String, AnyObject>) -> [ResourceGroup] {
+private func parseBlueprintResourceGroups(blueprint:[String:AnyObject]) -> [ResourceGroup] {
   if let resourceGroups = blueprint["resourceGroups"] as? [[String:AnyObject]] {
     return compactMap(resourceGroups) { dictionary in
       if let name = dictionary["name"] as String? {
