@@ -21,7 +21,7 @@ func JSONFixture(named:String, forObject:AnyObject) -> [String:AnyObject] {
   var error:NSError?
   let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
   assert(error == nil)
-  return object as [String:AnyObject]
+  return object as! [String:AnyObject]
 }
 
 func PollFixtureAttributes(forObject:AnyObject) -> [String:AnyObject] {

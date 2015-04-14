@@ -14,9 +14,6 @@
 		276A2C081A7BA500004BCC6F /* blueprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 276A2C071A7BA500004BCC6F /* blueprint.json */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
 		277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */; };
-		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
-		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
-		2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */; };
 		27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A6D1A7271B10084CB47 /* HTTPTransition.swift */; };
 		27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */; };
 		27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A721A7272870084CB47 /* HTTPDeserialization.swift */; };
@@ -388,7 +385,7 @@
 		7708345A1A0913860008869E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Apiary;
 				TargetAttributes = {
 					770834621A0913860008869E = {
@@ -463,9 +460,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */,
-				2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */,
-				279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,17 +64,17 @@ class SirenAdapterTests: XCTestCase {
       builder.addTransition("register", self.transition)
     }
 
-    let actions = serializeSiren(representor)["actions"] as [[String:AnyObject]]
+    let actions = serializeSiren(representor)["actions"] as! [[String:AnyObject]]
     let action = actions[0]
-    let fields = action["fields"] as [[String:String]]
+    let fields = action["fields"] as! [[String:String]]
     let sortedFields = fields.sorted { (lhs, rhs) in
       lhs["name"] > rhs["name"]
     }
 
-    XCTAssertEqual(action["name"] as String, "register")
-    XCTAssertEqual(action["href"] as String, "/register/")
-    XCTAssertEqual(action["method"] as String, "PATCH")
-    XCTAssertEqual(action["type"] as String, "application/x-www-form-urlencoded")
+    XCTAssertEqual(action["name"] as! String, "register")
+    XCTAssertEqual(action["href"] as! String, "/register/")
+    XCTAssertEqual(action["method"] as! String, "PATCH")
+    XCTAssertEqual(action["type"] as! String, "application/x-www-form-urlencoded")
     XCTAssertEqual(sortedFields, [
       ["name": "username"],
       ["name": "last_name", "value": "Doe"],

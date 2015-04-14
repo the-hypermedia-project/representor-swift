@@ -28,7 +28,7 @@ public struct Blueprint {
   }
 
   public init(ast:[String:AnyObject]) {
-    name = ast["name"] as String
+    name = ast["name"] as? String ?? ""
     description = ast["description"] as? String
     resourceGroups = parseBlueprintResourceGroups(ast)
   }
@@ -232,7 +232,7 @@ func compactMap<C : CollectionType, T>(source: C, transform: (C.Generator.Elemen
 func parseParameter(source:[[String:AnyObject]]?) -> [Parameter] {
   if let source = source {
     return source.map { item in
-      let name = item["name"] as String
+      let name = item["name"] as? String ?? ""
       let description = item["description"] as? String
       let type = item["type"] as? String
       let required = item["required"] as? Bool
@@ -351,9 +351,9 @@ func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
 private func parseBlueprintResourceGroups(blueprint:[String:AnyObject]) -> [ResourceGroup] {
   if let resourceGroups = blueprint["resourceGroups"] as? [[String:AnyObject]] {
     return compactMap(resourceGroups) { dictionary in
-      if let name = dictionary["name"] as String? {
+      if let name = dictionary["name"] as? String {
         let resources = parseResources(dictionary["resources"] as? [[String:AnyObject]])
-        let description = dictionary["description"] as String?
+        let description = dictionary["description"] as? String
         return ResourceGroup(name: name, description: description, resources: resources)
       }
 
