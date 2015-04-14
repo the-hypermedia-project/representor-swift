@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (1.2.0)
+  - URITemplate (1.2.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 1.2)
+  - URITemplate (~> 1.2)
+
+SPEC CHECKSUMS:
+  Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
+  URITemplate: 0dbf40f0e378eb9c6d04cc08e6101fb82d126dc3
+
+COCOAPODS: 0.36.3
