@@ -15,7 +15,7 @@ public struct HTTPTransition : TransitionType {
     public let uri:String
 
     /// The HTTP Method that should be used to make the request
-    public let method:String = "POST"
+    public let method:String
     /// The suggested contentType that should be used to make the request
     public let suggestedContentTypes:[String]
 
@@ -26,6 +26,7 @@ public struct HTTPTransition : TransitionType {
         self.uri = uri
         self.attributes = attributes ?? [:]
         self.parameters = parameters ?? [:]
+        self.method = "POST"
         self.suggestedContentTypes = [String]()
     }
 

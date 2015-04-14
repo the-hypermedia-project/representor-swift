@@ -12,17 +12,17 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   typealias Builder = RepresentorBuilder<Transition>
 
   /// The transitions available for the representor
-  public let transitions:Dictionary<String, Transition>
+  public let transitions:[String:Transition]
 
   /// The separate representors embedded in the current representor.
-  public let representors:Dictionary<String, [Representor]>
+  public let representors:[String:[Representor]]
 
-  public let links:Dictionary<String, String>
+  public let links:[String:String]
 
-  public let metadata:Dictionary<String, String>
+  public let metadata:[String:String]
 
   /// The attributes of the representor
-  public let attributes:Dictionary<String, AnyObject>
+  public let attributes:[String:AnyObject]
 
   public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, links:[String:String]? = nil, metadata:[String:String]? = nil) {
     self.transitions = transitions ?? [:]
@@ -55,12 +55,12 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   }
 }
 
-public func ==<Transition : TransitionType>(lhs:Dictionary<String, [Representor<Transition>]>, rhs:Dictionary<String, [Representor<Transition>]>) -> Bool {
+public func ==<Transition : TransitionType>(lhs:[String:[Representor<Transition>]], rhs:[String:[Representor<Transition>]]) -> Bool {
   // There is a strange Swift bug where you cannot compare a
   // dictionary which has an array of objects which conform to Equatable.
   // So to be clear, that's comparing the following:
   //
-  //     Dictionary<Equatable, [Equatable]>
+  //     [Equatable: [Equatable]]
   //
   // If one day this problem is solved in a newer version of Swift,
   // this method can be removed and the default == implementation can be used.

@@ -31,7 +31,7 @@ class RepresentorTests: XCTestCase {
   }
 
   func testHasAttributes() {
-    XCTAssertEqual(representor.attributes["name"] as String, "Kyle")
+    XCTAssertEqual(representor.attributes["name"] as! String, "Kyle")
   }
 
   func testHasLinks() {

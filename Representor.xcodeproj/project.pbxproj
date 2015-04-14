@@ -12,19 +12,12 @@
 		276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */; };
 		276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */; };
 		276A2C081A7BA500004BCC6F /* blueprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 276A2C071A7BA500004BCC6F /* blueprint.json */; };
-		276A2C291A7BC0CB004BCC6F /* URITemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276A2C1E1A7BC07C004BCC6F /* URITemplate.framework */; };
-		276A2C2B1A7BC239004BCC6F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C2A1A7BC239004BCC6F /* HTTPRequest.swift */; };
-		276A2C2D1A7BC991004BCC6F /* HTTPRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C2C1A7BC991004BCC6F /* HTTPRequestTests.swift */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
 		277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */; };
-		279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */; };
-		2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */; };
-		2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */; };
 		27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A6D1A7271B10084CB47 /* HTTPTransition.swift */; };
 		27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */; };
 		27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A721A7272870084CB47 /* HTTPDeserialization.swift */; };
 		27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */; };
-		27FF1B911A7FB78E00783B74 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FF1B8B1A7FB78500783B74 /* Alamofire.framework */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -102,8 +95,6 @@
 		276A2C071A7BA500004BCC6F /* blueprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blueprint.json; sourceTree = "<group>"; };
 		276A2C091A7BC076004BCC6F /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Dependencies/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		276A2C181A7BC07C004BCC6F /* URITemplate.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = URITemplate.xcodeproj; path = Dependencies/URITemplate/URITemplate.xcodeproj; sourceTree = "<group>"; };
-		276A2C2A1A7BC239004BCC6F /* HTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPRequest.swift; path = HTTP/HTTPRequest.swift; sourceTree = "<group>"; };
-		276A2C2C1A7BC991004BCC6F /* HTTPRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestTests.swift; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
 		277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHALAdapter.swift; sourceTree = "<group>"; };
 		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
@@ -138,8 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FF1B911A7FB78E00783B74 /* Alamofire.framework in Frameworks */,
-				276A2C291A7BC0CB004BCC6F /* URITemplate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +209,6 @@
 				27931A6D1A7271B10084CB47 /* HTTPTransition.swift */,
 				27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */,
 				27931A721A7272870084CB47 /* HTTPDeserialization.swift */,
-				276A2C2A1A7BC239004BCC6F /* HTTPRequest.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -285,7 +273,6 @@
 				77F592391A1B6F930070F839 /* Utils.swift */,
 				770834751A0913860008869E /* RepresentorTests.swift */,
 				770834831A0914E40008869E /* HTTPTransitionTests.swift */,
-				276A2C2C1A7BC991004BCC6F /* HTTPRequestTests.swift */,
 				77BC153A1A0A6A7B00DD24EF /* Builder */,
 				77D6433B1A0E6DC5004D4BA0 /* Adapters */,
 				276A2C021A7BA4EE004BCC6F /* API Blueprint */,
@@ -398,7 +385,7 @@
 		7708345A1A0913860008869E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Apiary;
 				TargetAttributes = {
 					770834621A0913860008869E = {
@@ -473,9 +460,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2792949B1A488A24009C52E1 /* UniversalFramework_Test.xcconfig in Resources */,
-				2792949A1A488A24009C52E1 /* UniversalFramework_Framework.xcconfig in Resources */,
-				279294991A488A24009C52E1 /* UniversalFramework_Base.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +490,6 @@
 				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
 				276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */,
 				277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */,
-				276A2C2B1A7BC239004BCC6F /* HTTPRequest.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,7 +506,6 @@
 				770834841A0914E40008869E /* HTTPTransitionTests.swift in Sources */,
 				276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */,
 				770834761A0913860008869E /* RepresentorTests.swift in Sources */,
-				276A2C2D1A7BC991004BCC6F /* HTTPRequestTests.swift in Sources */,
 				77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */,
 				276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */,
 			);
