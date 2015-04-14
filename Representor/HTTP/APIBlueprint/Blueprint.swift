@@ -10,6 +10,8 @@ import Foundation
 
 // MARK: Models
 
+public typealias Metadata = (name:String, value:String)
+
 /// A structure representing an API Blueprint AST
 public struct Blueprint {
   /// Name of the API
@@ -21,13 +23,17 @@ public struct Blueprint {
   /// The collection of resource groups
   public let resourceGroups:[ResourceGroup]
 
+  public let metadata:[Metadata]
+
   public init(name:String, description:String?, resourceGroups:[ResourceGroup]) {
+    self.metadata = []
     self.name = name
     self.description = description
     self.resourceGroups = resourceGroups
   }
 
   public init(ast:[String:AnyObject]) {
+    metadata = parseMetadata(ast["metadata"] as? [[String:String]])
     name = ast["name"] as? String ?? ""
     description = ast["description"] as? String
     resourceGroups = parseBlueprintResourceGroups(ast)
@@ -227,6 +233,22 @@ func compactMap<C : CollectionType, T>(source: C, transform: (C.Generator.Elemen
   }
 
   return collection
+}
+
+func parseMetadata(source:[[String:String]]?) -> [Metadata] {
+  if let source = source {
+    return compactMap(source) { item in
+      if let name = item["name"] {
+        if let value = item["value"] {
+          return (name: name, value: value)
+        }
+      }
+
+      return nil
+    }
+  }
+
+  return []
 }
 
 func parseParameter(source:[[String:AnyObject]]?) -> [Parameter] {

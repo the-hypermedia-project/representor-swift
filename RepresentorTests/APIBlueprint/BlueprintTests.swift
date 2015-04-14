@@ -212,4 +212,19 @@ class BlueprintTests : XCTestCase {
     XCTAssertEqual(responsePayload.headers[0].name, "Content-Type")
     XCTAssertEqual(responsePayload.headers[0].value, "application/json")
   }
+
+
+  func testParsingMetadataFromAST() {
+    let bundle = NSBundle(forClass:object_getClass(self))
+    let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
+
+    let format = blueprint.metadata[0]
+    let host = blueprint.metadata[1]
+
+    XCTAssertEqual(format.name, "FORMAT")
+    XCTAssertEqual(format.value, "1A")
+
+    XCTAssertEqual(host.name, "HOST")
+    XCTAssertEqual(host.value, "https://polls.apiblueprint.org/")
+  }
 }
