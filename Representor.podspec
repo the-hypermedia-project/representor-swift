@@ -44,13 +44,6 @@ Pod::Spec.new do |spec|
         blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
       end
     end
-
-    http_spec.subspec 'Alamofire' do |alamofire_spec|
-      alamofire_spec.dependency 'Alamofire'
-      alamofire_spec.dependency 'URITemplate'
-      alamofire_spec.dependency 'Representor/HTTP/Transition'
-      alamofire_spec.source_files = 'Representor/HTTP/HTTPRequest.swift'
-    end
   end
 end
 
