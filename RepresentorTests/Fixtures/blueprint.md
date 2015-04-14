@@ -1,0 +1,158 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Polls
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+# Polls API Root [/]
+
+This resource does not have any attributes. Instead it offers the initial
+API affordances in the form of the links in the JSON body.
+
+It is recommend to follow the “url” link values,
+[Link](https://tools.ietf.org/html/rfc5988) or Location headers where
+applicable to retrieve resources. Instead of constructing your own URLs,
+to keep your client decoupled from implementation details.
+
+## Retrieve the Entry Point [GET]
+
++ Response 200 (application/json)
+
+        {
+            "questions_url": "/questions"
+        }
+
+## Group Question
+
+Resources related to questions in the API.
+
+## Question [/questions/{question_id}]
+
++ Parameters
+    + question_id (required, number, `1`) ... ID of the Question in form of an integer
+
++ Attributes
+    + question: Favourite programming language? (string, required)
+    + published_at: 2014-11-11T08:40:51.620Z (string) - An ISO8601 date when the question was published
+    + choices (array[Choice], required) - An array of Choice objects
+    + url: /questions/1 (string)
+
+### View a Questions Detail [GET]
+
++ Response 200 (application/json)
+
+                {
+                    "question": "Favourite programming language?",
+                    "published_at": "2014-11-11T08:40:51.620Z",
+                    "url": "/questions/1",
+                    "choices": [
+                        {
+                            "choice": "Swift",
+                            "url": "/questions/1/choices/1",
+                            "votes": 2048
+                        }, {
+                            "choice": "Python",
+                            "url": "/questions/1/choices/2",
+                            "votes": 1024
+                        }, {
+                            "choice": "Objective-C",
+                            "url": "/questions/1/choices/3",
+                            "votes": 512
+                        }, {
+                            "choice": "Ruby",
+                            "url": "/questions/1/choices/4",
+                            "votes": 256
+                        }
+                    ]
+                }
+
+## Choice [/questions/{question_id}/choices/{choice_id}]
+
++ Parameters
+    + question_id (required, number, `1`) ... ID of the Question in form of an integer
+    + choice_id (required, number, `1`) ... ID of the Choice in form of an integer
+    
++ Attributes
+    + choice: Swift (string, required)
+    + votes: 0 (number, required)
+
+### Vote on a Choice [POST]
+
+This action allows you to vote on a question's choice.
+
++ Response 201
+
+    + Headers
+
+            Location: /questions/1
+
+## Questions Collection [/questions{?page}]
+
++ Parameters
+    + page (optional, number, `1`) ... The page of questions to return
+
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Link: </questions?page=2>; rel="next"
+
+    + Attributes (array[Question])
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ question (string) - The question
++ choices (array[string]) - A collection of choices.
+
++ Request (application/json)
+
+            {
+                "question": "Favourite programming language?",
+                "choices": [
+                    "Swift",
+                    "Python",
+                    "Objective-C",
+                    "Ruby"
+                ]
+            }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+                {
+                    "question": "Favourite programming language?",
+                    "published_at": "2014-11-11T08:40:51.620Z",
+                    "url": "/questions/2",
+                    "choices": [
+                        {
+                            "choice": "Swift",
+                            "url": "/questions/2/choices/1",
+                            "votes": 0
+                        }, {
+                            "choice": "Python",
+                            "url": "/questions/2/choices/2",
+                            "votes": 0
+                        }, {
+                            "choice": "Objective-C",
+                            "url": "/questions/2/choices/3",
+                            "votes": 0
+                        }, {
+                            "choice": "Ruby",
+                            "url": "/questions/2/choices/4",
+                            "votes": 0
+                        }
+                    ]
+                }
+

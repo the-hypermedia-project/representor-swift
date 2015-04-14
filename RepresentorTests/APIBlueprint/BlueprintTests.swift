@@ -177,24 +177,23 @@ class BlueprintTests : XCTestCase {
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
 
     XCTAssertEqual(blueprint.name, "Polls")
-    XCTAssertEqual(blueprint.description!, "Polls is a simple web service that allows consumers to view polls and vote in them.\n\n")
+    XCTAssertTrue(blueprint.description!.hasPrefix("Polls is a simple API allowing consumers to view polls and vote in them."))
 
     let resourceGroups = blueprint.resourceGroups
     let resourceGroup = resourceGroups[1]
     XCTAssertEqual(resourceGroups.count, 2)
     XCTAssertEqual(resourceGroup.name, "Question")
-    XCTAssertEqual(resourceGroup.description!, "Resource related to questions in the API.\n\n")
+    XCTAssertTrue(resourceGroup.description!.hasPrefix("Resources related to questions in the API."))
 
     let resource = resourceGroup.resources[0]
     XCTAssertEqual(resourceGroup.resources.count, 3)
     XCTAssertEqual(resource.name, "Question")
-    XCTAssertTrue(resource.description!.hasPrefix("A Question object has the following attributes."))
     XCTAssertEqual(resource.uriTemplate, "/questions/{question_id}")
 
     let retrieveAction = resource.actions[0]
     XCTAssertEqual(resource.actions.count, 1)
 
-    XCTAssertEqual(retrieveAction.name, "View a question detail")
+    XCTAssertEqual(retrieveAction.name, "View a Questions Detail")
     XCTAssertEqual(retrieveAction.method, "GET")
 
     XCTAssertEqual(retrieveAction.examples.count, 1)

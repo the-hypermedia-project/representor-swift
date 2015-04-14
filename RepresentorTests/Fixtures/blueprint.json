@@ -11,7 +11,7 @@
     }
   ],
   "name": "Polls",
-  "description": "Polls is a simple web service that allows consumers to view polls and vote in them.\n\n",
+  "description": "Polls is a simple API allowing consumers to view polls and vote in them.\n\n",
   "element": "category",
   "resourceGroups": [
     {
@@ -21,7 +21,7 @@
         {
           "element": "resource",
           "name": "Polls API Root",
-          "description": "This resource does not have any attributes. Instead it offers the initial API affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values or Link headers to get to resources instead of constructing your own URLs to keep your client decoupled from implementation details.\n\n",
+          "description": "This resource does not have any attributes. Instead it offers the initial\nAPI affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values,\n[Link](https://tools.ietf.org/html/rfc5988) or Location headers where\napplicable to retrieve resources. Instead of constructing your own URLs,\nto keep your client decoupled from implementation details.\n\n",
           "uriTemplate": "/",
           "model": {},
           "parameters": [],
@@ -74,12 +74,12 @@
     },
     {
       "name": "Question",
-      "description": "Resource related to questions in the API.\n\n",
+      "description": "Resources related to questions in the API.\n\n",
       "resources": [
         {
           "element": "resource",
           "name": "Question",
-          "description": "A Question object has the following attributes.\n\n- question\n\n- published_at\n\n- url\n\n- choices (an array of Choice objects).\n\n",
+          "description": "",
           "uriTemplate": "/questions/{question_id}",
           "model": {},
           "parameters": [
@@ -95,7 +95,7 @@
           ],
           "actions": [
             {
-              "name": "View a question detail",
+              "name": "View a Questions Detail",
               "description": "",
               "method": "GET",
               "parameters": [],
@@ -136,7 +136,133 @@
               ]
             }
           ],
-          "content": []
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Question",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "question"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Favourite programming language?",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "published_at"
+                        },
+                        "description": "11-11T08:40:51.620Z (string) - An ISO8601 date when the question was published",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "2014",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": null,
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choices"
+                        },
+                        "description": "An array of Choice objects",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Choice",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "url"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "/questions/1",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "element": "resource",
@@ -186,33 +312,101 @@
                       "description": "",
                       "headers": [
                         {
-                          "name": "Content-Type",
-                          "value": "application/json"
+                          "name": "Location",
+                          "value": "/questions/1"
                         }
                       ],
-                      "body": "{\n    \"url\": \"/questions/1/choices/1\",\n    \"votes\": 1,\n    \"choice\": \"Swift\"\n}\n",
+                      "body": "",
                       "schema": "",
-                      "content": [
-                        {
-                          "element": "asset",
-                          "attributes": {
-                            "role": "bodyExample"
-                          },
-                          "content": "{\n    \"url\": \"/questions/1/choices/1\",\n    \"votes\": 1,\n    \"choice\": \"Swift\"\n}\n"
-                        }
-                      ]
+                      "content": []
                     }
                   ]
                 }
               ]
             }
           ],
-          "content": []
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Choice",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choice"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Swift",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "votes"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "0",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "element": "resource",
-          "name": "Questions collection",
-          "description": "Again, instead of constructing the URLs for the next page. It is **highly** recommended that you follow the `next` link header in the response.\n\n",
+          "name": "Questions Collection",
+          "description": "",
           "uriTemplate": "/questions{?page}",
           "model": {},
           "parameters": [
@@ -228,7 +422,7 @@
           ],
           "actions": [
             {
-              "name": "List all questions",
+              "name": "List All Questions",
               "description": "",
               "method": "GET",
               "parameters": [],
@@ -256,15 +450,25 @@
                           "value": "</questions?page=2>; rel=\"next\""
                         }
                       ],
-                      "body": "[\n    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/1\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/1/choices/1\",\n                \"votes\": 2048\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/1/choices/2\",\n                \"votes\": 1024\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/1/choices/3\",\n                \"votes\": 512\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/1/choices/4\",\n                \"votes\": 256\n            }\n        ]\n    }\n]\n",
+                      "body": "",
                       "schema": "",
                       "content": [
                         {
-                          "element": "asset",
-                          "attributes": {
-                            "role": "bodyExample"
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Question",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": []
                           },
-                          "content": "[\n    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/1\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/1/choices/1\",\n                \"votes\": 2048\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/1/choices/2\",\n                \"votes\": 1024\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/1/choices/3\",\n                \"votes\": 512\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/1/choices/4\",\n                \"votes\": 256\n            }\n        ]\n    }\n]\n"
+                          "sections": []
                         }
                       ]
                     }
@@ -273,8 +477,8 @@
               ]
             },
             {
-              "name": "Create a new question",
-              "description": "You can create your own question using this action. It takes a JSON dictionary containing a question and a collection of answers in the form of choices.\n\n- question (string) - The question\n\n- choices (array[string]) - A collection of choices.\n\n",
+              "name": "Create a New Question",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
               "method": "POST",
               "parameters": [],
               "attributes": {
@@ -352,7 +556,7 @@
         {
           "element": "resource",
           "name": "Polls API Root",
-          "description": "This resource does not have any attributes. Instead it offers the initial API affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values or Link headers to get to resources instead of constructing your own URLs to keep your client decoupled from implementation details.\n\n",
+          "description": "This resource does not have any attributes. Instead it offers the initial\nAPI affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values,\n[Link](https://tools.ietf.org/html/rfc5988) or Location headers where\napplicable to retrieve resources. Instead of constructing your own URLs,\nto keep your client decoupled from implementation details.\n\n",
           "uriTemplate": "/",
           "model": {},
           "parameters": [],
@@ -411,12 +615,12 @@
       "content": [
         {
           "element": "copy",
-          "content": "Resource related to questions in the API.\n\n"
+          "content": "Resources related to questions in the API.\n\n"
         },
         {
           "element": "resource",
           "name": "Question",
-          "description": "A Question object has the following attributes.\n\n- question\n\n- published_at\n\n- url\n\n- choices (an array of Choice objects).\n\n",
+          "description": "",
           "uriTemplate": "/questions/{question_id}",
           "model": {},
           "parameters": [
@@ -432,7 +636,7 @@
           ],
           "actions": [
             {
-              "name": "View a question detail",
+              "name": "View a Questions Detail",
               "description": "",
               "method": "GET",
               "parameters": [],
@@ -473,7 +677,133 @@
               ]
             }
           ],
-          "content": []
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Question",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "question"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Favourite programming language?",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "published_at"
+                        },
+                        "description": "11-11T08:40:51.620Z (string) - An ISO8601 date when the question was published",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "2014",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": null,
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choices"
+                        },
+                        "description": "An array of Choice objects",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Choice",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "url"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "/questions/1",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "element": "resource",
@@ -523,33 +853,101 @@
                       "description": "",
                       "headers": [
                         {
-                          "name": "Content-Type",
-                          "value": "application/json"
+                          "name": "Location",
+                          "value": "/questions/1"
                         }
                       ],
-                      "body": "{\n    \"url\": \"/questions/1/choices/1\",\n    \"votes\": 1,\n    \"choice\": \"Swift\"\n}\n",
+                      "body": "",
                       "schema": "",
-                      "content": [
-                        {
-                          "element": "asset",
-                          "attributes": {
-                            "role": "bodyExample"
-                          },
-                          "content": "{\n    \"url\": \"/questions/1/choices/1\",\n    \"votes\": 1,\n    \"choice\": \"Swift\"\n}\n"
-                        }
-                      ]
+                      "content": []
                     }
                   ]
                 }
               ]
             }
           ],
-          "content": []
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Choice",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choice"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Swift",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "votes"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "0",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "element": "resource",
-          "name": "Questions collection",
-          "description": "Again, instead of constructing the URLs for the next page. It is **highly** recommended that you follow the `next` link header in the response.\n\n",
+          "name": "Questions Collection",
+          "description": "",
           "uriTemplate": "/questions{?page}",
           "model": {},
           "parameters": [
@@ -565,7 +963,7 @@
           ],
           "actions": [
             {
-              "name": "List all questions",
+              "name": "List All Questions",
               "description": "",
               "method": "GET",
               "parameters": [],
@@ -593,15 +991,25 @@
                           "value": "</questions?page=2>; rel=\"next\""
                         }
                       ],
-                      "body": "[\n    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/1\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/1/choices/1\",\n                \"votes\": 2048\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/1/choices/2\",\n                \"votes\": 1024\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/1/choices/3\",\n                \"votes\": 512\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/1/choices/4\",\n                \"votes\": 256\n            }\n        ]\n    }\n]\n",
+                      "body": "",
                       "schema": "",
                       "content": [
                         {
-                          "element": "asset",
-                          "attributes": {
-                            "role": "bodyExample"
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Question",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": []
                           },
-                          "content": "[\n    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/1\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/1/choices/1\",\n                \"votes\": 2048\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/1/choices/2\",\n                \"votes\": 1024\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/1/choices/3\",\n                \"votes\": 512\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/1/choices/4\",\n                \"votes\": 256\n            }\n        ]\n    }\n]\n"
+                          "sections": []
                         }
                       ]
                     }
@@ -610,8 +1018,8 @@
               ]
             },
             {
-              "name": "Create a new question",
-              "description": "You can create your own question using this action. It takes a JSON dictionary containing a question and a collection of answers in the form of choices.\n\n- question (string) - The question\n\n- choices (array[string]) - A collection of choices.\n\n",
+              "name": "Create a New Question",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
               "method": "POST",
               "parameters": [],
               "attributes": {
