@@ -96,12 +96,15 @@ public struct Resource {
   /// Array of actions available on the resource each defining at least one complete HTTP transaction
   public let actions:[Action]
 
-  public init(name:String, description:String?, uriTemplate:String, parameters:[Parameter], actions:[Action]) {
+  public let content:[[String:AnyObject]]
+
+  public init(name:String, description:String?, uriTemplate:String, parameters:[Parameter], actions:[Action], content:[[String:AnyObject]]? = nil) {
     self.name = name
     self.description = description
     self.uriTemplate = uriTemplate
     self.actions = actions
     self.parameters = parameters
+    self.content = content ?? []
   }
 }
 
@@ -162,7 +165,7 @@ public struct Action {
   /// HTTP transaction examples for the relevant HTTP request method
   public let examples:[TransactionExample]
 
-  public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil, examples:[TransactionExample]? = nil) {
+  public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil, examples:[TransactionExample]? = nil, content:[[String:AnyObject]]? = nil) {
     self.name = name
     self.description = description
     self.method = method
@@ -212,11 +215,14 @@ public struct Payload {
   /// An entity body to be transferred with HTTP message represented by this payload
   public let body:NSData?
 
-  public init(name:String, description:String? = nil, headers:[Header]? = nil, body:NSData? = nil) {
+  public let content:[[String:AnyObject]]
+
+  public init(name:String, description:String? = nil, headers:[Header]? = nil, body:NSData? = nil, content:[[String:AnyObject]]? = nil) {
     self.name = name
     self.description = description
     self.headers = headers ?? []
     self.body = body
+    self.content = content ?? []
   }
 }
 
@@ -320,9 +326,10 @@ func parsePayloads(source:[[String:AnyObject]]?) -> [Payload] {
       let headers = parseHeaders(item["headers"] as? [[String:String]])
       let bodyString = item["body"] as? String
       let body = bodyString?.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+      let content = item["content"] as? [[String:AnyObject]]
 
       if let name = name {
-        return Payload(name: name, description: description, headers: headers, body: body)
+        return Payload(name: name, description: description, headers: headers, body: body, content: content)
       }
 
       return nil
@@ -356,10 +363,11 @@ func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
       let uriTemplate = item["uriTemplate"] as? String
       let actions = parseActions(item["actions"] as? [[String:AnyObject]])
       let parameters = parseParameter(item["parameters"] as? [[String:AnyObject]])
+      let content = item["content"] as? [[String:AnyObject]]
 
       if let name = name {
         if let uriTemplate = uriTemplate {
-          return Resource(name: name, description: description, uriTemplate: uriTemplate, parameters: parameters, actions: actions)
+          return Resource(name: name, description: description, uriTemplate: uriTemplate, parameters: parameters, actions: actions, content: content)
         }
       }
 

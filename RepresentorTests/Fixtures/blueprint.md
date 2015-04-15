@@ -72,7 +72,7 @@ Resources related to questions in the API.
 + Parameters
     + question_id (required, number, `1`) ... ID of the Question in form of an integer
     + choice_id (required, number, `1`) ... ID of the Choice in form of an integer
-    
+
 + Attributes
     + choice: Swift (string, required)
     + votes: 0 (number, required)

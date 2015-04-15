@@ -210,8 +210,17 @@ class BlueprintTests : XCTestCase {
     XCTAssertEqual(responsePayload.headers.count, 1)
     XCTAssertEqual(responsePayload.headers[0].name, "Content-Type")
     XCTAssertEqual(responsePayload.headers[0].value, "application/json")
-  }
 
+    // Test the choices are parsed in resources
+    XCTAssertEqual(resource.content.count, 1)
+
+    // Test the choices are parsed in payloads
+    let questionsResource = resourceGroup.resources[2]
+    let questionsAction = questionsResource.actions[0]
+    let questionsResponseExample = questionsAction.examples[0].responses[0]
+    XCTAssertEqual(questionsResource.name, "Questions Collection")
+    XCTAssertEqual(questionsResponseExample.content.count, 1)
+  }
 
   func testParsingMetadataFromAST() {
     let bundle = NSBundle(forClass:object_getClass(self))
