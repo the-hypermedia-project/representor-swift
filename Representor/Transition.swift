@@ -11,12 +11,14 @@ import Foundation
 public struct InputProperty<T : AnyObject> : Equatable {
   public let defaultValue:T?
   public let value:T?
+  public let required:Bool?
 
   // TODO: Define validators
 
-  public init(value:T?, defaultValue:T?) {
+  public init(value:T?, defaultValue:T?, required:Bool? = nil) {
     self.value = value
     self.defaultValue = defaultValue
+    self.required = required
   }
 }
 

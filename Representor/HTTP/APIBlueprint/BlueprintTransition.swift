@@ -47,7 +47,7 @@ extension HTTPTransition {
       let addParameter = { (parameter:Parameter) -> Void in
         let value = parameter.example
         let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
-        builder.addParameter(parameter.name, value:value, defaultValue:defaultValue)
+        builder.addParameter(parameter.name, value:value, defaultValue:defaultValue, required:parameter.required)
       }
 
       action.parameters.map(addParameter)

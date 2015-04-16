@@ -57,8 +57,8 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
   /// :param: name The name of the attribute
   /// :param: value The value of the attribute
   /// :param: value The default value of the attribute
-  public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?) {
-    let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue)
+  public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?, required:Bool? = nil) {
+    let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue, required:required)
     parameters[name] = property
   }
 }
