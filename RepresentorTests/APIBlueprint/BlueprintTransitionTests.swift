@@ -61,4 +61,14 @@ class BlueprintTransitionTests: XCTestCase {
     XCTAssertEqual(transitionParameter.value as! String, "value")
     XCTAssertEqual(transitionParameter.defaultValue as! String, "default")
   }
+
+  func testActionAttributesToTransitions() {
+    let bundle = NSBundle(forClass:object_getClass(self))
+    let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)
+    let transition = blueprint!.transition("Questions Collection", action: "create")
+
+    XCTAssertTrue(transition != nil)
+    XCTAssertTrue(transition!.attributes["question"]!.required!)
+    XCTAssertFalse(transition!.attributes["choices"]!.required!)
+  }
 }

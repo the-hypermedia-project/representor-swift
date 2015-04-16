@@ -39,6 +39,42 @@ extension Resource {
   }
 }
 
+func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBuilder) {
+  func isPropertyRequired(property:[String:AnyObject]) -> Bool? {
+    if let valueDefinition = property["valueDefinition"] as? [String:AnyObject] {
+      if let typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject] {
+        if let attributes = typeDefinition["attributes"] as? [String] {
+          return contains(attributes, "required")
+        }
+      }
+    }
+
+    return nil
+  }
+
+  if let sections = dataStructure["sections"] as? [[String:AnyObject]] {
+    if let section = sections.first {
+      if (section["class"] as? String) ?? "" == "memberType" {
+        if let content = section["content"] as? [[String:AnyObject]] {
+          for property in content {
+            if ((property["class"] as? String) ?? "") != "property" {
+              continue
+            }
+
+            if let content = property["content"] as? [String:AnyObject] {
+              if let name = content["name"] as? [String:AnyObject] {
+                if let literal = name["literal"] as? String {
+                  builder.addAttribute(literal, value: "", defaultValue: "", required: isPropertyRequired(content))
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 extension HTTPTransition {
   public static func from(# resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
     return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
@@ -53,6 +89,14 @@ extension HTTPTransition {
       action.parameters.map(addParameter)
       let parameters = action.parameters.map { $0.name }
       resource.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
+
+      // Let's look at the MSON structure, we currently only look for the members
+      // of an object since that's only what we can put in a transitions
+      // attributes in the Representor
+      let dataStructure = action.content.filter { ($0["element"] as? String) == "dataStructure" }.first
+      if let dataStructure = dataStructure {
+        parseAttributes(dataStructure, builder)
+      }
     }
   }
 }
