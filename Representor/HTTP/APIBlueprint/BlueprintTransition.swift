@@ -31,24 +31,29 @@ extension Resource {
       return false
     }
 
-    let action = actions.filter(filterAction).first
-    if let action = action {
-      return HTTPTransition(uri: action.uriTemplate ?? uriTemplate) { builder in
-        builder.method = action.method
-
-        let addParameter = { (parameter:Parameter) -> Void in
-          let value = parameter.example
-          let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
-          builder.addParameter(parameter.name, value:value, defaultValue:defaultValue)
-        }
-
-        action.parameters.map(addParameter)
-        let parameters = action.parameters.map{ $0.name }
-        self.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
-      }
+    if let action = actions.filter(filterAction).first {
+      return HTTPTransition.from(resource: self, action: action)
     }
 
     return nil
+  }
+}
+
+extension HTTPTransition {
+  public static func from(# resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
+    return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
+      builder.method = action.method
+
+      let addParameter = { (parameter:Parameter) -> Void in
+        let value = parameter.example
+        let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
+        builder.addParameter(parameter.name, value:value, defaultValue:defaultValue)
+      }
+
+      action.parameters.map(addParameter)
+      let parameters = action.parameters.map { $0.name }
+      resource.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
+    }
   }
 }
 
