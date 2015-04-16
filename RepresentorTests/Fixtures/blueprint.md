@@ -108,8 +108,10 @@ You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
 form of choices.
 
-+ question (string) - The question
-+ choices (array[string]) - A collection of choices.
++ Relation: create
++ Attributes
+    + question (string, required) - The question
+    + choices (array[string]) - A collection of choices.
 
 + Request (application/json)
 

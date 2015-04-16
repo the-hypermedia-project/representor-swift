@@ -478,14 +478,77 @@
             },
             {
               "name": "Create a New Question",
-              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n",
               "method": "POST",
               "parameters": [],
               "attributes": {
-                "relation": "",
+                "relation": "create",
                 "uriTemplate": ""
               },
-              "content": [],
+              "content": [
+                {
+                  "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": null,
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": [
+                    {
+                      "class": "memberType",
+                      "content": [
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "question"
+                            },
+                            "description": "The question",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": "string",
+                                  "nestedTypes": []
+                                },
+                                "attributes": [
+                                  "required"
+                                ]
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        },
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "choices"
+                            },
+                            "description": "A collection of choices.",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": "array",
+                                  "nestedTypes": [
+                                    "string"
+                                  ]
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
               "examples": [
                 {
                   "name": "",
@@ -1019,14 +1082,77 @@
             },
             {
               "name": "Create a New Question",
-              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n",
               "method": "POST",
               "parameters": [],
               "attributes": {
-                "relation": "",
+                "relation": "create",
                 "uriTemplate": ""
               },
-              "content": [],
+              "content": [
+                {
+                  "element": "dataStructure",
+                  "name": null,
+                  "typeDefinition": {
+                    "typeSpecification": {
+                      "name": null,
+                      "nestedTypes": []
+                    },
+                    "attributes": []
+                  },
+                  "sections": [
+                    {
+                      "class": "memberType",
+                      "content": [
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "question"
+                            },
+                            "description": "The question",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": "string",
+                                  "nestedTypes": []
+                                },
+                                "attributes": [
+                                  "required"
+                                ]
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        },
+                        {
+                          "content": {
+                            "name": {
+                              "literal": "choices"
+                            },
+                            "description": "A collection of choices.",
+                            "valueDefinition": {
+                              "values": [],
+                              "typeDefinition": {
+                                "typeSpecification": {
+                                  "name": "array",
+                                  "nestedTypes": [
+                                    "string"
+                                  ]
+                                },
+                                "attributes": []
+                              }
+                            },
+                            "sections": []
+                          },
+                          "class": "property"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
               "examples": [
                 {
                   "name": "",

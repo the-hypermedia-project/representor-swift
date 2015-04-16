@@ -165,6 +165,8 @@ public struct Action {
   /// HTTP transaction examples for the relevant HTTP request method
   public let examples:[TransactionExample]
 
+  public let content:[[String:AnyObject]]
+
   public init(name:String, description:String?, method:String, parameters:[Parameter], uriTemplate:String? = nil, relation:String? = nil, examples:[TransactionExample]? = nil, content:[[String:AnyObject]]? = nil) {
     self.name = name
     self.description = description
@@ -173,6 +175,7 @@ public struct Action {
     self.uriTemplate = uriTemplate
     self.relation = relation
     self.examples = examples ?? []
+    self.content = content ?? []
   }
 }
 
@@ -285,10 +288,11 @@ func parseActions(source:[[String:AnyObject]]?) -> [Action] {
       let uriTemplate = attributes?["uriTemplate"]
       let relation = attributes?["relation"]
       let examples = parseExamples(item["examples"] as? [[String:AnyObject]])
+      let content = item["content"] as? [[String:AnyObject]]
 
       if let name = name {
         if let method = method {
-          return Action(name: name, description: description, method: method, parameters: parameters, uriTemplate:uriTemplate, relation:relation, examples:examples)
+          return Action(name: name, description: description, method: method, parameters: parameters, uriTemplate:uriTemplate, relation:relation, examples:examples, content:content)
         }
       }
 

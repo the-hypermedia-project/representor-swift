@@ -31,24 +31,73 @@ extension Resource {
       return false
     }
 
-    let action = actions.filter(filterAction).first
-    if let action = action {
-      return HTTPTransition(uri: action.uriTemplate ?? uriTemplate) { builder in
-        builder.method = action.method
+    if let action = actions.filter(filterAction).first {
+      return HTTPTransition.from(resource: self, action: action)
+    }
 
-        let addParameter = { (parameter:Parameter) -> Void in
-          let value = parameter.example
-          let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
-          builder.addParameter(parameter.name, value:value, defaultValue:defaultValue)
+    return nil
+  }
+}
+
+func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBuilder) {
+  func isPropertyRequired(property:[String:AnyObject]) -> Bool? {
+    if let valueDefinition = property["valueDefinition"] as? [String:AnyObject] {
+      if let typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject] {
+        if let attributes = typeDefinition["attributes"] as? [String] {
+          return contains(attributes, "required")
         }
-
-        action.parameters.map(addParameter)
-        let parameters = action.parameters.map{ $0.name }
-        self.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
       }
     }
 
     return nil
+  }
+
+  if let sections = dataStructure["sections"] as? [[String:AnyObject]] {
+    if let section = sections.first {
+      if (section["class"] as? String) ?? "" == "memberType" {
+        if let content = section["content"] as? [[String:AnyObject]] {
+          for property in content {
+            if ((property["class"] as? String) ?? "") != "property" {
+              continue
+            }
+
+            if let content = property["content"] as? [String:AnyObject] {
+              if let name = content["name"] as? [String:AnyObject] {
+                if let literal = name["literal"] as? String {
+                  builder.addAttribute(literal, value: "", defaultValue: "", required: isPropertyRequired(content))
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+extension HTTPTransition {
+  public static func from(# resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
+    return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
+      builder.method = action.method
+
+      let addParameter = { (parameter:Parameter) -> Void in
+        let value = parameter.example
+        let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
+        builder.addParameter(parameter.name, value:value, defaultValue:defaultValue, required:parameter.required)
+      }
+
+      action.parameters.map(addParameter)
+      let parameters = action.parameters.map { $0.name }
+      resource.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
+
+      // Let's look at the MSON structure, we currently only look for the members
+      // of an object since that's only what we can put in a transitions
+      // attributes in the Representor
+      let dataStructure = action.content.filter { ($0["element"] as? String) == "dataStructure" }.first
+      if let dataStructure = dataStructure {
+        parseAttributes(dataStructure, builder)
+      }
+    }
   }
 }
 
