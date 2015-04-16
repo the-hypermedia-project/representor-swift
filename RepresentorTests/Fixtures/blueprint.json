@@ -1,94 +1,46 @@
 {
-  "_version": "2.1",
+  "_version": "3.0",
   "metadata": [
     {
       "name": "FORMAT",
       "value": "1A"
+    },
+    {
+      "name": "HOST",
+      "value": "https://polls.apiblueprint.org/"
     }
   ],
-  "name": "Requests API",
-  "description": "Following the [Responses](5.%20Responses.md) example, this API will show you how to define multiple requests and what data these requests can bear. Let's demonstrate multiple requests on a trivial example of content negotiation.\n\n## API Blueprint\n\n+ [Previous: Responses](5.%20Responses.md)\n\n+ [This: Raw API Blueprint](https://raw.github.com/apiaryio/api-blueprint/master/examples/6.%20Requests.md)\n\n+ [Next: Parameters](7.%20Parameters.md)\n\n",
+  "name": "Polls",
+  "description": "Polls is a simple API allowing consumers to view polls and vote in them.\n\n",
+  "element": "category",
   "resourceGroups": [
     {
-      "name": "Messages",
-      "description": "Group of all messages-related resources.\n\n",
+      "name": "",
+      "description": "",
       "resources": [
         {
-          "name": "My Message",
-          "description": "",
-          "uriTemplate": "/message",
+          "element": "resource",
+          "name": "Polls API Root",
+          "description": "This resource does not have any attributes. Instead it offers the initial\nAPI affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values,\n[Link](https://tools.ietf.org/html/rfc5988) or Location headers where\napplicable to retrieve resources. Instead of constructing your own URLs,\nto keep your client decoupled from implementation details.\n\n",
+          "uriTemplate": "/",
           "model": {},
           "parameters": [],
           "actions": [
             {
-              "name": "Retrieve a Message",
-              "description": "In API Blueprint requests can hold exactly the same kind of information and can be described by exactly the same structure as responses, only with different signature – using the `Request` keyword. The string that follows after the `Request` keyword is a request identifier. Again, using an explanatory and simple naming is the best way to go. \n\n",
+              "name": "Retrieve the Entry Point",
+              "description": "",
               "method": "GET",
-              "parameters": [
-                {
-                  "name": "id",
-                  "description": "An unique identifier of the message.",
-                  "type": "number",
-                  "required": true,
-                  "default": "",
-                  "example": "1",
-                  "values": []
-                }
-              ],
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
               "examples": [
                 {
                   "name": "",
                   "description": "",
-                  "requests": [
-                    {
-                      "name": "Plain Text Message",
-                      "description": "",
-                      "headers": [
-                        {
-                          "name": "Accept",
-                          "value": "text/plain"
-                        }
-                      ],
-                      "body": "",
-                      "schema": ""
-                    }
-                  ],
-                  "responses": [
-                    {
-                      "name": "200",
-                      "description": "",
-                      "headers": [
-                        {
-                          "name": "Content-Type",
-                          "value": "text/plain"
-                        },
-                        {
-                          "name": "X-My-Message-Header",
-                          "value": "42"
-                        }
-                      ],
-                      "body": "Hello World!\n",
-                      "schema": ""
-                    }
-                  ]
-                },
-                {
-                  "name": "",
-                  "description": "",
-                  "requests": [
-                    {
-                      "name": "JSON Message",
-                      "description": "",
-                      "headers": [
-                        {
-                          "name": "Accept",
-                          "value": "application/json"
-                        }
-                      ],
-                      "body": "",
-                      "schema": ""
-                    }
-                  ],
+                  "requests": [],
                   "responses": [
                     {
                       "name": "200",
@@ -97,43 +49,69 @@
                         {
                           "name": "Content-Type",
                           "value": "application/json"
-                        },
-                        {
-                          "name": "X-My-Message-Header",
-                          "value": "42"
                         }
                       ],
-                      "body": "{ \"message\": \"Hello World!\" }      \n",
-                      "schema": ""
+                      "body": "{\n    \"questions_url\": \"/questions\"\n}\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\n    \"questions_url\": \"/questions\"\n}\n"
+                        }
+                      ]
                     }
                   ]
                 }
               ]
-            },
+            }
+          ],
+          "content": []
+        }
+      ]
+    },
+    {
+      "name": "Question",
+      "description": "Resources related to questions in the API.\n\n",
+      "resources": [
+        {
+          "element": "resource",
+          "name": "Question",
+          "description": "",
+          "uriTemplate": "/questions/{question_id}",
+          "model": {},
+          "parameters": [
             {
-              "name": "Update a Message",
+              "name": "question_id",
+              "description": "ID of the Question in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "View a Questions Detail",
               "description": "",
-              "method": "PUT",
+              "method": "GET",
               "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
               "examples": [
                 {
                   "name": "",
                   "description": "",
-                  "requests": [
+                  "requests": [],
+                  "responses": [
                     {
-                      "name": "Update Plain Text Message",
-                      "description": "",
-                      "headers": [
-                        {
-                          "name": "Content-Type",
-                          "value": "text/plain"
-                        }
-                      ],
-                      "body": "All your base are belong to us.\n",
-                      "schema": ""
-                    },
-                    {
-                      "name": "Update JSON Message",
+                      "name": "200",
                       "description": "",
                       "headers": [
                         {
@@ -141,23 +119,973 @@
                           "value": "application/json"
                         }
                       ],
-                      "body": "{ \"message\": \"All your base are belong to us.\" }\n",
-                      "schema": ""
+                      "body": "        {\n            \"question\": \"Favourite programming language?\",\n            \"published_at\": \"2014-11-11T08:40:51.620Z\",\n            \"url\": \"/questions/1\",\n            \"choices\": [\n                {\n                    \"choice\": \"Swift\",\n                    \"url\": \"/questions/1/choices/1\",\n                    \"votes\": 2048\n                }, {\n                    \"choice\": \"Python\",\n                    \"url\": \"/questions/1/choices/2\",\n                    \"votes\": 1024\n                }, {\n                    \"choice\": \"Objective-C\",\n                    \"url\": \"/questions/1/choices/3\",\n                    \"votes\": 512\n                }, {\n                    \"choice\": \"Ruby\",\n                    \"url\": \"/questions/1/choices/4\",\n                    \"votes\": 256\n                }\n            ]\n        }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "        {\n            \"question\": \"Favourite programming language?\",\n            \"published_at\": \"2014-11-11T08:40:51.620Z\",\n            \"url\": \"/questions/1\",\n            \"choices\": [\n                {\n                    \"choice\": \"Swift\",\n                    \"url\": \"/questions/1/choices/1\",\n                    \"votes\": 2048\n                }, {\n                    \"choice\": \"Python\",\n                    \"url\": \"/questions/1/choices/2\",\n                    \"votes\": 1024\n                }, {\n                    \"choice\": \"Objective-C\",\n                    \"url\": \"/questions/1/choices/3\",\n                    \"votes\": 512\n                }, {\n                    \"choice\": \"Ruby\",\n                    \"url\": \"/questions/1/choices/4\",\n                    \"votes\": 256\n                }\n            ]\n        }\n"
+                        }
+                      ]
                     }
-                  ],
-                  "responses": [
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Question",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
                     {
-                      "name": "204",
-                      "description": "",
-                      "headers": [],
-                      "body": "",
-                      "schema": ""
+                      "content": {
+                        "name": {
+                          "literal": "question"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Favourite programming language?",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "published_at"
+                        },
+                        "description": "11-11T08:40:51.620Z (string) - An ISO8601 date when the question was published",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "2014",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": null,
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choices"
+                        },
+                        "description": "An array of Choice objects",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Choice",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "url"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "/questions/1",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
                     }
                   ]
                 }
               ]
             }
           ]
+        },
+        {
+          "element": "resource",
+          "name": "Choice",
+          "description": "",
+          "uriTemplate": "/questions/{question_id}/choices/{choice_id}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "question_id",
+              "description": "ID of the Question in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            },
+            {
+              "name": "choice_id",
+              "description": "ID of the Choice in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "Vote on a Choice",
+              "description": "This action allows you to vote on a question's choice.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "201",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Location",
+                          "value": "/questions/1"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Choice",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choice"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Swift",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "votes"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "0",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resource",
+          "name": "Questions Collection",
+          "description": "",
+          "uriTemplate": "/questions{?page}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "page",
+              "description": "The page of questions to return",
+              "type": "number",
+              "required": false,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "List All Questions",
+              "description": "",
+              "method": "GET",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "name": "Link",
+                          "value": "</questions?page=2>; rel=\"next\""
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Question",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Create a New Question",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "    {\n        \"question\": \"Favourite programming language?\",\n        \"choices\": [\n            \"Swift\",\n            \"Python\",\n            \"Objective-C\",\n            \"Ruby\"\n        ]\n    }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "    {\n        \"question\": \"Favourite programming language?\",\n        \"choices\": [\n            \"Swift\",\n            \"Python\",\n            \"Objective-C\",\n            \"Ruby\"\n        ]\n    }\n"
+                        }
+                      ]
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "201",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "name": "Location",
+                          "value": "/questions/2"
+                        }
+                      ],
+                      "body": "    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/2\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/2/choices/1\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/2/choices/2\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/2/choices/3\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/2/choices/4\",\n                \"votes\": 0\n            }\n        ]\n    }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/2\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/2/choices/1\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/2/choices/2\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/2/choices/3\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/2/choices/4\",\n                \"votes\": 0\n            }\n        ]\n    }\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": []
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "element": "category",
+      "content": [
+        {
+          "element": "resource",
+          "name": "Polls API Root",
+          "description": "This resource does not have any attributes. Instead it offers the initial\nAPI affordances in the form of the links in the JSON body.\n\nIt is recommend to follow the “url” link values,\n[Link](https://tools.ietf.org/html/rfc5988) or Location headers where\napplicable to retrieve resources. Instead of constructing your own URLs,\nto keep your client decoupled from implementation details.\n\n",
+          "uriTemplate": "/",
+          "model": {},
+          "parameters": [],
+          "actions": [
+            {
+              "name": "Retrieve the Entry Point",
+              "description": "",
+              "method": "GET",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "{\n    \"questions_url\": \"/questions\"\n}\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "{\n    \"questions_url\": \"/questions\"\n}\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": []
+        }
+      ]
+    },
+    {
+      "element": "category",
+      "attributes": {
+        "name": "Question"
+      },
+      "content": [
+        {
+          "element": "copy",
+          "content": "Resources related to questions in the API.\n\n"
+        },
+        {
+          "element": "resource",
+          "name": "Question",
+          "description": "",
+          "uriTemplate": "/questions/{question_id}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "question_id",
+              "description": "ID of the Question in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "View a Questions Detail",
+              "description": "",
+              "method": "GET",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "        {\n            \"question\": \"Favourite programming language?\",\n            \"published_at\": \"2014-11-11T08:40:51.620Z\",\n            \"url\": \"/questions/1\",\n            \"choices\": [\n                {\n                    \"choice\": \"Swift\",\n                    \"url\": \"/questions/1/choices/1\",\n                    \"votes\": 2048\n                }, {\n                    \"choice\": \"Python\",\n                    \"url\": \"/questions/1/choices/2\",\n                    \"votes\": 1024\n                }, {\n                    \"choice\": \"Objective-C\",\n                    \"url\": \"/questions/1/choices/3\",\n                    \"votes\": 512\n                }, {\n                    \"choice\": \"Ruby\",\n                    \"url\": \"/questions/1/choices/4\",\n                    \"votes\": 256\n                }\n            ]\n        }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "        {\n            \"question\": \"Favourite programming language?\",\n            \"published_at\": \"2014-11-11T08:40:51.620Z\",\n            \"url\": \"/questions/1\",\n            \"choices\": [\n                {\n                    \"choice\": \"Swift\",\n                    \"url\": \"/questions/1/choices/1\",\n                    \"votes\": 2048\n                }, {\n                    \"choice\": \"Python\",\n                    \"url\": \"/questions/1/choices/2\",\n                    \"votes\": 1024\n                }, {\n                    \"choice\": \"Objective-C\",\n                    \"url\": \"/questions/1/choices/3\",\n                    \"votes\": 512\n                }, {\n                    \"choice\": \"Ruby\",\n                    \"url\": \"/questions/1/choices/4\",\n                    \"votes\": 256\n                }\n            ]\n        }\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Question",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "question"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Favourite programming language?",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "published_at"
+                        },
+                        "description": "11-11T08:40:51.620Z (string) - An ISO8601 date when the question was published",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "2014",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": null,
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choices"
+                        },
+                        "description": "An array of Choice objects",
+                        "valueDefinition": {
+                          "values": [],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Choice",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "url"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "/questions/1",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": []
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resource",
+          "name": "Choice",
+          "description": "",
+          "uriTemplate": "/questions/{question_id}/choices/{choice_id}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "question_id",
+              "description": "ID of the Question in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            },
+            {
+              "name": "choice_id",
+              "description": "ID of the Choice in form of an integer",
+              "type": "number",
+              "required": true,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "Vote on a Choice",
+              "description": "This action allows you to vote on a question's choice.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "201",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Location",
+                          "value": "/questions/1"
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": [
+            {
+              "element": "dataStructure",
+              "name": {
+                "literal": "Choice",
+                "variable": false
+              },
+              "typeDefinition": {
+                "typeSpecification": {
+                  "name": null,
+                  "nestedTypes": []
+                },
+                "attributes": []
+              },
+              "sections": [
+                {
+                  "class": "memberType",
+                  "content": [
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "choice"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "Swift",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "string",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    },
+                    {
+                      "content": {
+                        "name": {
+                          "literal": "votes"
+                        },
+                        "description": "",
+                        "valueDefinition": {
+                          "values": [
+                            {
+                              "literal": "0",
+                              "variable": false
+                            }
+                          ],
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "number",
+                              "nestedTypes": []
+                            },
+                            "attributes": [
+                              "required"
+                            ]
+                          }
+                        },
+                        "sections": []
+                      },
+                      "class": "property"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "element": "resource",
+          "name": "Questions Collection",
+          "description": "",
+          "uriTemplate": "/questions{?page}",
+          "model": {},
+          "parameters": [
+            {
+              "name": "page",
+              "description": "The page of questions to return",
+              "type": "number",
+              "required": false,
+              "default": "",
+              "example": "1",
+              "values": []
+            }
+          ],
+          "actions": [
+            {
+              "name": "List All Questions",
+              "description": "",
+              "method": "GET",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [],
+                  "responses": [
+                    {
+                      "name": "200",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "name": "Link",
+                          "value": "</questions?page=2>; rel=\"next\""
+                        }
+                      ],
+                      "body": "",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "dataStructure",
+                          "name": null,
+                          "typeDefinition": {
+                            "typeSpecification": {
+                              "name": "array",
+                              "nestedTypes": [
+                                {
+                                  "literal": "Question",
+                                  "variable": false
+                                }
+                              ]
+                            },
+                            "attributes": []
+                          },
+                          "sections": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Create a New Question",
+              "description": "You may create your own question using this action. It takes a JSON\nobject containing a question and a collection of answers in the\nform of choices.\n\n+ question (string) - The question\n\n+ choices (array[string]) - A collection of choices.\n\n",
+              "method": "POST",
+              "parameters": [],
+              "attributes": {
+                "relation": "",
+                "uriTemplate": ""
+              },
+              "content": [],
+              "examples": [
+                {
+                  "name": "",
+                  "description": "",
+                  "requests": [
+                    {
+                      "name": "",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "body": "    {\n        \"question\": \"Favourite programming language?\",\n        \"choices\": [\n            \"Swift\",\n            \"Python\",\n            \"Objective-C\",\n            \"Ruby\"\n        ]\n    }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "    {\n        \"question\": \"Favourite programming language?\",\n        \"choices\": [\n            \"Swift\",\n            \"Python\",\n            \"Objective-C\",\n            \"Ruby\"\n        ]\n    }\n"
+                        }
+                      ]
+                    }
+                  ],
+                  "responses": [
+                    {
+                      "name": "201",
+                      "description": "",
+                      "headers": [
+                        {
+                          "name": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "name": "Location",
+                          "value": "/questions/2"
+                        }
+                      ],
+                      "body": "    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/2\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/2/choices/1\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/2/choices/2\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/2/choices/3\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/2/choices/4\",\n                \"votes\": 0\n            }\n        ]\n    }\n",
+                      "schema": "",
+                      "content": [
+                        {
+                          "element": "asset",
+                          "attributes": {
+                            "role": "bodyExample"
+                          },
+                          "content": "    {\n        \"question\": \"Favourite programming language?\",\n        \"published_at\": \"2014-11-11T08:40:51.620Z\",\n        \"url\": \"/questions/2\",\n        \"choices\": [\n            {\n                \"choice\": \"Swift\",\n                \"url\": \"/questions/2/choices/1\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Python\",\n                \"url\": \"/questions/2/choices/2\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Objective-C\",\n                \"url\": \"/questions/2/choices/3\",\n                \"votes\": 0\n            }, {\n                \"choice\": \"Ruby\",\n                \"url\": \"/questions/2/choices/4\",\n                \"votes\": 0\n            }\n        ]\n    }\n"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "content": []
         }
       ]
     }
