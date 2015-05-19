@@ -76,16 +76,6 @@ public class RepresentorBuilder<Transition : TransitionType> {
     transitions[name] = transition
   }
 
-  // MARK: Links
-
-  /// Adds a link
-  ///
-  /// :param: name The name (or relation) for the link
-  /// :param: uri The URI of the link
-  public func addLink(name:String, uri:String) {
-    links[name] = uri
-  }
-
   // MARK: Metadata
 
   /// Adds an piece of metadata

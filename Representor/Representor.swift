@@ -17,23 +17,20 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   /// The separate representors embedded in the current representor.
   public let representors:[String:[Representor]]
 
-  public let links:[String:String]
-
   public let metadata:[String:String]
 
   /// The attributes of the representor
   public let attributes:[String:AnyObject]
 
-  public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, links:[String:String]? = nil, metadata:[String:String]? = nil) {
+  public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, metadata:[String:String]? = nil) {
     self.transitions = transitions ?? [:]
     self.representors = representors ?? [:]
     self.attributes = attributes ?? [:]
-    self.links = links ?? [:]
     self.metadata = metadata ?? [:]
   }
 
   public var hashValue:Int {
-    return transitions.count + representors.count + links.count + metadata.count + attributes.count
+    return transitions.count + representors.count + metadata.count + attributes.count
   }
 
   /// An extension to Representor to provide a builder interface for creating a Representor.
@@ -50,7 +47,6 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
     self.transitions = builder.transitions
     self.representors = builder.representors
     self.attributes = builder.attributes
-    self.links = builder.links
     self.metadata = builder.metadata
   }
 }
@@ -88,7 +84,6 @@ public func ==<Transition : TransitionType>(lhs:Representor<Transition>, rhs:Rep
   return (
     lhs.transitions == rhs.transitions &&
     lhs.representors == rhs.representors &&
-    lhs.links == rhs.links &&
     lhs.metadata == rhs.metadata &&
     (lhs.attributes as NSObject) == (rhs.attributes as NSObject)
   )

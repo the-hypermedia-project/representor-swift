@@ -24,13 +24,14 @@ Representor.framework as a target dependency.
 import Representor
 
 let representor = Representor<HTTPTransition> { builder in
-    builder.addLink("self", uri:"/notes/2/")
-    builder.addLink("previous", uri:"/notes/1/")
-    builder.addLink("next", uri:"/notes/3/")
+    builder.addTransition("self", uri:"/notes/2/")
+    builder.addTransition("previous", uri:"/notes/1/")
+    builder.addTransition("next", uri:"/notes/3/")
 
     builder.addMetaData("title", "Customer Details")
 
     builder.addTransition("create", uri:"/notes/") { transitionBuilder in
+        transitionBuilder.method = "POST"
         transitionBuilder.addAttribute("title")
         transitionBuilder.addAttribute("note")
     }
@@ -44,12 +45,12 @@ if let create = representor.transitions["create"] {
     println("You can create with the URI: \(create.uri).")
 }
 
-if let uri = representor.links["next"] {
-    println("The next representor can be found at: \(uri).")
+if let next = representor.transitions["next"] {
+    println("The next representor can be found at: \(next).")
 }
 
-if let uri = representor.links["previous"] {
-    println("The previous representor can be found at: \(uri).")
+if let prev = representor.transitions["previous"] {
+    println("The previous representor can be found at: \(prev).")
 }
 ```
 

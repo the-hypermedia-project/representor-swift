@@ -19,7 +19,7 @@ class RepresentorTests: XCTestCase {
     super.setUp()
     transition = HTTPTransition(uri:"/self/")
     embeddedRepresentor = Representor()
-    representor = Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"])
+    representor = Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], metadata:["key": "value"])
   }
 
   func testHasTransitions() {
@@ -34,16 +34,12 @@ class RepresentorTests: XCTestCase {
     XCTAssertEqual(representor.attributes["name"] as! String, "Kyle")
   }
 
-  func testHasLinks() {
-    XCTAssertEqual(representor.links, ["next": "/next/"])
-  }
-
   func testHasMetaData() {
     XCTAssertEqual(representor.metadata, ["key": "value"])
   }
 
   func testEquality() {
-    XCTAssertEqual(representor, Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], links:["next": "/next/"], metadata:["key": "value"]))
+    XCTAssertEqual(representor, Representor(transitions:["self": transition], representors:["embedded": [embeddedRepresentor]], attributes:["name":"Kyle"], metadata:["key": "value"]))
     XCTAssertNotEqual(representor, Representor())
   }
 
