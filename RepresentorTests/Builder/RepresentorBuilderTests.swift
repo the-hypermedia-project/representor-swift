@@ -23,7 +23,7 @@ class RepresentorBuilderTests: XCTestCase {
 
   func testAddRepresentor() {
     let representor = Representor<HTTPTransition> { builder in
-      builder.addRepresentor("parent", representor:Representor(transitions:[:], representors:[:], attributes:[:], links:[:], metadata:[:]))
+      builder.addRepresentor("parent", representor: Representor())
     }
 
     XCTAssertTrue(representor.representors["parent"] != nil)
@@ -82,16 +82,6 @@ class RepresentorBuilderTests: XCTestCase {
     }
 
     XCTAssertTrue(representor.transitions["self"] != nil)
-  }
-
-  // MARK: Links
-
-  func testAddLink() {
-    let representor = Representor<HTTPTransition> { builder in
-      builder.addLink("next", uri:"/next/")
-    }
-
-    XCTAssertEqual(representor.links, ["next": "/next/"])
   }
 
   // MARK: Metadata

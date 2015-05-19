@@ -55,7 +55,7 @@ class HTTPTransitionTests : XCTestCase {
   }
 
   func testHasMethod() {
-    XCTAssertEqual(transition.method, "POST")
+    XCTAssertEqual(transition.method, "GET")
   }
 
   func testHasContentType() {

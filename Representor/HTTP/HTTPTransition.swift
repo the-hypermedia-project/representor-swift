@@ -26,7 +26,7 @@ public struct HTTPTransition : TransitionType {
         self.uri = uri
         self.attributes = attributes ?? [:]
         self.parameters = parameters ?? [:]
-        self.method = "POST"
+        self.method = "GET"
         self.suggestedContentTypes = [String]()
     }
 

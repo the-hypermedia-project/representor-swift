@@ -30,8 +30,8 @@ func PollFixtureAttributes(forObject:AnyObject) -> [String:AnyObject] {
 
 func PollFixture(forObject:AnyObject) -> Representor<HTTPTransition> {
   return Representor { builder in
-    builder.addLink("self", uri:"/polls/1/")
-    builder.addLink("next", uri:"/polls/2/")
+    builder.addTransition("self", uri:"/polls/1/")
+    builder.addTransition("next", uri:"/polls/2/")
 
     builder.addAttribute("question", value:"Favourite programming language?")
     builder.addAttribute("published_at", value:"2014-11-11T08:40:51.620Z")
@@ -52,9 +52,9 @@ func PollFixture(forObject:AnyObject) -> Representor<HTTPTransition> {
     ])
 
     builder.addRepresentor("next") { builder in
-      builder.addLink("self", uri:"/polls/2/")
-      builder.addLink("next", uri:"/polls/3/")
-      builder.addLink("previous", uri:"/polls/1/")
+      builder.addTransition("self", uri:"/polls/2/")
+      builder.addTransition("next", uri:"/polls/3/")
+      builder.addTransition("previous", uri:"/polls/1/")
     }
   }
 }

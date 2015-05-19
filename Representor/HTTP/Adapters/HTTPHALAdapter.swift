@@ -8,12 +8,12 @@
 
 import Foundation
 
-func parseHALLinks(halLinks:[String:[String:AnyObject]]) -> [String:String] {
-  var links = [String:String]()
+func parseHALLinks(halLinks:[String:[String:AnyObject]]) -> [String:HTTPTransition] {
+  var links = [String:HTTPTransition]()
 
   for (link, options) in halLinks {
     if let href = options["href"] as? String {
-      links[link] = href
+      links[link] = HTTPTransition(uri: href)
     }
   }
 
@@ -21,10 +21,10 @@ func parseHALLinks(halLinks:[String:[String:AnyObject]]) -> [String:String] {
 }
 
 
-func parseEmbeddedHALs<Transition : TransitionType>(embeddedHALs:[String:AnyObject]) -> [String:[Representor<Transition>]] {
-  var representors = [String:[Representor<Transition>]]()
+func parseEmbeddedHALs(embeddedHALs:[String:AnyObject]) -> [String:[Representor<HTTPTransition>]] {
+  var representors = [String:[Representor<HTTPTransition>]]()
 
-  func parseEmbedded(embedded:[String:AnyObject]) -> Representor<Transition> {
+  func parseEmbedded(embedded:[String:AnyObject]) -> Representor<HTTPTransition> {
     return deserializeHAL(embedded)
   }
 
@@ -40,31 +40,31 @@ func parseEmbeddedHALs<Transition : TransitionType>(embeddedHALs:[String:AnyObje
 }
 
 /// A function to deserialize a HAL structure into a HTTP Transition.
-public func deserializeHAL<Transition : TransitionType>(hal:[String:AnyObject]) -> Representor<Transition> {
+public func deserializeHAL(hal:[String:AnyObject]) -> Representor<HTTPTransition> {
   var hal = hal
 
-  var links = [String:String]()
+  var links = [String:HTTPTransition]()
   if let halLinks = hal.removeValueForKey("_links") as? [String:[String:AnyObject]] {
     links = parseHALLinks(halLinks)
   }
 
-  var representors = [String:[Representor<Transition>]]()
+  var representors = [String:[Representor<HTTPTransition>]]()
   if let embedded = hal.removeValueForKey("_embedded") as? [String:AnyObject] {
     representors = parseEmbeddedHALs(embedded)
   }
 
-  return Representor(transitions: nil, representors: representors, attributes: hal, links: links)
+  return Representor(transitions: links, representors: representors, attributes: hal)
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
-public func serializeHAL<Transition : TransitionType>(representor:Representor<Transition>) -> [String:AnyObject] {
+public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
   var representation = representor.attributes
 
-  if representor.links.count > 0 {
+  if representor.transitions.count > 0 {
     var links = [String:[String:String]]()
 
-    for (relation, uri) in representor.links {
-      links[relation] = ["href": uri]
+    for (relation, transition) in representor.transitions {
+      links[relation] = ["href": transition.uri]
     }
 
     representation["_links"] = links
