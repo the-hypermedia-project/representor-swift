@@ -10,11 +10,17 @@ import Foundation
 
 /// A class used to build a representor using a builder pattern
 public class RepresentorBuilder<Transition : TransitionType> {
-  var transitions = [String:Transition]()
-  var representors = [String:[Representor<Transition>]]()
-  var attributes = [String:AnyObject]()
-  var links = [String:String]()
-  var metadata = [String:String]()
+  /// The added transitions
+  private(set) public var transitions = [String:Transition]()
+
+  /// The added representors
+  private(set) public var representors = [String:[Representor<Transition>]]()
+
+  /// The added attributes
+  private(set) public var attributes = [String:AnyObject]()
+
+  /// The added metadata
+  private(set) public var metadata = [String:String]()
 
   /// Adds an attribute
   ///
