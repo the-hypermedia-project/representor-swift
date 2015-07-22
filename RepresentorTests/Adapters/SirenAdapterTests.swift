@@ -20,8 +20,8 @@ class SirenAdapterTests: XCTestCase {
         "type": "application/x-www-form-urlencoded",
         "fields": [
           [ "name": "username" ],
-          [ "name": "first_name", "value": "John" ],
-          [ "name": "last_name", "value": "Doe" ],
+          [ "title": "First Name", "name": "first_name", "value": "John" ],
+          [ "title": "Last Name", "name": "last_name", "value": "Doe" ],
         ]
       ],
     ]
@@ -32,8 +32,8 @@ class SirenAdapterTests: XCTestCase {
     builder.suggestedContentTypes = ["application/x-www-form-urlencoded"]
 
     builder.addAttribute("username")
-    builder.addAttribute("first_name", value: "John", defaultValue: nil)
-    builder.addAttribute("last_name", value: "Doe", defaultValue: nil)
+    builder.addAttribute("first_name", title: "First Name", value: "John", defaultValue: nil)
+    builder.addAttribute("last_name", title: "Last Name", value: "Doe", defaultValue: nil)
   }
 
   func fixture() -> [String:AnyObject] {
@@ -77,8 +77,8 @@ class SirenAdapterTests: XCTestCase {
     XCTAssertEqual(action["type"] as! String, "application/x-www-form-urlencoded")
     XCTAssertEqual(sortedFields, [
       ["name": "username"],
-      ["name": "last_name", "value": "Doe"],
-      ["name": "first_name", "value": "John"],
+      ["title": "Last Name", "name": "last_name", "value": "Doe"],
+      ["title": "First Name", "name": "first_name", "value": "John"],
     ])
   }
 }

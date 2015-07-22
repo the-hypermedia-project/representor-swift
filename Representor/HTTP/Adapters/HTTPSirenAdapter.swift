@@ -8,6 +8,15 @@
 
 import Foundation
 
+private func sirenFieldToAttribute(builder: HTTPTransitionBuilder)(field:[String:AnyObject]) {
+  if let name = field["name"] as? String {
+    let title = field["title"] as? String
+    let value:AnyObject? = field["value"]
+
+    builder.addAttribute(name, title: title, value: value, defaultValue: nil)
+  }
+}
+
 private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String, transition:HTTPTransition)? {
   if let name = action["name"] as? String {
     if let href = action["href"] as? String {
@@ -21,15 +30,7 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
         }
 
         if let fields = action["fields"] as? [[String:AnyObject]] {
-          for field in fields {
-            if let name = field["name"] as? String {
-              if let value = field["value"] as? String {
-                builder.addAttribute(name, value: value as NSObject, defaultValue: nil)
-              } else {
-                builder.addAttribute(name)
-              }
-            }
-          }
+          fields.map(sirenFieldToAttribute(builder))
         }
       }
 
@@ -47,6 +48,10 @@ private func inputPropertyToSirenField(name:String, inputProperty:InputProperty<
 
   if let value: AnyObject = inputProperty.value {
     field["value"] = "\(value)"
+  }
+
+  if let title = inputProperty.title {
+    field["title"] = title
   }
 
   return field
