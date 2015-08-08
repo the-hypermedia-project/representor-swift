@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1928DE801B72566D009C4243 /* GitHubAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1928DE7F1B72566D009C4243 /* GitHubAdapter.swift */; };
+		1928DE841B725C07009C4243 /* HTTPGitHubAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1928DE831B725C07009C4243 /* HTTPGitHubAdapter.swift */; };
+		1928DE861B725C38009C4243 /* poll.github.json in Resources */ = {isa = PBXBuildFile; fileRef = 1928DE851B725C38009C4243 /* poll.github.json */; };
 		276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */; };
 		276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */; };
 		276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1928DE7F1B72566D009C4243 /* GitHubAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubAdapter.swift; path = Adapters/GitHubAdapter.swift; sourceTree = "<group>"; };
+		1928DE831B725C07009C4243 /* HTTPGitHubAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPGitHubAdapter.swift; sourceTree = "<group>"; };
+		1928DE851B725C38009C4243 /* poll.github.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.github.json; sourceTree = "<group>"; };
 		276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blueprint.swift; sourceTree = "<group>"; };
 		276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransition.swift; sourceTree = "<group>"; };
 		276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTests.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 		27931A741A727A280084CB47 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				1928DE831B725C07009C4243 /* HTTPGitHubAdapter.swift */,
 				277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */,
 				27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */,
 			);
@@ -237,8 +244,9 @@
 		77D6433B1A0E6DC5004D4BA0 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */,
+				1928DE7F1B72566D009C4243 /* GitHubAdapter.swift */,
 				77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */,
+				2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */,
 				77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */,
 			);
 			name = Adapters;
@@ -248,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				276A2C071A7BA500004BCC6F /* blueprint.json */,
+				1928DE851B725C38009C4243 /* poll.github.json */,
 				77F592341A1B6E1B0070F839 /* poll.hal.json */,
 				77F592351A1B6E1B0070F839 /* poll.siren.json */,
 			);
@@ -351,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1928DE861B725C38009C4243 /* poll.github.json in Resources */,
 				77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */,
 				77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */,
 				276A2C081A7BA500004BCC6F /* blueprint.json in Resources */,
@@ -370,6 +380,7 @@
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
 				27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */,
 				276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */,
+				1928DE841B725C07009C4243 /* HTTPGitHubAdapter.swift in Sources */,
 				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
 				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
 				276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */,
@@ -391,6 +402,7 @@
 				276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */,
 				770834761A0913860008869E /* RepresentorTests.swift in Sources */,
 				77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */,
+				1928DE801B72566D009C4243 /* GitHubAdapter.swift in Sources */,
 				276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
