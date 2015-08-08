@@ -43,6 +43,7 @@ public struct HTTPDeserialization {
   public static var preferredContentTypes:[String] = [
     "application/vnd.siren+json",
     "application/hal+json",
+    "application/vnd.github.v3+json"
   ]
 
   /** Deserialize an NSHTTPURLResponse and body into a Representor.
