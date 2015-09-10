@@ -10,6 +10,7 @@ Pod::Spec.new do |spec|
   spec.requires_arc = true
   spec.ios.deployment_target = '8.0'
   spec.osx.deployment_target = '10.9'
+  spec.watchos.deployment_target = '2.0'
 
   spec.subspec 'Core' do |core_spec|
     core_spec.source_files = 'Representor/*.{swift,h}', 'Representor/Builder/*.swift'
