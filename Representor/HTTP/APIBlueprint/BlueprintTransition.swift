@@ -80,13 +80,14 @@ extension HTTPTransition {
     return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
       builder.method = action.method
 
-      let addParameter = { (parameter:Parameter) -> Void in
+      func addParameter(parameter:Parameter) {
         let value = parameter.example
         let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
         builder.addParameter(parameter.name, value:value, defaultValue:defaultValue, required:parameter.required)
       }
 
       action.parameters.forEach(addParameter)
+
       let parameters = action.parameters.map { $0.name }
       let missingParentParameters = resource.parameters.filter {
         !parameters.contains($0.name)
