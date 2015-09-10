@@ -26,10 +26,10 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
 
   /// Adds an attribute with a value or default value
   ///
-  /// :param: name The name of the attribute
-  /// :param: title The human readable title of the attribute
-  /// :param: value The value of the attribute
-  /// :param: defaultValue The default value of the attribute
+  /// - parameter name: The name of the attribute
+  /// - parameter title: The human readable title of the attribute
+  /// - parameter value: The value of the attribute
+  /// - parameter defaultValue: The default value of the attribute
   public func addAttribute<T : AnyObject>(name:String, title:String? = nil, value:T? = nil, defaultValue:T? = nil, required:Bool? = nil) {
     let property = InputProperty<AnyObject>(title:title, value:value, defaultValue:defaultValue, required:required)
     attributes[name] = property
@@ -37,8 +37,8 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
 
   /// Adds an attribute
   ///
-  /// :param: name The name of the attribute
-  /// :param: title The human readable title of the attribute
+  /// - parameter name: The name of the attribute
+  /// - parameter title: The human readable title of the attribute
   public func addAttribute(name:String, title:String? = nil, required:Bool? = nil) {
     let property = InputProperty<AnyObject>(title:title, required:required)
     attributes[name] = property
@@ -48,7 +48,7 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
 
   /// Adds a parameter without a value or default value
   ///
-  /// :param: name The name of the attribute
+  /// - parameter name: The name of the attribute
   public func addParameter(name:String) {
     let property = InputProperty<AnyObject>(value:nil, defaultValue:nil)
     parameters[name] = property
@@ -56,9 +56,9 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
 
   /// Adds a parameter with a value or default value
   ///
-  /// :param: name The name of the attribute
-  /// :param: value The value of the attribute
-  /// :param: value The default value of the attribute
+  /// - parameter name: The name of the attribute
+  /// - parameter value: The value of the attribute
+  /// - parameter value: The default value of the attribute
   public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?, required:Bool? = nil) {
     let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue, required:required)
     parameters[name] = property

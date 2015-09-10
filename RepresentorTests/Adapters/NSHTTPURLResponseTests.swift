@@ -20,7 +20,7 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
   }
 
   func createResponse(contentType:String, fixtureNamed:String) -> (NSHTTPURLResponse, NSData) {
-    return createResponse(contentType, data: fixture(fixtureNamed, self))
+    return createResponse(contentType, data: fixture(fixtureNamed, forObject: self))
   }
 
   func JSONHALFixture() -> (NSHTTPURLResponse, NSData) {

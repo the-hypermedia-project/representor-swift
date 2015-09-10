@@ -30,7 +30,7 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
         }
 
         if let fields = action["fields"] as? [[String:AnyObject]] {
-          fields.map(sirenFieldToAttribute(builder))
+          fields.forEach(sirenFieldToAttribute(builder))
         }
       }
 
@@ -69,7 +69,7 @@ private func transitionToSirenAction(relation:String, transition:HTTPTransition)
   }
 
   if transition.attributes.count > 0 {
-    action["fields"] = map(transition.attributes, inputPropertyToSirenField)
+    action["fields"] = transition.attributes.map(inputPropertyToSirenField)
   }
 
   return action
@@ -147,17 +147,17 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:A
     representation["properties"] = representor.attributes
   }
 
-  let links = filter(representor.transitions) { $1.method == "GET" }
-  let actions = filter(representor.transitions) { $1.method != "GET" }
+  let links = representor.transitions.filter { $1.method == "GET" }
+  let actions = representor.transitions.filter { $1.method != "GET" }
 
   if links.count > 0 {
-    representation["links"] = map(links) { relation, transition in
+    representation["links"] = links.map { relation, transition in
       return ["rel": [relation], "href": transition.uri]
     }
   }
 
   if actions.count > 0 {
-    representation["actions"] = map(actions, transitionToSirenAction)
+    representation["actions"] = actions.map(transitionToSirenAction)
   }
 
   return representation

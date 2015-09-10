@@ -10,7 +10,7 @@ import Foundation
 
 func jsonDeserializer(closure:([String:AnyObject] -> Representor<HTTPTransition>?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>?) {
   return { (response, body) in
-    let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(0), error: nil)
+    let object: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(rawValue: 0))
 
     if let object = object as? [String:AnyObject] {
       return closure(object)
@@ -42,8 +42,8 @@ public struct HTTPDeserialization {
 
   /** Deserialize an NSHTTPURLResponse and body into a Representor.
   Uses the deserializers defined in HTTPDeserializers.
-  :param: response The response to deserialize
-  :param: body The HTTP Body
+  - parameter response: The response to deserialize
+  - parameter body: The HTTP Body
   :return: representor
   */
   public static func deserialize(response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>? {

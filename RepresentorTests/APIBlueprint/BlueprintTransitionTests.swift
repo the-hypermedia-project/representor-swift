@@ -24,8 +24,8 @@ class BlueprintTransitionTests: XCTestCase {
     XCTAssertEqual(transition.uri, "/polls")
     XCTAssertEqual(transition.method, "PATCH")
     XCTAssertEqual(Array(transition.parameters.keys), ["name"])
-    XCTAssertEqual(transitionParameter.value as! String, "value")
-    XCTAssertEqual(transitionParameter.defaultValue as! String, "default")
+    XCTAssertEqual(transitionParameter.value as? String, "value")
+    XCTAssertEqual(transitionParameter.defaultValue as? String, "default")
   }
 
   func testResourceWithURITemplateToTransitions() {
@@ -41,8 +41,8 @@ class BlueprintTransitionTests: XCTestCase {
     XCTAssertEqual(transition.uri, "/polls/2")
     XCTAssertEqual(transition.method, "PATCH")
     XCTAssertEqual(Array(transition.parameters.keys), ["name"])
-    XCTAssertEqual(transitionParameter.value as! String, "value")
-    XCTAssertEqual(transitionParameter.defaultValue as! String, "default")
+    XCTAssertEqual(transitionParameter.value as? String, "value")
+    XCTAssertEqual(transitionParameter.defaultValue as? String, "default")
   }
 
   func testResourceWithRelationNameToTransitions() {
@@ -58,8 +58,8 @@ class BlueprintTransitionTests: XCTestCase {
     XCTAssertEqual(transition.uri, "/polls/2")
     XCTAssertEqual(transition.method, "PATCH")
     XCTAssertEqual(Array(transition.parameters.keys), ["name"])
-    XCTAssertEqual(transitionParameter.value as! String, "value")
-    XCTAssertEqual(transitionParameter.defaultValue as! String, "default")
+    XCTAssertEqual(transitionParameter.value as? String, "value")
+    XCTAssertEqual(transitionParameter.defaultValue as? String, "default")
   }
 
   func testActionAttributesToTransitions() {

@@ -16,7 +16,7 @@ class RepresentorBuilderTests: XCTestCase {
       builder.addAttribute("name", value:"Kyle")
     }
 
-    XCTAssertEqual(representor.attributes["name"] as! String, "Kyle")
+    XCTAssertEqual(representor.attributes["name"] as? String, "Kyle")
   }
 
   // MARK: Representors

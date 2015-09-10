@@ -43,7 +43,7 @@ public struct Blueprint {
     func loadFile(named:String, bundle:NSBundle) -> [String:AnyObject]? {
       if let url = bundle.URLForResource(named, withExtension: nil) {
         if let data = NSData(contentsOfURL: url) {
-          let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil)
+          let object: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
           return object as? [String:AnyObject]
         }
       }
@@ -51,7 +51,7 @@ public struct Blueprint {
       return nil
     }
 
-    let ast = loadFile(named, bundle ?? NSBundle.mainBundle())
+    let ast = loadFile(named, bundle: bundle ?? NSBundle.mainBundle())
     if let ast = ast {
       self.init(ast: ast)
     } else {

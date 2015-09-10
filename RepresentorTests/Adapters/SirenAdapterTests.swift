@@ -37,7 +37,7 @@ class SirenAdapterTests: XCTestCase {
   }
 
   func fixture() -> [String:AnyObject] {
-    return JSONFixture("poll.siren", self)
+    return JSONFixture("poll.siren", forObject: self)
   }
 
   func testConversionFromSiren() {
@@ -67,14 +67,14 @@ class SirenAdapterTests: XCTestCase {
     let actions = serializeSiren(representor)["actions"] as! [[String:AnyObject]]
     let action = actions[0]
     let fields = action["fields"] as! [[String:String]]
-    let sortedFields = fields.sorted { (lhs, rhs) in
+    let sortedFields = fields.sort { (lhs, rhs) in
       lhs["name"] > rhs["name"]
     }
 
-    XCTAssertEqual(action["name"] as! String, "register")
-    XCTAssertEqual(action["href"] as! String, "/register/")
-    XCTAssertEqual(action["method"] as! String, "PATCH")
-    XCTAssertEqual(action["type"] as! String, "application/x-www-form-urlencoded")
+    XCTAssertEqual(action["name"] as? String, "register")
+    XCTAssertEqual(action["href"] as? String, "/register/")
+    XCTAssertEqual(action["method"] as? String, "PATCH")
+    XCTAssertEqual(action["type"] as? String, "application/x-www-form-urlencoded")
     XCTAssertEqual(sortedFields, [
       ["name": "username"],
       ["title": "Last Name", "name": "last_name", "value": "Doe"],

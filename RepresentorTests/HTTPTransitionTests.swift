@@ -20,7 +20,7 @@ class InputPropertyTests : XCTestCase {
   }
 
   func testHasValue() {
-    XCTAssertEqual(property.value as! String, "Kyle Fuller")
+    XCTAssertEqual(property.value as? String, "Kyle Fuller")
   }
 
   func testHasDefaultValue() {
