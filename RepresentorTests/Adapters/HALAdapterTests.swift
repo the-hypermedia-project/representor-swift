@@ -12,7 +12,7 @@ import Representor
 
 class HALAdapterTests: XCTestCase {
   func fixture() -> [String:AnyObject] {
-    return JSONFixture("poll.hal", self)
+    return JSONFixture("poll.hal", forObject: self)
   }
 
   func testConversionFromHAL() {

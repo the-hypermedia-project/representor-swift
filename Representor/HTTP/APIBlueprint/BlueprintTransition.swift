@@ -44,7 +44,7 @@ func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBui
     if let valueDefinition = property["valueDefinition"] as? [String:AnyObject] {
       if let typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject] {
         if let attributes = typeDefinition["attributes"] as? [String] {
-          return contains(attributes, "required")
+          return attributes.contains("required")
         }
       }
     }
@@ -76,26 +76,30 @@ func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBui
 }
 
 extension HTTPTransition {
-  public static func from(# resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
+  public static func from(resource  resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
     return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
       builder.method = action.method
 
-      let addParameter = { (parameter:Parameter) -> Void in
+      func addParameter(parameter:Parameter) {
         let value = parameter.example
         let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
         builder.addParameter(parameter.name, value:value, defaultValue:defaultValue, required:parameter.required)
       }
 
-      action.parameters.map(addParameter)
+      action.parameters.forEach(addParameter)
+
       let parameters = action.parameters.map { $0.name }
-      resource.parameters.filter { !parameters.contains($0.name) }.map(addParameter)
+      let missingParentParameters = resource.parameters.filter {
+        !parameters.contains($0.name)
+      }
+      missingParentParameters.forEach(addParameter)
 
       // Let's look at the MSON structure, we currently only look for the members
       // of an object since that's only what we can put in a transitions
       // attributes in the Representor
       let dataStructure = action.content.filter { ($0["element"] as? String) == "dataStructure" }.first
       if let dataStructure = dataStructure {
-        parseAttributes(dataStructure, builder)
+        parseAttributes(dataStructure, builder: builder)
       }
     }
   }

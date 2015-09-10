@@ -17,15 +17,13 @@ func fixture(named:String, forObject:AnyObject) -> NSData {
 }
 
 func JSONFixture(named:String, forObject:AnyObject) -> [String:AnyObject] {
-  let data = fixture(named, forObject)
-  var error:NSError?
-  let object: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
-  assert(error == nil)
+  let data = fixture(named, forObject: forObject)
+  let object = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
   return object as! [String:AnyObject]
 }
 
 func PollFixtureAttributes(forObject:AnyObject) -> [String:AnyObject] {
-  return JSONFixture("poll.attributes", forObject)
+  return JSONFixture("poll.attributes", forObject: forObject)
 }
 
 func PollFixture(forObject:AnyObject) -> Representor<HTTPTransition> {

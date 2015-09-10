@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Representor<Transition : TransitionType> : Equatable, Hashable {
-  typealias Builder = RepresentorBuilder<Transition>
+  public typealias Builder = RepresentorBuilder<Transition>
 
   /// The transitions available for the representor
   public let transitions:[String:Transition]
