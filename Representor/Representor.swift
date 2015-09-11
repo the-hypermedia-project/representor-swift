@@ -12,15 +12,15 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   public typealias Builder = RepresentorBuilder<Transition>
 
   /// The transitions available for the representor
-  public let transitions:[String:Transition]
+  public var transitions:[String:Transition]
 
   /// The separate representors embedded in the current representor.
-  public let representors:[String:[Representor]]
+  public var representors:[String:[Representor]]
 
-  public let metadata:[String:String]
+  public var metadata:[String:String]
 
   /// The attributes of the representor
-  public let attributes:[String:AnyObject]
+  public var attributes:[String:AnyObject]
 
   public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, metadata:[String:String]? = nil) {
     self.transitions = transitions ?? [:]
