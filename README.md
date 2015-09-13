@@ -42,15 +42,15 @@ let representor = Representor<HTTPTransition> { builder in
 
 ```swift
 if let create = representor.transitions["create"] {
-    println("You can create with the URI: \(create.uri).")
+    print("You can create with the URI: \(create.uri).")
 }
 
 if let next = representor.transitions["next"] {
-    println("The next representor can be found at: \(next).")
+    print("The next representor can be found at: \(next).")
 }
 
 if let prev = representor.transitions["previous"] {
-    println("The previous representor can be found at: \(prev).")
+    print("The previous representor can be found at: \(prev).")
 }
 ```
 
