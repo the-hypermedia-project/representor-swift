@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+/// A representor represents a hypermedia message
 public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   public typealias Builder = RepresentorBuilder<Transition>
 
@@ -79,6 +81,7 @@ public func ==<Transition : TransitionType>(lhs:[String:[Representor<Transition>
 
   return true
 }
+
 
 public func ==<Transition : TransitionType>(lhs:Representor<Transition>, rhs:Representor<Transition>) -> Bool {
   return (
