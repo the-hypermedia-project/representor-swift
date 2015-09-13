@@ -60,7 +60,7 @@ public func deserializeHAL(hal:[String:AnyObject]) -> Representor<HTTPTransition
 public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
   var representation = representor.attributes
 
-  if representor.transitions.count > 0 {
+  if !representor.transitions.isEmpty {
     var links = [String:[String:String]]()
 
     for (relation, transition) in representor.transitions {
@@ -70,7 +70,7 @@ public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:Any
     representation["_links"] = links
   }
 
-  if representor.representors.count > 0 {
+  if !representor.representors.isEmpty {
     var embeddedHALs = [String:[[String:AnyObject]]]()
 
     for (name, representorSet) in representor.representors {
