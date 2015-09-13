@@ -34,12 +34,11 @@ extension Resource {
 
 func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBuilder) {
   func isPropertyRequired(property:[String:AnyObject]) -> Bool? {
-    if let valueDefinition = property["valueDefinition"] as? [String:AnyObject] {
-      if let typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject] {
-        if let attributes = typeDefinition["attributes"] as? [String] {
-          return attributes.contains("required")
-        }
-      }
+    if let valueDefinition = property["valueDefinition"] as? [String:AnyObject],
+           typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject],
+           attributes = typeDefinition["attributes"] as? [String]
+    {
+      return attributes.contains("required")
     }
 
     return nil
@@ -54,12 +53,11 @@ func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBui
               continue
             }
 
-            if let content = property["content"] as? [String:AnyObject] {
-              if let name = content["name"] as? [String:AnyObject] {
-                if let literal = name["literal"] as? String {
-                  builder.addAttribute(literal, value: "", defaultValue: "", required: isPropertyRequired(content))
-                }
-              }
+            if let content = property["content"] as? [String:AnyObject],
+                   name = content["name"] as? [String:AnyObject],
+                   literal = name["literal"] as? String
+            {
+              builder.addAttribute(literal, value: "", defaultValue: "", required: isPropertyRequired(content))
             }
           }
         }

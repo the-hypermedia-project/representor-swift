@@ -122,7 +122,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
     attributes = properties
   }
 
-  return Representor<HTTPTransition>(transitions: transitions, representors: representors, attributes: attributes, metadata: [:])
+  return Representor<HTTPTransition>(transitions: transitions, representors: representors, attributes: attributes)
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
