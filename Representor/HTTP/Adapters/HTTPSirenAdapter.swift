@@ -122,14 +122,14 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
     attributes = properties
   }
 
-  return Representor<HTTPTransition>(transitions: transitions, representors: representors, attributes: attributes, metadata: [:])
+  return Representor<HTTPTransition>(transitions: transitions, representors: representors, attributes: attributes)
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
 public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
   var representation = [String:AnyObject]()
 
-  if representor.representors.count > 0 {
+  if !representor.representors.isEmpty {
     var entities = [[String:AnyObject]]()
 
     for (relation, representorSet) in representor.representors {
@@ -143,20 +143,20 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:A
     representation["entities"] = entities
   }
 
-  if representor.attributes.count > 0 {
+  if !representor.attributes.isEmpty {
     representation["properties"] = representor.attributes
   }
 
   let links = representor.transitions.filter { $1.method == "GET" }
   let actions = representor.transitions.filter { $1.method != "GET" }
 
-  if links.count > 0 {
+  if !links.isEmpty {
     representation["links"] = links.map { relation, transition in
       return ["rel": [relation], "href": transition.uri]
     }
   }
 
-  if actions.count > 0 {
+  if !actions.isEmpty {
     representation["actions"] = actions.map(transitionToSirenAction)
   }
 

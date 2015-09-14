@@ -12,15 +12,16 @@ import Foundation
 public struct HTTPTransition : TransitionType {
     public typealias Builder = HTTPTransitionBuilder
 
-    public let uri:String
+    public var uri:String
 
     /// The HTTP Method that should be used to make the request
-    public let method:String
-    /// The suggested contentType that should be used to make the request
-    public let suggestedContentTypes:[String]
+    public var method:String
 
-    public let attributes:InputProperties
-    public let parameters:InputProperties
+    /// The suggested contentType that should be used to make the request
+    public var suggestedContentTypes:[String]
+
+    public var attributes:InputProperties
+    public var parameters:InputProperties
 
     public init(uri:String, attributes:InputProperties? = nil, parameters:InputProperties? = nil) {
         self.uri = uri

@@ -232,21 +232,9 @@ public struct Payload {
 
 // MARK: AST Parsing
 
-func compactMap<C : CollectionType, T>(source: C, transform: (C.Generator.Element) -> T?) -> [T] {
-  var collection = [T]()
-
-  for element in source {
-    if let item = transform(element) {
-      collection.append(item)
-    }
-  }
-
-  return collection
-}
-
 func parseMetadata(source:[[String:String]]?) -> [Metadata] {
   if let source = source {
-    return compactMap(source) { item in
+    return source.flatMap { item in
       if let name = item["name"] {
         if let value = item["value"] {
           return (name: name, value: value)
@@ -279,7 +267,7 @@ func parseParameter(source:[[String:AnyObject]]?) -> [Parameter] {
 
 func parseActions(source:[[String:AnyObject]]?) -> [Action] {
   if let source = source {
-    return compactMap(source) { item in
+    return source.flatMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let method = item["method"] as? String
@@ -305,7 +293,7 @@ func parseActions(source:[[String:AnyObject]]?) -> [Action] {
 
 func parseExamples(source:[[String:AnyObject]]?) -> [TransactionExample] {
   if let source = source {
-    return compactMap(source) { item in
+    return source.flatMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let requests = parsePayloads(item["requests"] as? [[String:AnyObject]])
@@ -324,7 +312,7 @@ func parseExamples(source:[[String:AnyObject]]?) -> [TransactionExample] {
 
 func parsePayloads(source:[[String:AnyObject]]?) -> [Payload] {
   if let source = source {
-    return compactMap(source) { item in
+    return source.flatMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let headers = parseHeaders(item["headers"] as? [[String:String]])
@@ -345,11 +333,9 @@ func parsePayloads(source:[[String:AnyObject]]?) -> [Payload] {
 
 func parseHeaders(source:[[String:String]]?) -> [Payload.Header] {
   if let source = source {
-    return compactMap(source) { item in
-      if let name = item["name"] {
-        if let value = item["value"] {
-          return (name, value)
-        }
+    return source.flatMap { item in
+      if let name = item["name"], value = item["value"] {
+        return (name, value)
       }
 
       return nil
@@ -361,7 +347,7 @@ func parseHeaders(source:[[String:String]]?) -> [Payload.Header] {
 
 func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
   if let source = source {
-    return compactMap(source) { item in
+    return source.flatMap { item in
       let name = item["name"] as? String
       let description = item["description"] as? String
       let uriTemplate = item["uriTemplate"] as? String
@@ -369,10 +355,8 @@ func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
       let parameters = parseParameter(item["parameters"] as? [[String:AnyObject]])
       let content = item["content"] as? [[String:AnyObject]]
 
-      if let name = name {
-        if let uriTemplate = uriTemplate {
-          return Resource(name: name, description: description, uriTemplate: uriTemplate, parameters: parameters, actions: actions, content: content)
-        }
+      if let name = name, let uriTemplate = uriTemplate {
+        return Resource(name: name, description: description, uriTemplate: uriTemplate, parameters: parameters, actions: actions, content: content)
       }
 
       return nil
@@ -384,7 +368,7 @@ func parseResources(source:[[String:AnyObject]]?) -> [Resource] {
 
 private func parseBlueprintResourceGroups(blueprint:[String:AnyObject]) -> [ResourceGroup] {
   if let resourceGroups = blueprint["resourceGroups"] as? [[String:AnyObject]] {
-    return compactMap(resourceGroups) { dictionary in
+    return resourceGroups.flatMap { dictionary in
       if let name = dictionary["name"] as? String {
         let resources = parseResources(dictionary["resources"] as? [[String:AnyObject]])
         let description = dictionary["description"] as? String
