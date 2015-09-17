@@ -23,12 +23,15 @@ public struct HTTPTransition : TransitionType {
     public var attributes:InputProperties
     public var parameters:InputProperties
 
-    public init(uri:String, attributes:InputProperties? = nil, parameters:InputProperties? = nil) {
+    public var metadata:[String:AnyObject]
+
+    public init(uri:String, attributes:InputProperties? = nil, parameters:InputProperties? = nil, metadata:[String:AnyObject]? = nil) {
         self.uri = uri
         self.attributes = attributes ?? [:]
         self.parameters = parameters ?? [:]
         self.method = "GET"
         self.suggestedContentTypes = [String]()
+        self.metadata = metadata ?? [:]
     }
 
     public init(uri:String, _ block:((builder:Builder) -> ())) {
@@ -41,6 +44,7 @@ public struct HTTPTransition : TransitionType {
         self.parameters = builder.parameters
         self.method = builder.method
         self.suggestedContentTypes = builder.suggestedContentTypes
+        self.metadata = builder.metadata
     }
 
     public var hashValue:Int {
@@ -54,6 +58,7 @@ public func ==(lhs:HTTPTransition, rhs:HTTPTransition) -> Bool {
         lhs.attributes == rhs.attributes &&
         lhs.parameters == rhs.parameters &&
         lhs.method == rhs.method &&
-        lhs.suggestedContentTypes == rhs.suggestedContentTypes
+        lhs.suggestedContentTypes == rhs.suggestedContentTypes &&
+        lhs.metadata as NSDictionary == rhs.metadata
     )
 }
