@@ -15,6 +15,8 @@ class SirenAdapterTests: XCTestCase {
     [
       [
         "name": "register",
+        "title": "Register",
+        "class": ["member"],
         "href": "/register/",
         "method": "PATCH",
         "type": "application/x-www-form-urlencoded",
@@ -34,6 +36,9 @@ class SirenAdapterTests: XCTestCase {
     builder.addAttribute("username")
     builder.addAttribute("first_name", title: "First Name", value: "John", defaultValue: nil)
     builder.addAttribute("last_name", title: "Last Name", value: "Doe", defaultValue: nil)
+
+    builder.addMetadata("title", value: "Register")
+    builder.addMetadata("class", value: ["member"])
   }
 
   func fixture() -> [String:AnyObject] {

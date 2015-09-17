@@ -32,6 +32,14 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
         if let fields = action["fields"] as? [[String:AnyObject]] {
           fields.forEach(sirenFieldToAttribute(builder))
         }
+
+        if let title = action["title"] as? String {
+          builder.addMetadata("title", value: title)
+        }
+
+        if let `class` = action["class"] as? [String] {
+          builder.addMetadata("class", value: `class`)
+        }
       }
 
       return (name, transition)

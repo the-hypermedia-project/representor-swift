@@ -40,11 +40,12 @@ public typealias InputProperties = [String:InputProperty<AnyObject>]
 public protocol TransitionType : Equatable, Hashable {
   typealias Builder = TransitionBuilderType
 
-  init(uri:String, attributes:InputProperties?, parameters:InputProperties?)
+  init(uri:String, attributes:InputProperties?, parameters:InputProperties?, metadata:[String:AnyObject]?)
   init(uri:String, _ block:((builder:Builder) -> ()))
 
   var uri:String { get }
 
   var attributes:InputProperties { get }
   var parameters:InputProperties { get }
+  var metadata:[String:AnyObject] { get }
 }

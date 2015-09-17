@@ -12,6 +12,7 @@ import Foundation
 public class HTTPTransitionBuilder : TransitionBuilderType {
   var attributes = InputProperties()
   var parameters = InputProperties()
+  var metadata = [String:AnyObject]()
 
   /// The suggested contentType that should be used to make the request
   public var method = "POST"
@@ -62,5 +63,9 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
   public func addParameter<T : AnyObject>(name:String, value:T?, defaultValue:T?, required:Bool? = nil) {
     let property = InputProperty<AnyObject>(value:value, defaultValue:defaultValue, required:required)
     parameters[name] = property
+  }
+
+  public func addMetadata(key:String, value:AnyObject) {
+    metadata[key] = value
   }
 }

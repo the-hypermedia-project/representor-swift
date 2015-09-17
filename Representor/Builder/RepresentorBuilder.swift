@@ -68,7 +68,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   /// - parameter name: The name (or relation) for the transition
   /// - parameter uri: The URI of the transition
   public func addTransition(name:String, uri:String) {
-    let transition = Transition(uri: uri, attributes:[:], parameters:[:])
+    let transition = Transition(uri: uri, attributes:[:], parameters:[:], metadata:[:])
     transitions[name] = transition
   }
 
