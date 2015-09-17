@@ -78,7 +78,7 @@ private func transitionToSirenAction(relation:String, transition:HTTPTransition)
 /// A function to deserialize a Siren structure into a HTTP Transition.
 public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransition> {
   var representors = [String:[Representor<HTTPTransition>]]()
-  var transitions = [String:HTTPTransition]()
+  var transitions = [String:[HTTPTransition]]()
   var attributes = [String:AnyObject]()
 
   if let sirenLinks = siren["links"] as? [[String:AnyObject]] {
@@ -86,7 +86,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
       if let href = link["href"] as? String {
         if let relations = link["rel"] as? [String] {
           for relation in relations {
-            transitions[relation] = HTTPTransition(uri: href)
+            transitions[relation] = [HTTPTransition(uri: href)]
           }
         }
       }
@@ -113,7 +113,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
   if let actions = siren["actions"] as? [[String:AnyObject]] {
     for action in actions {
       if let (name, transition) = sirenActionToTransition(action) {
-        transitions[name] = transition
+        transitions[name] = [transition]
       }
     }
   }
@@ -147,17 +147,25 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:A
     representation["properties"] = representor.attributes
   }
 
-  let links = representor.transitions.filter { $1.method == "GET" }
-  let actions = representor.transitions.filter { $1.method != "GET" }
+  var links = [[String:AnyObject]]()
+  var actions = [[String:AnyObject]]()
 
-  if !links.isEmpty {
-    representation["links"] = links.map { relation, transition in
-      return ["rel": [relation], "href": transition.uri]
+  for (relation, transitions) in representor.transitions {
+    for transition in transitions {
+      if transition.method == "GET" {
+        links.append(["rel": [relation], "href": transition.uri])
+      } else {
+        actions.append(transitionToSirenAction(relation, transition: transition))
+      }
     }
   }
 
+  if !links.isEmpty {
+    representation["links"] = links
+  }
+
   if !actions.isEmpty {
-    representation["actions"] = actions.map(transitionToSirenAction)
+    representation["actions"] = actions
   }
 
   return representation

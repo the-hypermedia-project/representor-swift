@@ -8,12 +8,13 @@
 
 import Foundation
 
-func parseHALLinks(halLinks:[String:[String:AnyObject]]) -> [String:HTTPTransition] {
-  var links = [String:HTTPTransition]()
+func parseHALLinks(halLinks:[String:[String:AnyObject]]) -> [String:[HTTPTransition]] {
+  var links = [String:[HTTPTransition]]()
 
   for (link, options) in halLinks {
     if let href = options["href"] as? String {
-      links[link] = HTTPTransition(uri: href)
+      let transition = HTTPTransition(uri: href)
+      links[link] = [transition]
     }
   }
 
@@ -43,7 +44,7 @@ func parseEmbeddedHALs(embeddedHALs:[String:AnyObject]) -> [String:[Representor<
 public func deserializeHAL(hal:[String:AnyObject]) -> Representor<HTTPTransition> {
   var hal = hal
 
-  var links = [String:HTTPTransition]()
+  var links = [String:[HTTPTransition]]()
   if let halLinks = hal.removeValueForKey("_links") as? [String:[String:AnyObject]] {
     links = parseHALLinks(halLinks)
   }
@@ -63,8 +64,10 @@ public func serializeHAL(representor:Representor<HTTPTransition>) -> [String:Any
   if !representor.transitions.isEmpty {
     var links = [String:[String:String]]()
 
-    for (relation, transition) in representor.transitions {
-      links[relation] = ["href": transition.uri]
+    for (relation, transitions) in representor.transitions {
+      if let transition = transitions.first {
+        links[relation] = ["href": transition.uri]
+      }
     }
 
     representation["_links"] = links

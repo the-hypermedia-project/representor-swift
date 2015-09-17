@@ -56,7 +56,7 @@ class SirenAdapterTests: XCTestCase {
 
   func testConversionFromSirenWithAction() {
     let representor = deserializeSiren(representation)
-    XCTAssertEqual(representor.transitions["register"]!, transition)
+    XCTAssertEqual(representor.transitions["register"]!, [transition])
   }
 
   func testConversionToSirenWithAction() {
