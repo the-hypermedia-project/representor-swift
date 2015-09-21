@@ -14,7 +14,7 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   public typealias Builder = RepresentorBuilder<Transition>
 
   /// The transitions available for the representor
-  public var transitions:[String:Transition]
+  public var transitions:[String:[Transition]]
 
   /// The separate representors embedded in the current representor.
   public var representors:[String:[Representor]]
@@ -24,7 +24,7 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   /// The attributes of the representor
   public var attributes:[String:AnyObject]
 
-  public init(transitions:[String:Transition]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, metadata:[String:String]? = nil) {
+  public init(transitions:[String:[Transition]]? = nil, representors:[String:[Representor]]? = nil, attributes:[String:AnyObject]? = nil, metadata:[String:String]? = nil) {
     self.transitions = transitions ?? [:]
     self.representors = representors ?? [:]
     self.attributes = attributes ?? [:]
@@ -53,7 +53,7 @@ public struct Representor<Transition : TransitionType> : Equatable, Hashable {
   }
 }
 
-public func ==<Transition : TransitionType>(lhs:[String:[Representor<Transition>]], rhs:[String:[Representor<Transition>]]) -> Bool {
+public func ==<Value : Equatable>(lhs:[String:[Value]], rhs:[String:[Value]]) -> Bool {
   // There is a strange Swift bug where you cannot compare a
   // dictionary which has an array of objects which conform to Equatable.
   // So to be clear, that's comparing the following:

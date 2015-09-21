@@ -11,7 +11,7 @@ import Foundation
 /// A class used to build a representor using a builder pattern
 public class RepresentorBuilder<Transition : TransitionType> {
   /// The added transitions
-  private(set) public var transitions = [String:Transition]()
+  private(set) public var transitions = [String:[Transition]]()
 
   /// The added representors
   private(set) public var representors = [String:[Representor<Transition>]]()
@@ -60,7 +60,9 @@ public class RepresentorBuilder<Transition : TransitionType> {
   /// - parameter name: The name (or relation) for the transition
   /// - parameter transition: The transition
   public func addTransition(name:String, _ transition:Transition) {
-    transitions[name] = transition
+    var transitions = self.transitions[name] ?? []
+    transitions.append(transition)
+    self.transitions[name] = transitions
   }
 
   /// Adds a transition with a URI
@@ -69,7 +71,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   /// - parameter uri: The URI of the transition
   public func addTransition(name:String, uri:String) {
     let transition = Transition(uri: uri, attributes:[:], parameters:[:])
-    transitions[name] = transition
+    addTransition(name, transition)
   }
 
   /// Adds a transition with a URI using a builder
@@ -79,7 +81,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   /// - parameter builder: The builder used to create the transition
   public func addTransition(name:String, uri:String, builder:((Transition.Builder) -> ())) {
     let transition = Transition(uri: uri, builder)
-    transitions[name] = transition
+    addTransition(name, transition)
   }
 
   // MARK: Metadata

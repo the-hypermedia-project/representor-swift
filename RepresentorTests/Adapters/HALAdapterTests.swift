@@ -28,4 +28,35 @@ class HALAdapterTests: XCTestCase {
 
     XCTAssertEqual(representation as NSObject, fixture() as NSObject)
   }
+
+  func testLinkConversionFromHALWithMultipleTransitions() {
+    let representation = [
+      "_links": [
+        "items": [
+          [ "href": "/first_item" ],
+          [ "href": "/second_item" ],
+        ]
+      ]
+    ]
+    let representor = deserializeHAL(representation)
+
+    XCTAssertEqual(representor.transitions["items"]?.count, 2)
+  }
+
+  func testLinkConversionToHALWithMultipleTransitions() {
+    let representor = Representor<HTTPTransition> { builder in
+      builder.addTransition("items", uri: "/first_item")
+      builder.addTransition("items", uri: "/second_item")
+    }
+    let representation = serializeHAL(representor)
+
+    XCTAssertEqual(representation as NSDictionary, [
+      "_links": [
+        "items": [
+            [ "href": "/first_item" ],
+            [ "href": "/second_item" ],
+          ]
+        ]
+    ])
+  }
 }
