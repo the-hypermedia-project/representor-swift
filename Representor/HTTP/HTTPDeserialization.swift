@@ -32,12 +32,18 @@ public struct HTTPDeserialization {
     "application/vnd.siren+json": jsonDeserializer { payload in
       return deserializeSiren(payload)
     },
+    
+    "application/vnd.github.v3+json": jsonDeserializer { payload in
+      return deserializeGitHub(payload)
+    },
+    
   ]
 
   /// An array of the supported content types in order of preference
   public static var preferredContentTypes:[String] = [
     "application/vnd.siren+json",
     "application/hal+json",
+    "application/vnd.github.v3+json"
   ]
 
   /** Deserialize an NSHTTPURLResponse and body into a Representor.
@@ -51,7 +57,16 @@ public struct HTTPDeserialization {
       if let deserializer = HTTPDeserialization.deserializers[contentType] {
         return deserializer(response: response, body: body)
       }
+      else if let githubMediaType = response.allHeaderFields["X-GitHub-Media-Type"] as? String {
+        // Work around for GitHub media type
+        if githubMediaType == "github.v3; format=json" {
+          if let deserializer = HTTPDeserialization.deserializers["application/vnd.github.v3+json"] {
+            return deserializer(response: response, body: body)
+          }
+        }
+      }
     }
+    
 
     return nil
   }

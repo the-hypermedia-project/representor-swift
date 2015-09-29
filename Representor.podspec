@@ -26,6 +26,7 @@ Pod::Spec.new do |spec|
       deserialization_spec.dependency 'Representor/HTTP/Transition'
       deserialization_spec.dependency 'Representor/HTTP/Adapters/HAL'
       deserialization_spec.dependency 'Representor/HTTP/Adapters/Siren'
+      deserialization_spec.dependency 'Representor/HTTP/Adapters/GitHub'
       deserialization_spec.source_files = 'Representor/HTTP/HTTPDeserialization.swift'
     end
 
@@ -44,7 +45,12 @@ Pod::Spec.new do |spec|
         blueprint_spec.dependency 'Representor/HTTP/Transition'
         blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
       end
+
+      adapter_spec.subspec 'GitHub' do |github_spec|
+        github_spec.dependency 'Representor/HTTP/Transition'
+        github_spec.source_files = 'Representor/HTTP/Adapters/HTTPGitHubAdapter.swift'
+      end
+
     end
   end
 end
-
