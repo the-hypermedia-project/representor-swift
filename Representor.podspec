@@ -11,40 +11,5 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '8.0'
   spec.osx.deployment_target = '10.9'
   spec.watchos.deployment_target = '2.0'
-
-  spec.subspec 'Core' do |core_spec|
-    core_spec.source_files = 'Representor/*.{swift,h}', 'Representor/Builder/*.swift'
-  end
-
-  spec.subspec 'HTTP' do |http_spec|
-    http_spec.subspec 'Transition' do |transition_spec|
-      transition_spec.dependency 'Representor/Core'
-      transition_spec.source_files = 'Representor/HTTP/HTTPTransition{,Builder}.swift'
-    end
-
-    http_spec.subspec 'Deserialization' do |deserialization_spec|
-      deserialization_spec.dependency 'Representor/HTTP/Transition'
-      deserialization_spec.dependency 'Representor/HTTP/Adapters/HAL'
-      deserialization_spec.dependency 'Representor/HTTP/Adapters/Siren'
-      deserialization_spec.source_files = 'Representor/HTTP/HTTPDeserialization.swift'
-    end
-
-    http_spec.subspec 'Adapters' do |adapter_spec|
-      adapter_spec.subspec 'HAL' do |hal_spec|
-        hal_spec.dependency 'Representor/HTTP/Transition'
-        hal_spec.source_files = 'Representor/HTTP/Adapters/HTTPHALAdapter.swift'
-      end
-
-      adapter_spec.subspec 'Siren' do |siren_spec|
-        siren_spec.dependency 'Representor/HTTP/Transition'
-        siren_spec.source_files = 'Representor/HTTP/Adapters/HTTPSirenAdapter.swift'
-      end
-
-      adapter_spec.subspec 'APIBlueprint' do |blueprint_spec|
-        blueprint_spec.dependency 'Representor/HTTP/Transition'
-        blueprint_spec.source_files = 'Representor/HTTP/APIBlueprint/*.swift'
-      end
-    end
-  end
+  spec.source_files = 'Representor/*.{swift,h}'
 end
-
