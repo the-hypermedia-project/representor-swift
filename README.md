@@ -4,7 +4,19 @@ Swift library for building and consuming Hypermedia messages. See [The Hypermedi
 
 ## Installation
 
-Installation with CocoaPods is recommended using CocoaPods 0.36.
+### Swift Package Manager
+
+Representor can be installed via the Swift Package Manager by adding
+Representor as a dependency in your `Package.swift`:
+
+```swift
+.Package(url: "https://github.com/the-hypermedia-project/representor-swift.git", majorVersion: 0, minor: 7)
+```
+
+### CocoaPods
+
+Representor can be installed with CocoaPods by adding Representor to your
+`Podfile`:
 
 ```ruby
 pod 'Representor'

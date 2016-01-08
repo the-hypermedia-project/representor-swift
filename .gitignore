@@ -2,3 +2,4 @@
 *.xccheckout
 *.xcscmblueprint
 xcuserdata
+/.build/

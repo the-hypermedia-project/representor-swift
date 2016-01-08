@@ -7,17 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */; };
-		276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */; };
+		271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B51C4011D40027A90C /* RepresentorBuilder.swift */; };
+		271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B61C4011D40027A90C /* TransitionBuilder.swift */; };
+		271629BB1C40125A0027A90C /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B91C40125A0027A90C /* HTTPHALAdapter.swift */; };
+		271629BC1C40125A0027A90C /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BA1C40125A0027A90C /* HTTPSirenAdapter.swift */; };
+		271629BF1C40126B0027A90C /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BD1C40126B0027A90C /* Blueprint.swift */; };
+		271629C01C40126B0027A90C /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BE1C40126B0027A90C /* BlueprintTransition.swift */; };
+		271629C51C4012C30027A90C /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C21C4012C30027A90C /* HTTPDeserialization.swift */; };
+		271629C61C4012C30027A90C /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C31C4012C30027A90C /* HTTPTransition.swift */; };
+		271629C71C4012C30027A90C /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */; };
 		276A2C051A7BA4EE004BCC6F /* BlueprintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */; };
 		276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */; };
 		276A2C081A7BA500004BCC6F /* blueprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 276A2C071A7BA500004BCC6F /* blueprint.json */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
-		277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */; };
-		27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A6D1A7271B10084CB47 /* HTTPTransition.swift */; };
-		27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */; };
-		27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A721A7272870084CB47 /* HTTPDeserialization.swift */; };
-		27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -25,9 +27,7 @@
 		770834821A0914CB0008869E /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834811A0914CB0008869E /* Transition.swift */; };
 		770834841A0914E40008869E /* HTTPTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834831A0914E40008869E /* HTTPTransitionTests.swift */; };
 		77B507D01A0EB16100E794BF /* SirenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */; };
-		77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC15351A0A69DC00DD24EF /* RepresentorBuilder.swift */; };
 		77BC15391A0A6A7700DD24EF /* RepresentorBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */; };
-		77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */; };
 		77BC153E1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BC153D1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift */; };
 		77D6433A1A0E6DC1004D4BA0 /* HALAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */; };
 		77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */ = {isa = PBXBuildFile; fileRef = 77F592341A1B6E1B0070F839 /* poll.hal.json */; };
@@ -46,20 +46,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blueprint.swift; sourceTree = "<group>"; };
-		276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransition.swift; sourceTree = "<group>"; };
+		271629B51C4011D40027A90C /* RepresentorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepresentorBuilder.swift; sourceTree = "<group>"; };
+		271629B61C4011D40027A90C /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionBuilder.swift; sourceTree = "<group>"; };
+		271629B91C40125A0027A90C /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPHALAdapter.swift; path = Sources/HTTPHALAdapter.swift; sourceTree = SOURCE_ROOT; };
+		271629BA1C40125A0027A90C /* HTTPSirenAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPSirenAdapter.swift; path = Sources/HTTPSirenAdapter.swift; sourceTree = SOURCE_ROOT; };
+		271629BD1C40126B0027A90C /* Blueprint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blueprint.swift; sourceTree = "<group>"; };
+		271629BE1C40126B0027A90C /* BlueprintTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransition.swift; sourceTree = "<group>"; };
+		271629C21C4012C30027A90C /* HTTPDeserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPDeserialization.swift; path = Sources/HTTPDeserialization.swift; sourceTree = SOURCE_ROOT; };
+		271629C31C4012C30027A90C /* HTTPTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransition.swift; path = Sources/HTTPTransition.swift; sourceTree = SOURCE_ROOT; };
+		271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilder.swift; path = Sources/HTTPTransitionBuilder.swift; sourceTree = SOURCE_ROOT; };
 		276A2C031A7BA4EE004BCC6F /* BlueprintTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTests.swift; sourceTree = "<group>"; };
 		276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlueprintTransitionTests.swift; sourceTree = "<group>"; };
 		276A2C071A7BA500004BCC6F /* blueprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = blueprint.json; sourceTree = "<group>"; };
 		2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSHTTPURLResponseTests.swift; path = Adapters/NSHTTPURLResponseTests.swift; sourceTree = "<group>"; };
-		277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPHALAdapter.swift; sourceTree = "<group>"; };
 		279294961A488A24009C52E1 /* UniversalFramework_Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Base.xcconfig; sourceTree = "<group>"; };
 		279294971A488A24009C52E1 /* UniversalFramework_Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Framework.xcconfig; sourceTree = "<group>"; };
 		279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UniversalFramework_Test.xcconfig; sourceTree = "<group>"; };
-		27931A6D1A7271B10084CB47 /* HTTPTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransition.swift; path = HTTP/HTTPTransition.swift; sourceTree = "<group>"; };
-		27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilder.swift; path = HTTP/HTTPTransitionBuilder.swift; sourceTree = "<group>"; };
-		27931A721A7272870084CB47 /* HTTPDeserialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPDeserialization.swift; path = HTTP/HTTPDeserialization.swift; sourceTree = "<group>"; };
-		27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSirenAdapter.swift; sourceTree = "<group>"; };
 		770834631A0913860008869E /* Representor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Representor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770834671A0913860008869E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770834681A0913860008869E /* Representor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Representor.h; sourceTree = "<group>"; };
@@ -70,9 +72,7 @@
 		770834811A0914CB0008869E /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		770834831A0914E40008869E /* HTTPTransitionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransitionTests.swift; sourceTree = "<group>"; };
 		77B507CF1A0EB16100E794BF /* SirenAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SirenAdapterTests.swift; path = Adapters/SirenAdapterTests.swift; sourceTree = "<group>"; };
-		77BC15351A0A69DC00DD24EF /* RepresentorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepresentorBuilder.swift; path = Builder/RepresentorBuilder.swift; sourceTree = "<group>"; };
 		77BC15381A0A6A7700DD24EF /* RepresentorBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepresentorBuilderTests.swift; path = Builder/RepresentorBuilderTests.swift; sourceTree = "<group>"; };
-		77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransitionBuilder.swift; path = Builder/TransitionBuilder.swift; sourceTree = "<group>"; };
 		77BC153D1A0A6E2E00DD24EF /* HTTPTransitionBuilderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPTransitionBuilderTests.swift; path = Builder/HTTPTransitionBuilderTests.swift; sourceTree = "<group>"; };
 		77D643391A0E6DC1004D4BA0 /* HALAdapterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HALAdapterTests.swift; path = Adapters/HALAdapterTests.swift; sourceTree = "<group>"; };
 		77F592341A1B6E1B0070F839 /* poll.hal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = poll.hal.json; sourceTree = "<group>"; };
@@ -99,11 +99,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		271629C11C4012710027A90C /* Blueprint */ = {
+			isa = PBXGroup;
+			children = (
+				271629BD1C40126B0027A90C /* Blueprint.swift */,
+				271629BE1C40126B0027A90C /* BlueprintTransition.swift */,
+			);
+			name = Blueprint;
+			sourceTree = "<group>";
+		};
 		276A2BFD1A7BA4B9004BCC6F /* API Blueprint */ = {
 			isa = PBXGroup;
 			children = (
-				276A2BFE1A7BA4B9004BCC6F /* Blueprint.swift */,
-				276A2BFF1A7BA4B9004BCC6F /* BlueprintTransition.swift */,
+				271629C31C4012C30027A90C /* HTTPTransition.swift */,
+				271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */,
+				271629C21C4012C30027A90C /* HTTPDeserialization.swift */,
 			);
 			name = "API Blueprint";
 			path = HTTP/APIBlueprint;
@@ -133,10 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				27931A741A727A280084CB47 /* Adapters */,
+				271629C11C4012710027A90C /* Blueprint */,
 				276A2BFD1A7BA4B9004BCC6F /* API Blueprint */,
-				27931A6D1A7271B10084CB47 /* HTTPTransition.swift */,
-				27931A701A7272180084CB47 /* HTTPTransitionBuilder.swift */,
-				27931A721A7272870084CB47 /* HTTPDeserialization.swift */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -144,8 +152,8 @@
 		27931A741A727A280084CB47 /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
-				277D6D9D1A80DD8E0048C6A0 /* HTTPHALAdapter.swift */,
-				27931A751A727A280084CB47 /* HTTPSirenAdapter.swift */,
+				271629B91C40125A0027A90C /* HTTPHALAdapter.swift */,
+				271629BA1C40125A0027A90C /* HTTPSirenAdapter.swift */,
 			);
 			name = Adapters;
 			path = HTTP/Adapters;
@@ -182,7 +190,8 @@
 				77BC15371A0A69DF00DD24EF /* Builder */,
 				770834661A0913860008869E /* Supporting Files */,
 			);
-			path = Representor;
+			name = Representor;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		770834661A0913860008869E /* Supporting Files */ = {
@@ -205,7 +214,8 @@
 				276A2C021A7BA4EE004BCC6F /* API Blueprint */,
 				770834731A0913860008869E /* Supporting Files */,
 			);
-			path = RepresentorTests;
+			name = RepresentorTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		770834731A0913860008869E /* Supporting Files */ = {
@@ -219,8 +229,8 @@
 		77BC15371A0A69DF00DD24EF /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				77BC15351A0A69DC00DD24EF /* RepresentorBuilder.swift */,
-				77BC153B1A0A6E0A00DD24EF /* TransitionBuilder.swift */,
+				271629B51C4011D40027A90C /* RepresentorBuilder.swift */,
+				271629B61C4011D40027A90C /* TransitionBuilder.swift */,
 			);
 			name = Builder;
 			sourceTree = "<group>";
@@ -366,16 +376,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77BC153C1A0A6E0A00DD24EF /* TransitionBuilder.swift in Sources */,
-				27931A731A7272870084CB47 /* HTTPDeserialization.swift in Sources */,
-				27931A761A727A280084CB47 /* HTTPSirenAdapter.swift in Sources */,
+				271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */,
+				271629C71C4012C30027A90C /* HTTPTransitionBuilder.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
-				27931A6E1A7271B10084CB47 /* HTTPTransition.swift in Sources */,
-				276A2C011A7BA4B9004BCC6F /* BlueprintTransition.swift in Sources */,
-				77BC15361A0A69DC00DD24EF /* RepresentorBuilder.swift in Sources */,
-				27931A711A7272180084CB47 /* HTTPTransitionBuilder.swift in Sources */,
-				276A2C001A7BA4B9004BCC6F /* Blueprint.swift in Sources */,
-				277D6D9E1A80DD8E0048C6A0 /* HTTPHALAdapter.swift in Sources */,
+				271629C61C4012C30027A90C /* HTTPTransition.swift in Sources */,
+				271629C51C4012C30027A90C /* HTTPDeserialization.swift in Sources */,
+				271629C01C40126B0027A90C /* BlueprintTransition.swift in Sources */,
+				271629BC1C40125A0027A90C /* HTTPSirenAdapter.swift in Sources */,
+				271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */,
+				271629BF1C40126B0027A90C /* Blueprint.swift in Sources */,
+				271629BB1C40125A0027A90C /* HTTPHALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +511,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Representor/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
@@ -522,7 +532,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Representor/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
@@ -540,7 +550,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = RepresentorTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
@@ -552,7 +562,7 @@
 			baseConfigurationReference = 279294981A488A24009C52E1 /* UniversalFramework_Test.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = RepresentorTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
