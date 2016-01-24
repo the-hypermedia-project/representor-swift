@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode7.3
+script:
+- set -o pipefail
+- xcodebuild -project Representor.xcodeproj -scheme Representor test -sdk macosx | xcpretty -c
+- xcodebuild -project Representor.xcodeproj -scheme Representor test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild -project Representor.xcodeproj -scheme Representor build -sdk watchos | xcpretty -c
+- xcodebuild -project Representor.xcodeproj -scheme Representor test -sdk tvos | xcpretty -c
+- pod lib lint

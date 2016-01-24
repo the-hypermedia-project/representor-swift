@@ -1,5 +1,7 @@
 # Representor in Swift
 
+[![Build Status](https://travis-ci.org/the-hypermedia-project/representor-swift.svg?branch=master)](https://travis-ci.org/the-hypermedia-project/representor-swift)
+
 Swift library for building and consuming Hypermedia messages. See [The Hypermedia Project Charter](https://github.com/the-hypermedia-project/charter) for details.
 
 ## Installation
