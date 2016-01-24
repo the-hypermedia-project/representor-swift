@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.source = { :git => 'https://github.com/the-hypermedia-project/representor-swift.git', :tag => "#{spec.version}" }
   spec.requires_arc = true
   spec.ios.deployment_target = '8.0'
-  spec.osx.deployment_target = '10.9'
+  spec.osx.deployment_target = '10.10'
   spec.watchos.deployment_target = '2.0'
   spec.tvos.deployment_target = '9.0'
   spec.source_files = 'Sources/*.{swift,h}'
