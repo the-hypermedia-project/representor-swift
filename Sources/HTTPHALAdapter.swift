@@ -8,6 +8,19 @@
 
 import Foundation
 
+/// https://tools.ietf.org/html/draft-kelly-json-hal-07#section-5.5
+private let AllowedHALLinkOptions = [
+	"templated", "type", "deprecation",
+	"name", "profile", "title", "hreflang"
+]
+
+private func parseHALLinkAttributes(options: [String:AnyObject], builder: HTTPTransitionBuilder) {
+	for (key, value) in options {
+		guard AllowedHALLinkOptions.contains(key) else { continue }
+		builder.addAttribute(key, title: nil, value: value, defaultValue: nil, required: nil)
+	}
+}
+
 func parseHALLinks(halLinks:[String:AnyObject]) -> [String:[HTTPTransition]] {
   var links = [String:[HTTPTransition]]()
 
@@ -15,12 +28,18 @@ func parseHALLinks(halLinks:[String:AnyObject]) -> [String:[HTTPTransition]] {
     if let options = options as? [String:AnyObject],
            href = options["href"] as? String
     {
-      let transition = HTTPTransition(uri: href)
+			let transition = HTTPTransition(uri: href, { (builder) in
+				parseHALLinkAttributes(options, builder: builder)
+			})
       links[relation] = [transition]
     } else if let options = options as? [[String:AnyObject]] {
       links[relation] = options.flatMap {
+				let transitionOptions = $0
         if let href = $0["href"] as? String {
-          return HTTPTransition(uri: href)
+					let transition = HTTPTransition(uri: href, { (builder) in
+						parseHALLinkAttributes(transitionOptions, builder: builder)
+					})
+          return transition
         }
 
         return nil
