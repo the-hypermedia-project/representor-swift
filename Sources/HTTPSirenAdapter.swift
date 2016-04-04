@@ -8,7 +8,7 @@
 
 import Foundation
 
-private func sirenFieldToAttribute(builder: HTTPTransitionBuilder)(field:[String:AnyObject]) {
+private func sirenFieldToAttribute(builder: HTTPTransitionBuilder, field:[String:AnyObject]) {
   if let name = field["name"] as? String {
     let title = field["title"] as? String
     let value:AnyObject? = field["value"]
@@ -30,7 +30,7 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
         }
 
         if let fields = action["fields"] as? [[String:AnyObject]] {
-          fields.forEach(sirenFieldToAttribute(builder))
+          fields.forEach({ sirenFieldToAttribute(builder, field: $0) })
         }
       }
 
