@@ -59,4 +59,35 @@ class HALAdapterTests: XCTestCase {
         ]
     ])
   }
+
+  func testValidLinkAttributes() {
+    let linkFixture = JSONFixture("link-objects.hal", forObject: self)
+    let representor = deserializeHAL(linkFixture) as Representor<HTTPTransition>
+
+    guard let findTransition = representor.transitions["find"]?.first else {
+      XCTFail("Expected 'find' transition.")
+      return
+    }
+    XCTAssertNotNil(findTransition.attributes["templated"]?.value as? Bool)
+    XCTAssertNotNil(findTransition.attributes["type"]?.value as? String)
+    XCTAssertNotNil(findTransition.attributes["name"]?.value as? String)
+    XCTAssertNotNil(findTransition.attributes["title"]?.value as? String)
+    XCTAssertNotNil(findTransition.attributes["hreflang"]?.value as? String)
+
+    XCTAssertEqual(representor.transitions["admin"]?.count, 2)
+    for adminTransition in representor.transitions["admin"]! {
+      XCTAssertNotNil(adminTransition.attributes["deprecation"])
+    }
+  }
+
+  func testInvalidLinkAttribute() {
+    let linkFixture = JSONFixture("link-objects.hal", forObject: self)
+    let representor = deserializeHAL(linkFixture) as Representor<HTTPTransition>
+
+    guard let testTransition = representor.transitions["test"]?.first else {
+      XCTFail("Expected 'test' transition.")
+      return
+    }
+    XCTAssertNil(testTransition.attributes["invalid-attribute"])
+  }
 }

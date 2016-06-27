@@ -14,7 +14,7 @@ public class HTTPTransitionBuilder : TransitionBuilderType {
   var parameters = InputProperties()
 
   /// The suggested contentType that should be used to make the request
-  public var method = "POST"
+  public var method = "GET"
   /// The suggested contentType that should be used to make the request
   public var suggestedContentTypes = [String]()
 

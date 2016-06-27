@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D035D751CB4FA2000DC31F4 /* link-objects.hal.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D035D741CB4FA2000DC31F4 /* link-objects.hal.json */; };
 		271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B51C4011D40027A90C /* RepresentorBuilder.swift */; };
 		271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B61C4011D40027A90C /* TransitionBuilder.swift */; };
 		271629BB1C40125A0027A90C /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B91C40125A0027A90C /* HTTPHALAdapter.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D035D741CB4FA2000DC31F4 /* link-objects.hal.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "link-objects.hal.json"; sourceTree = "<group>"; };
 		271629B51C4011D40027A90C /* RepresentorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepresentorBuilder.swift; sourceTree = "<group>"; };
 		271629B61C4011D40027A90C /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionBuilder.swift; sourceTree = "<group>"; };
 		271629B91C40125A0027A90C /* HTTPHALAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPHALAdapter.swift; path = Sources/HTTPHALAdapter.swift; sourceTree = SOURCE_ROOT; };
@@ -260,6 +262,7 @@
 				276A2C071A7BA500004BCC6F /* blueprint.json */,
 				77F592341A1B6E1B0070F839 /* poll.hal.json */,
 				77F592351A1B6E1B0070F839 /* poll.siren.json */,
+				0D035D741CB4FA2000DC31F4 /* link-objects.hal.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -322,14 +325,16 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Apiary;
 				TargetAttributes = {
 					770834621A0913860008869E = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0800;
 					};
 					7708346D1A0913860008869E = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -366,6 +371,7 @@
 				77F592371A1B6E1B0070F839 /* poll.hal.json in Resources */,
 				77F592381A1B6E1B0070F839 /* poll.siren.json in Resources */,
 				276A2C081A7BA500004BCC6F /* blueprint.json in Resources */,
+				0D035D751CB4FA2000DC31F4 /* link-objects.hal.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +447,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -486,6 +493,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -518,6 +526,7 @@
 				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -538,6 +547,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -554,6 +565,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -566,6 +578,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
