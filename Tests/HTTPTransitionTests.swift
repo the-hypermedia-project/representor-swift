@@ -16,7 +16,7 @@ class InputPropertyTests : XCTestCase {
 
   override func setUp() {
     super.setUp()
-    property = InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil)
+    property = InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: nil)
   }
 
   func testHasValue() {
@@ -28,8 +28,9 @@ class InputPropertyTests : XCTestCase {
   }
 
   func testEquality() {
-    XCTAssertEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:nil))
-    XCTAssertNotEqual(property, InputProperty<AnyObject>(value:"Kyle Fuller", defaultValue:"Name"))
+    XCTAssertEqual(property, InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: nil))
+    XCTAssertNotEqual(property, InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: "Name" as AnyObject
+    ))
   }
 }
 

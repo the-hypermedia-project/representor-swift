@@ -12,7 +12,7 @@ import Representor
 
 
 class ResourceGroupTests : XCTestCase {
-  var resourceGroup:ResourceGroup!
+  var resourceGroup: ResourceGroup!
 
   override func setUp() {
     resourceGroup = ResourceGroup(name: "Group", description: "Description", resources: [])
@@ -167,13 +167,13 @@ class ParameterTests : XCTestCase {
 
 class BlueprintTests : XCTestCase {
   func testLoadingNonExistantBlueprint() {
-    let bundle = NSBundle(forClass:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self))
     let blueprint = Blueprint(named:"unknown.json", bundle:bundle)
     XCTAssertTrue(blueprint == nil)
   }
 
   func testParsingBlueprintAST() {
-    let bundle = NSBundle(forClass:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self))
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
 
     XCTAssertEqual(blueprint.name, "Polls")
@@ -223,7 +223,7 @@ class BlueprintTests : XCTestCase {
   }
 
   func testParsingMetadataFromAST() {
-    let bundle = NSBundle(forClass:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self))
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
 
     let format = blueprint.metadata[0]

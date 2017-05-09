@@ -9,8 +9,8 @@
 import Foundation
 
 extension Resource {
-  func transition(actionName:String) -> HTTPTransition? {
-    func filterAction(action:Action) -> Bool {
+  func transition(_ actionName:String) -> HTTPTransition? {
+    func filterAction(_ action:Action) -> Bool {
       if let relationName = action.relation {
         if relationName == actionName {
           return true
@@ -32,11 +32,11 @@ extension Resource {
   }
 }
 
-func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBuilder) {
-  func isPropertyRequired(property:[String:AnyObject]) -> Bool? {
+func parseAttributes(_ dataStructure: [String: AnyObject], builder:HTTPTransitionBuilder) {
+  func isPropertyRequired(_ property: [String: AnyObject]) -> Bool? {
     if let valueDefinition = property["valueDefinition"] as? [String:AnyObject],
-           typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject],
-           attributes = typeDefinition["attributes"] as? [String]
+           let typeDefinition = valueDefinition["typeDefinition"] as? [String:AnyObject],
+           let attributes = typeDefinition["attributes"] as? [String]
     {
       return attributes.contains("required")
     }
@@ -54,8 +54,8 @@ func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBui
             }
 
             if let content = property["content"] as? [String:AnyObject],
-                   name = content["name"] as? [String:AnyObject],
-                   literal = name["literal"] as? String
+                   let name = content["name"] as? [String:AnyObject],
+                   let literal = name["literal"] as? String
             {
               builder.addAttribute(literal, value: "", defaultValue: "", required: isPropertyRequired(content))
             }
@@ -67,14 +67,14 @@ func parseAttributes(dataStructure:[String:AnyObject], builder:HTTPTransitionBui
 }
 
 extension HTTPTransition {
-  public static func from(resource  resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
+  public static func from(resource:Resource, action:Action, URL:String? = nil) -> HTTPTransition {
     return HTTPTransition(uri: URL ?? action.uriTemplate ?? resource.uriTemplate) { builder in
       builder.method = action.method
 
-      func addParameter(parameter:Parameter) {
+      func addParameter(_ parameter:Parameter) {
         let value = parameter.example
         let defaultValue = (parameter.defaultValue ?? nil) as NSObject?
-        builder.addParameter(parameter.name, value:value, defaultValue:defaultValue, required:parameter.required)
+        builder.addParameter(parameter.name, value: value as AnyObject, defaultValue: defaultValue as AnyObject, required:parameter.required)
       }
 
       action.parameters.forEach(addParameter)
@@ -99,8 +99,8 @@ extension HTTPTransition {
 /// An extension to Blueprint providing transition conversion
 extension Blueprint {
   /// Returns a HTTPTransition representation of an action in a resource
-  public func transition(resourceName:String, action actionName:String) -> HTTPTransition? {
-    let resources = resourceGroups.map { resourceGroup in resourceGroup.resources }.reduce([], combine: +)
+  public func transition(_ resourceName:String, action actionName:String) -> HTTPTransition? {
+    let resources = resourceGroups.map { resourceGroup in resourceGroup.resources }.reduce([], +)
     let resource = resources.filter { resource in resource.name == resourceName }.first
     if let resource = resource {
       return resource.transition(actionName)

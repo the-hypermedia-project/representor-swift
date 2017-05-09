@@ -13,7 +13,7 @@ import Representor
 class RepresentorBuilderTests: XCTestCase {
   func testAddAttribute() {
     let representor = Representor<HTTPTransition> { builder in
-      builder.addAttribute("name", value:"Kyle")
+      builder.addAttribute("name", value: "Kyle" as AnyObject)
     }
 
     XCTAssertEqual(representor.attributes["name"] as? String, "Kyle")

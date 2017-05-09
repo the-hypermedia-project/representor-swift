@@ -31,10 +31,10 @@ public struct HTTPTransition : TransitionType {
         self.suggestedContentTypes = [String]()
     }
 
-    public init(uri:String, _ block:((builder:Builder) -> ())) {
+    public init(uri:String, _ block:((_ builder:Builder) -> ())) {
         let builder = Builder()
 
-        block(builder: builder)
+        block(builder)
 
         self.uri = uri
         self.attributes = builder.attributes
