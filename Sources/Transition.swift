@@ -8,16 +8,16 @@
 
 import Foundation
 
-public struct InputProperty<T: AnyObject> : Equatable {
+public struct InputProperty: Equatable {
   public let title: String?
 
-  public let defaultValue: T?
-  public let value: T?
+  public let defaultValue: Any?
+  public let value: Any?
   public let required: Bool?
 
   // TODO: Define validators
 
-  public init(title: String? = nil, value: T? = nil, defaultValue: T? = nil, required: Bool? = nil) {
+  public init<T>(title: String? = nil, value: T? = nil, defaultValue: T? = nil, required: Bool? = nil) {
     self.title = title
     self.value = value
     self.defaultValue = defaultValue
@@ -25,7 +25,7 @@ public struct InputProperty<T: AnyObject> : Equatable {
   }
 }
 
-public func ==<T : AnyObject>(lhs: InputProperty<T>, rhs: InputProperty<T>) -> Bool {
+public func ==(lhs: InputProperty, rhs: InputProperty) -> Bool {
   return (
     lhs.title == rhs.title &&
     lhs.defaultValue as? NSObject == rhs.defaultValue as? NSObject &&
@@ -34,7 +34,7 @@ public func ==<T : AnyObject>(lhs: InputProperty<T>, rhs: InputProperty<T>) -> B
   )
 }
 
-public typealias InputProperties = [String: InputProperty<AnyObject>]
+public typealias InputProperties = [String: InputProperty]
 
 /** Transition instances encapsulate information about interacting with links and forms. */
 public protocol TransitionType: Equatable, Hashable {

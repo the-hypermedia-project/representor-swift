@@ -12,7 +12,7 @@ private func sirenFieldToAttribute(_ builder: HTTPTransitionBuilder) -> (_ field
   return { field in
     if let name = field["name"] as? String {
       let title = field["title"] as? String
-      let value: Any? = field["value"]
+      let value = field["value"]
 
       builder.addAttribute(name, title: title, value: value, defaultValue: nil)
     }
@@ -43,12 +43,12 @@ private func sirenActionToTransition(_ action: [String: Any]) -> (name: String, 
   return nil
 }
 
-private func inputPropertyToSirenField(_ name: String, inputProperty: InputProperty<AnyObject>) -> [String: AnyObject] {
+private func inputPropertyToSirenField(_ name: String, inputProperty: InputProperty) -> [String: AnyObject] {
   var field = [
     "name": name
   ]
 
-  if let value: AnyObject = inputProperty.value {
+  if let value = inputProperty.value {
     field["value"] = "\(value)"
   }
 

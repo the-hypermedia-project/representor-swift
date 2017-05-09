@@ -12,11 +12,11 @@ import Representor
 
 
 class InputPropertyTests : XCTestCase {
-  var property:InputProperty<AnyObject>!
+  var property: InputProperty!
 
   override func setUp() {
     super.setUp()
-    property = InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: nil)
+    property = InputProperty(value: "Kyle Fuller", defaultValue: nil)
   }
 
   func testHasValue() {
@@ -28,9 +28,8 @@ class InputPropertyTests : XCTestCase {
   }
 
   func testEquality() {
-    XCTAssertEqual(property, InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: nil))
-    XCTAssertNotEqual(property, InputProperty<AnyObject>(value: "Kyle Fuller" as AnyObject, defaultValue: "Name" as AnyObject
-    ))
+    XCTAssertEqual(property, InputProperty(value: "Kyle Fuller", defaultValue: nil))
+    XCTAssertNotEqual(property, InputProperty(value: "Kyle Fuller", defaultValue: "Name"))
   }
 }
 
