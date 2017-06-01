@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B51C4011D40027A90C /* RepresentorBuilder.swift */; };
 		271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B61C4011D40027A90C /* TransitionBuilder.swift */; };
-		271629BB1C40125A0027A90C /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B91C40125A0027A90C /* HTTPHALAdapter.swift */; };
-		271629BC1C40125A0027A90C /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BA1C40125A0027A90C /* HTTPSirenAdapter.swift */; };
-		271629BF1C40126B0027A90C /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BD1C40126B0027A90C /* Blueprint.swift */; };
-		271629C01C40126B0027A90C /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BE1C40126B0027A90C /* BlueprintTransition.swift */; };
 		271629C51C4012C30027A90C /* HTTPDeserialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C21C4012C30027A90C /* HTTPDeserialization.swift */; };
 		271629C61C4012C30027A90C /* HTTPTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C31C4012C30027A90C /* HTTPTransition.swift */; };
 		271629C71C4012C30027A90C /* HTTPTransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */; };
@@ -20,6 +16,10 @@
 		276A2C061A7BA4EE004BCC6F /* BlueprintTransitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A2C041A7BA4EE004BCC6F /* BlueprintTransitionTests.swift */; };
 		276A2C081A7BA500004BCC6F /* blueprint.json in Resources */ = {isa = PBXBuildFile; fileRef = 276A2C071A7BA500004BCC6F /* blueprint.json */; };
 		2774DFE21A474164008F41CE /* NSHTTPURLResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774DFE11A474164008F41CE /* NSHTTPURLResponseTests.swift */; };
+		279BCA861EC281E60042D05B /* HTTPHALAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629B91C40125A0027A90C /* HTTPHALAdapter.swift */; };
+		279BCA871EC2824D0042D05B /* HTTPSirenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BA1C40125A0027A90C /* HTTPSirenAdapter.swift */; };
+		279BCA881EC284050042D05B /* Blueprint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BD1C40126B0027A90C /* Blueprint.swift */; };
+		279BCA891EC284120042D05B /* BlueprintTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271629BE1C40126B0027A90C /* BlueprintTransition.swift */; };
 		770834691A0913860008869E /* Representor.h in Headers */ = {isa = PBXBuildFile; fileRef = 770834681A0913860008869E /* Representor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7708346F1A0913860008869E /* Representor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 770834631A0913860008869E /* Representor.framework */; };
 		770834761A0913860008869E /* RepresentorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770834751A0913860008869E /* RepresentorTests.swift */; };
@@ -108,17 +108,6 @@
 			name = Blueprint;
 			sourceTree = "<group>";
 		};
-		276A2BFD1A7BA4B9004BCC6F /* API Blueprint */ = {
-			isa = PBXGroup;
-			children = (
-				271629C31C4012C30027A90C /* HTTPTransition.swift */,
-				271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */,
-				271629C21C4012C30027A90C /* HTTPDeserialization.swift */,
-			);
-			name = "API Blueprint";
-			path = HTTP/APIBlueprint;
-			sourceTree = "<group>";
-		};
 		276A2C021A7BA4EE004BCC6F /* API Blueprint */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +131,11 @@
 		27931A6F1A7271B60084CB47 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				271629C31C4012C30027A90C /* HTTPTransition.swift */,
+				271629C41C4012C30027A90C /* HTTPTransitionBuilder.swift */,
+				271629C21C4012C30027A90C /* HTTPDeserialization.swift */,
 				27931A741A727A280084CB47 /* Adapters */,
 				271629C11C4012710027A90C /* Blueprint */,
-				276A2BFD1A7BA4B9004BCC6F /* API Blueprint */,
 			);
 			name = HTTP;
 			sourceTree = "<group>";
@@ -322,14 +313,16 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Apiary;
 				TargetAttributes = {
 					770834621A0913860008869E = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0830;
 					};
 					7708346D1A0913860008869E = {
 						CreatedOnToolsVersion = 6.1;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -378,14 +371,14 @@
 			files = (
 				271629B71C4011D40027A90C /* RepresentorBuilder.swift in Sources */,
 				271629C71C4012C30027A90C /* HTTPTransitionBuilder.swift in Sources */,
+				279BCA871EC2824D0042D05B /* HTTPSirenAdapter.swift in Sources */,
 				770834821A0914CB0008869E /* Transition.swift in Sources */,
 				271629C61C4012C30027A90C /* HTTPTransition.swift in Sources */,
+				279BCA891EC284120042D05B /* BlueprintTransition.swift in Sources */,
 				271629C51C4012C30027A90C /* HTTPDeserialization.swift in Sources */,
-				271629C01C40126B0027A90C /* BlueprintTransition.swift in Sources */,
-				271629BC1C40125A0027A90C /* HTTPSirenAdapter.swift in Sources */,
+				279BCA861EC281E60042D05B /* HTTPHALAdapter.swift in Sources */,
+				279BCA881EC284050042D05B /* Blueprint.swift in Sources */,
 				271629B81C4011D40027A90C /* TransitionBuilder.swift in Sources */,
-				271629BF1C40126B0027A90C /* Blueprint.swift in Sources */,
-				271629BB1C40125A0027A90C /* HTTPHALAdapter.swift in Sources */,
 				770834801A09144F0008869E /* Representor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,8 +424,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -441,6 +436,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -476,8 +472,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
@@ -486,6 +484,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -495,6 +494,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -518,6 +518,7 @@
 				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -538,6 +539,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Representor;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -554,6 +556,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -566,6 +569,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.apiary.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RepresentorTests;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

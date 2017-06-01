@@ -11,7 +11,7 @@ import XCTest
 import Representor
 
 class HALAdapterTests: XCTestCase {
-  func fixture() -> [String:AnyObject] {
+  func fixture() -> [String: Any] {
     return JSONFixture("poll.hal", forObject: self)
   }
 
@@ -38,7 +38,7 @@ class HALAdapterTests: XCTestCase {
         ]
       ]
     ]
-    let representor = deserializeHAL(representation)
+    let representor = deserializeHAL(representation as [String : AnyObject])
 
     XCTAssertEqual(representor.transitions["items"]?.count, 2)
   }

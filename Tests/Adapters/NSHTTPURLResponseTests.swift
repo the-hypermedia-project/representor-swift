@@ -12,22 +12,22 @@ import Representor
 
 class NSHTTPURLResponseAdapterTests: XCTestCase {
 
-  func createResponse(contentType:String, data:NSData) -> (NSHTTPURLResponse, NSData) {
-    let url = NSURL(string: "http://test.com/")!
+  func createResponse(_ contentType:String, data:Data) -> (HTTPURLResponse, Data) {
+    let url = URL(string: "http://test.com/")!
     let headers = ["Content-Type": contentType]
-    let response = NSHTTPURLResponse(URL: url, statusCode: 200, HTTPVersion: "1.1", headerFields: headers)!
+    let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "1.1", headerFields: headers)!
     return (response, data)
   }
 
-  func createResponse(contentType:String, fixtureNamed:String) -> (NSHTTPURLResponse, NSData) {
+  func createResponse(_ contentType:String, fixtureNamed:String) -> (HTTPURLResponse, Data) {
     return createResponse(contentType, data: fixture(fixtureNamed, forObject: self))
   }
 
-  func JSONHALFixture() -> (NSHTTPURLResponse, NSData) {
+  func JSONHALFixture() -> (HTTPURLResponse, Data) {
     return createResponse("application/hal+json", fixtureNamed: "poll.hal")
   }
 
-  func JSONSirenFixture() -> (NSHTTPURLResponse, NSData) {
+  func JSONSirenFixture() -> (HTTPURLResponse, Data) {
     return createResponse("application/vnd.siren+json", fixtureNamed: "poll.siren")
   }
 
@@ -38,7 +38,7 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
   }
 
   func testDeserializationWithUnknownType() {
-    let (response, data) = createResponse("application/unknown", data:NSData())
+    let (response, data) = createResponse("application/unknown", data:Data())
     let representor = HTTPDeserialization.deserialize(response, body: data)
 
     XCTAssertTrue(representor == nil)
@@ -50,7 +50,7 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
 
     let representorFixture = PollFixture(self)
 
-    XCTAssertEqual(representor!, representorFixture)
+    XCTAssertEqual(representor, representorFixture)
   }
 
   func testDeserializationWithSirenJSON() {
@@ -64,10 +64,10 @@ class NSHTTPURLResponseAdapterTests: XCTestCase {
 
   func testCustomDeserializer() {
     let representor = Representor<HTTPTransition> { builder in
-      builder.addAttribute("custom", value: true)
+      builder.addAttribute("custom", value: true as AnyObject)
     }
 
-    HTTPDeserialization.deserializers["application/custom"] = { (response:NSHTTPURLResponse, data:NSData) in
+    HTTPDeserialization.deserializers["application/custom"] = { (response:HTTPURLResponse, data:Data) in
       return representor
     }
 

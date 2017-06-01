@@ -8,18 +8,18 @@
 
 import Foundation
 
-private func sirenFieldToAttribute(builder: HTTPTransitionBuilder) -> (field:[String:AnyObject]) -> Void {
+private func sirenFieldToAttribute(_ builder: HTTPTransitionBuilder) -> (_ field: [String: Any]) -> Void {
   return { field in
     if let name = field["name"] as? String {
       let title = field["title"] as? String
-      let value:AnyObject? = field["value"]
+      let value = field["value"]
 
       builder.addAttribute(name, title: title, value: value, defaultValue: nil)
     }
   }
 }
 
-private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String, transition:HTTPTransition)? {
+private func sirenActionToTransition(_ action: [String: Any]) -> (name: String, transition: HTTPTransition)? {
   if let name = action["name"] as? String {
     if let href = action["href"] as? String {
       let transition = HTTPTransition(uri: href) { builder in
@@ -31,7 +31,7 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
           builder.suggestedContentTypes = [contentType]
         }
 
-        if let fields = action["fields"] as? [[String:AnyObject]] {
+        if let fields = action["fields"] as? [[String: Any]] {
           fields.forEach(sirenFieldToAttribute(builder))
         }
       }
@@ -43,12 +43,12 @@ private func sirenActionToTransition(action:[String: AnyObject]) -> (name:String
   return nil
 }
 
-private func inputPropertyToSirenField(name:String, inputProperty:InputProperty<AnyObject>) -> [String:AnyObject] {
+private func inputPropertyToSirenField(_ name: String, inputProperty: InputProperty) -> [String: AnyObject] {
   var field = [
     "name": name
   ]
 
-  if let value: AnyObject = inputProperty.value {
+  if let value = inputProperty.value {
     field["value"] = "\(value)"
   }
 
@@ -56,34 +56,34 @@ private func inputPropertyToSirenField(name:String, inputProperty:InputProperty<
     field["title"] = title
   }
 
-  return field
+  return field as [String : AnyObject]
 }
 
-private func transitionToSirenAction(relation:String, transition:HTTPTransition) -> [String:AnyObject] {
-  var action:[String:AnyObject] = [
-    "href": transition.uri,
-    "name": relation,
-    "method": transition.method
+private func transitionToSirenAction(_ relation: String, transition: HTTPTransition) -> [String: Any] {
+  var action: [String: AnyObject] = [
+    "href": transition.uri as AnyObject,
+    "name": relation as AnyObject,
+    "method": transition.method as AnyObject
   ]
 
   if let contentType = transition.suggestedContentTypes.first {
-    action["type"] = contentType
+    action["type"] = contentType as AnyObject
   }
 
   if transition.attributes.count > 0 {
-    action["fields"] = transition.attributes.map(inputPropertyToSirenField)
+    action["fields"] = transition.attributes.map(inputPropertyToSirenField) as NSArray
   }
 
   return action
 }
 
 /// A function to deserialize a Siren structure into a HTTP Transition.
-public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransition> {
-  var representors = [String:[Representor<HTTPTransition>]]()
-  var transitions = [String:[HTTPTransition]]()
-  var attributes = [String:AnyObject]()
+public func deserializeSiren(_ siren: [String: Any]) -> Representor<HTTPTransition> {
+  var representors: [String: [Representor<HTTPTransition>]] = [:]
+  var transitions: [String: [HTTPTransition]] = [:]
+  var attributes: [String: Any] = [:]
 
-  if let sirenLinks = siren["links"] as? [[String:AnyObject]] {
+  if let sirenLinks = siren["links"] as? [[String: Any]] {
     for link in sirenLinks {
       if let href = link["href"] as? String {
         if let relations = link["rel"] as? [String] {
@@ -95,7 +95,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
     }
   }
 
-  if let entities = siren["entities"] as? [[String:AnyObject]] {
+  if let entities = siren["entities"] as? [[String: Any]] {
     for entity in entities {
       let representor = deserializeSiren(entity)
 
@@ -112,7 +112,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
     }
   }
 
-  if let actions = siren["actions"] as? [[String:AnyObject]] {
+  if let actions = siren["actions"] as? [[String: Any]] {
     for action in actions {
       if let (name, transition) = sirenActionToTransition(action) {
         transitions[name] = [transition]
@@ -120,7 +120,7 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
     }
   }
 
-  if let properties = siren["properties"] as? [String:AnyObject] {
+  if let properties = siren["properties"] as? [String: Any] {
     attributes = properties
   }
 
@@ -128,11 +128,11 @@ public func deserializeSiren(siren:[String:AnyObject]) -> Representor<HTTPTransi
 }
 
 /// A function to serialize a HTTP Representor into a Siren structure
-public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:AnyObject] {
-  var representation = [String:AnyObject]()
+public func serializeSiren(_ representor: Representor<HTTPTransition>) -> [String: Any] {
+  var representation: [String: Any] = [:]
 
   if !representor.representors.isEmpty {
-    var entities = [[String:AnyObject]]()
+    var entities: [[String: Any]] = []
 
     for (relation, representorSet) in representor.representors {
       for representor in representorSet {
@@ -142,15 +142,15 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:A
       }
     }
 
-    representation["entities"] = entities
+    representation["entities"] = entities as AnyObject
   }
 
   if !representor.attributes.isEmpty {
-    representation["properties"] = representor.attributes
+    representation["properties"] = representor.attributes as AnyObject
   }
 
-  var links = [[String:AnyObject]]()
-  var actions = [[String:AnyObject]]()
+  var links: [[String: Any]] = []
+  var actions: [[String: Any]] = []
 
   for (relation, transitions) in representor.transitions {
     for transition in transitions {
@@ -163,11 +163,11 @@ public func serializeSiren(representor:Representor<HTTPTransition>) -> [String:A
   }
 
   if !links.isEmpty {
-    representation["links"] = links
+    representation["links"] = links as AnyObject
   }
 
   if !actions.isEmpty {
-    representation["actions"] = actions
+    representation["actions"] = actions as AnyObject
   }
 
   return representation

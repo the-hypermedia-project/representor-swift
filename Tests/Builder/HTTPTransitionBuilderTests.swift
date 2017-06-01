@@ -50,7 +50,7 @@ class HTTPTransitionBuilderTests: XCTestCase {
 
   func testAddAttributeWithValue() {
     let transition = HTTPTransition(uri:"/self/") { builder in
-      builder.addAttribute("name", value:"Kyle Fuller", defaultValue:nil)
+      builder.addAttribute("name", value: "Kyle Fuller", defaultValue: nil)
     }
 
     XCTAssertEqual(transition.uri, "/self/")

@@ -8,9 +8,9 @@
 
 import Foundation
 
-func jsonDeserializer(closure:([String:AnyObject] -> Representor<HTTPTransition>?)) -> ((response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>?) {
+func jsonDeserializer(_ closure:@escaping (([String:AnyObject]) -> Representor<HTTPTransition>?)) -> ((_ response:HTTPURLResponse, _ body:Data) -> Representor<HTTPTransition>?) {
   return { (response, body) in
-    let object: AnyObject? = try? NSJSONSerialization.JSONObjectWithData(body, options: NSJSONReadingOptions(rawValue: 0))
+    let object: AnyObject? = try? JSONSerialization.jsonObject(with: body, options: JSONSerialization.ReadingOptions(rawValue: 0)) as AnyObject
 
     if let object = object as? [String:AnyObject] {
       return closure(object)
@@ -21,10 +21,10 @@ func jsonDeserializer(closure:([String:AnyObject] -> Representor<HTTPTransition>
 }
 
 public struct HTTPDeserialization {
-  public typealias Deserializer = (response:NSHTTPURLResponse, body:NSData) -> (Representor<HTTPTransition>?)
+  public typealias Deserializer = (_ response:HTTPURLResponse, _ body:Data) -> (Representor<HTTPTransition>?)
 
   /// A dictionary storing the registered HTTP deserializer's and their corresponding content type.
-  public static var deserializers:[String:Deserializer] = [
+  public static var deserializers: [String: Deserializer] = [
     "application/hal+json": jsonDeserializer { payload in
       return deserializeHAL(payload)
     },
@@ -46,10 +46,10 @@ public struct HTTPDeserialization {
   - parameter body: The HTTP Body
   :return: representor
   */
-  public static func deserialize(response:NSHTTPURLResponse, body:NSData) -> Representor<HTTPTransition>? {
-    if let contentType = response.MIMEType {
+  public static func deserialize(_ response:HTTPURLResponse, body:Data) -> Representor<HTTPTransition>? {
+    if let contentType = response.mimeType {
       if let deserializer = HTTPDeserialization.deserializers[contentType] {
-        return deserializer(response: response, body: body)
+        return deserializer(response, body)
       }
     }
 

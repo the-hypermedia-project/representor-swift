@@ -11,22 +11,22 @@ import Foundation
 /// A class used to build a representor using a builder pattern
 public class RepresentorBuilder<Transition : TransitionType> {
   /// The added transitions
-  private(set) public var transitions = [String:[Transition]]()
+  fileprivate(set) public var transitions = [String:[Transition]]()
 
   /// The added representors
-  private(set) public var representors = [String:[Representor<Transition>]]()
+  fileprivate(set) public var representors = [String:[Representor<Transition>]]()
 
   /// The added attributes
-  private(set) public var attributes = [String:AnyObject]()
+  fileprivate(set) public var attributes = [String:AnyObject]()
 
   /// The added metadata
-  private(set) public var metadata = [String:String]()
+  fileprivate(set) public var metadata = [String:String]()
 
   /// Adds an attribute
   ///
   /// - parameter name: The name of the attribute
   /// - parameter value: The value of the attribute
-  public func addAttribute(name:String, value:AnyObject) {
+  public func addAttribute(_ name:String, value:AnyObject) {
     attributes[name] = value
   }
 
@@ -36,7 +36,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   ///
   /// - parameter name: The name of the representor
   /// - parameter representor: The representor
-  public func addRepresentor(name:String, representor:Representor<Transition>) {
+  public func addRepresentor(_ name:String, representor:Representor<Transition>) {
     if var representorSet = representors[name] {
       representorSet.append(representor)
       representors[name] = representorSet
@@ -49,7 +49,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   ///
   /// - parameter name: The name of the representor
   /// - parameter builder: A builder to build the representor
-  public func addRepresentor(name:String, block:((builder:RepresentorBuilder<Transition>) -> ())) {
+  public func addRepresentor(_ name:String, block:((_ builder:RepresentorBuilder<Transition>) -> ())) {
     addRepresentor(name, representor:Representor<Transition>(block))
   }
 
@@ -59,7 +59,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   ///
   /// - parameter name: The name (or relation) for the transition
   /// - parameter transition: The transition
-  public func addTransition(name:String, _ transition:Transition) {
+  public func addTransition(_ name:String, _ transition:Transition) {
     var transitions = self.transitions[name] ?? []
     transitions.append(transition)
     self.transitions[name] = transitions
@@ -69,7 +69,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   ///
   /// - parameter name: The name (or relation) for the transition
   /// - parameter uri: The URI of the transition
-  public func addTransition(name:String, uri:String) {
+  public func addTransition(_ name:String, uri:String) {
     let transition = Transition(uri: uri, attributes:[:], parameters:[:])
     addTransition(name, transition)
   }
@@ -79,7 +79,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   /// - parameter name: The name (or relation) for the transition
   /// - parameter uri: The URI of the transition
   /// - parameter builder: The builder used to create the transition
-  public func addTransition(name:String, uri:String, builder:((Transition.Builder) -> ())) {
+  public func addTransition(_ name:String, uri:String, builder:((Transition.Builder) -> ())) {
     let transition = Transition(uri: uri, builder)
     addTransition(name, transition)
   }
@@ -90,7 +90,7 @@ public class RepresentorBuilder<Transition : TransitionType> {
   ///
   /// - parameter key: The key for the metadata
   /// - parameter value: The value of the key
-  public func addMetaData(key:String, value:String) {
+  public func addMetaData(_ key:String, value:String) {
     metadata[key] = value
   }
 }
