@@ -37,7 +37,7 @@ public func ==(lhs: InputProperty, rhs: InputProperty) -> Bool {
 public typealias InputProperties = [String: InputProperty]
 
 /** Transition instances encapsulate information about interacting with links and forms. */
-public protocol TransitionType: Equatable, Hashable {
+public protocol TransitionType: Hashable {
   associatedtype Builder = TransitionBuilderType
 
   init(uri: String, attributes: InputProperties?, parameters: InputProperties?)
