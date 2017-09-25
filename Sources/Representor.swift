@@ -83,7 +83,7 @@ public func ==<Value : Equatable>(lhs: [String: [Value]], rhs: [String: [Value]]
 }
 
 
-public func ==<Transition : TransitionType>(lhs: Representor<Transition>, rhs: Representor<Transition>) -> Bool {
+public func ==<Transition>(lhs: Representor<Transition>, rhs: Representor<Transition>) -> Bool {
   return (
     lhs.transitions == rhs.transitions &&
     lhs.representors == rhs.representors &&
