@@ -1,5 +1,11 @@
 # Representor Changelog
 
+## Master
+
+## Enhancements
+
+- Representor now targets Swift 4.
+
 ## 0.8.0
 
 ### Breaking
