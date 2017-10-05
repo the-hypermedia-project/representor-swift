@@ -10,7 +10,7 @@ import Foundation
 import Representor
 
 func fixture(_ named:String, forObject:AnyObject) -> Data {
-  let bundle = Bundle(for:object_getClass(forObject))
+  let bundle = Bundle(for:object_getClass(forObject)!)
   let path = bundle.url(forResource: named, withExtension: "json")!
   let data = try! Data(contentsOf: path)
   return data

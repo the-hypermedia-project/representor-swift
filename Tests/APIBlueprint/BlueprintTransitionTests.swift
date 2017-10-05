@@ -63,7 +63,7 @@ class BlueprintTransitionTests: XCTestCase {
   }
 
   func testActionAttributesToTransitions() {
-    let bundle = Bundle(for:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self)!)
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)
     let transition = blueprint!.transition("Questions Collection", action: "create")
 

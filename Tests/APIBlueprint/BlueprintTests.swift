@@ -167,13 +167,13 @@ class ParameterTests : XCTestCase {
 
 class BlueprintTests : XCTestCase {
   func testLoadingNonExistantBlueprint() {
-    let bundle = Bundle(for:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self)!)
     let blueprint = Blueprint(named:"unknown.json", bundle:bundle)
     XCTAssertTrue(blueprint == nil)
   }
 
   func testParsingBlueprintAST() {
-    let bundle = Bundle(for:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self)!)
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
 
     XCTAssertEqual(blueprint.name, "Polls")
@@ -223,7 +223,7 @@ class BlueprintTests : XCTestCase {
   }
 
   func testParsingMetadataFromAST() {
-    let bundle = Bundle(for:object_getClass(self))
+    let bundle = Bundle(for:object_getClass(self)!)
     let blueprint = Blueprint(named:"blueprint.json", bundle:bundle)!
 
     let format = blueprint.metadata[0]
