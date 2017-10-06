@@ -46,6 +46,11 @@ public struct HTTPTransition : TransitionType {
     public var hashValue:Int {
         return uri.hashValue
     }
+
+    public var isIdempotent: Bool {
+        let nonIdempotent = ["POST", "PATCH"]
+        return !nonIdempotent.contains(method)
+    }
 }
 
 public func ==(lhs:HTTPTransition, rhs:HTTPTransition) -> Bool {

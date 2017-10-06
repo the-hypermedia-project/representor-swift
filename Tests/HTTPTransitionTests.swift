@@ -72,4 +72,55 @@ class HTTPTransitionTests : XCTestCase {
     let transition2 = HTTPTransition(uri:"/self/")
     XCTAssertEqual(transition1.hashValue, transition2.hashValue)
   }
+
+  // MARK: Idempotency
+
+  func testGETMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "GET"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testOPTIONSMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "OPTIONS"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testHEADMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "HEAD"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testPUTMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PUT"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testDELETEMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "DELETE"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testPOSTMethodIsNotIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "POST"
+
+    XCTAssertFalse(transition.isIdempotent)
+  }
+
+  func testPATCHMethodIsNotIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PATCH"
+
+    XCTAssertFalse(transition.isIdempotent)
+  }
 }
