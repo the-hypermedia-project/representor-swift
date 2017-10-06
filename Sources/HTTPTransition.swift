@@ -51,6 +51,11 @@ public struct HTTPTransition : TransitionType {
         let nonIdempotent = ["POST", "PATCH"]
         return !nonIdempotent.contains(method)
     }
+
+    public var isSafe: Bool {
+        let safe = ["GET", "OPTIONS", "HEAD"]
+        return safe.contains(method)
+    }
 }
 
 public func ==(lhs:HTTPTransition, rhs:HTTPTransition) -> Bool {

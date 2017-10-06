@@ -123,4 +123,55 @@ class HTTPTransitionTests : XCTestCase {
 
     XCTAssertFalse(transition.isIdempotent)
   }
+
+  // MARK: Safe
+
+  func testGETMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "GET"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testOPTIONSMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "OPTIONS"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testHEADMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "HEAD"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testPUTMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PUT"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testDELETEMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "DELETE"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testPOSTMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "POST"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testPATCHMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PATCH"
+
+    XCTAssertFalse(transition.isSafe)
+  }
 }
