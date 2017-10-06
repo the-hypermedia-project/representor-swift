@@ -72,4 +72,106 @@ class HTTPTransitionTests : XCTestCase {
     let transition2 = HTTPTransition(uri:"/self/")
     XCTAssertEqual(transition1.hashValue, transition2.hashValue)
   }
+
+  // MARK: Idempotency
+
+  func testGETMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "GET"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testOPTIONSMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "OPTIONS"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testHEADMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "HEAD"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testPUTMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PUT"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testDELETEMethodIsIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "DELETE"
+
+    XCTAssertTrue(transition.isIdempotent)
+  }
+
+  func testPOSTMethodIsNotIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "POST"
+
+    XCTAssertFalse(transition.isIdempotent)
+  }
+
+  func testPATCHMethodIsNotIdempotent() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PATCH"
+
+    XCTAssertFalse(transition.isIdempotent)
+  }
+
+  // MARK: Safe
+
+  func testGETMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "GET"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testOPTIONSMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "OPTIONS"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testHEADMethodIsSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "HEAD"
+
+    XCTAssertTrue(transition.isSafe)
+  }
+
+  func testPUTMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PUT"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testDELETEMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "DELETE"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testPOSTMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "POST"
+
+    XCTAssertFalse(transition.isSafe)
+  }
+
+  func testPATCHMethodIsNotSafe() {
+    var transition = HTTPTransition(uri: "/")
+    transition.method = "PATCH"
+
+    XCTAssertFalse(transition.isSafe)
+  }
 }
